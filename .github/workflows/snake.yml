@@ -23,5 +23,5 @@ jobs:
         uses: crazy-max/ghaction-github-pages@v3.1.0
         with:
           target_branch: output  
-          build_dir: dist  # Directory to deploy asd a
+          build_dir: dist  # Directory to deplo
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
