@@ -23,6 +23,5 @@ jobs:
         uses: crazy-max/ghaction-github-pages@v3.1.0
         with:
           target_branch: output  # Output branch
-          build_dir: dist  # Directory where the animation isasd  asd k adf
-        env:
+          build_dir: dist  # Directory to deploy
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
