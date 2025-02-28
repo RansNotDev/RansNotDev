@@ -159,48 +159,35 @@ window.addEventListener('resize', () => {
 // Theme Toggle Functionality
 document.addEventListener('DOMContentLoaded', () => {
     const themeToggle = document.querySelector('.theme-toggle');
-    const htmlElement = document.documentElement;
+    const html = document.documentElement;
     
-    // Check for saved theme preference
-    const savedTheme = localStorage.getItem('theme') || 'light';
-    htmlElement.setAttribute('data-theme', savedTheme);
+    // Check system preference initially
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        html.setAttribute('data-theme', 'dark');
+    }
 
+    // Load saved preference
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+        html.setAttribute('data-theme', savedTheme);
+    }
+
+    // Toggle theme on click
     themeToggle.addEventListener('click', () => {
-        const currentTheme = htmlElement.getAttribute('data-theme');
+        const currentTheme = html.getAttribute('data-theme') || 'light';
         const newTheme = currentTheme === 'light' ? 'dark' : 'light';
         
-        htmlElement.setAttribute('data-theme', newTheme);
+        html.setAttribute('data-theme', newTheme);
         localStorage.setItem('theme', newTheme);
+        
+        // Add transition class
+        document.body.classList.add('theme-transition');
+        
+        // Remove transition class after animation
+        setTimeout(() => {
+            document.body.classList.remove('theme-transition');
+        }, 300);
     });
-});
-
-// Theme Toggle
-const themeToggle = document.querySelector('.theme-toggle');
-const htmlElement = document.documentElement;
-
-// Check for saved theme preference
-const savedTheme = localStorage.getItem('theme') || 'light';
-htmlElement.setAttribute('data-theme', savedTheme);
-
-// Toggle theme with animation
-themeToggle.addEventListener('click', () => {
-    const currentTheme = htmlElement.getAttribute('data-theme');
-    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-    
-    // Add transition class
-    document.body.classList.add('theme-transition');
-    
-    // Change theme
-    htmlElement.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme);
-    
-    // Update particle color
-    particlesMaterial.uniforms.color.value.set(newTheme === 'dark' ? '#ffd700' : '#ffb700');
-    
-    // Remove transition class
-    setTimeout(() => {
-        document.body.classList.remove('theme-transition');
-    }, 300);
 });
 
 // Navigation
