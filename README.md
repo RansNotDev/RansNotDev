@@ -1,5 +1,5 @@
 # 💫 About Me:
-Capstone Project<br>Software Engineer
+Capstone Project<br>Aspiring Software Engineer
 
 
 # 💻 Tech Stack:
