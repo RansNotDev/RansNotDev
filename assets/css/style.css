@@ -1,0 +1,487 @@
+/* Custom styles for Ranyboy Templado's portfolio */
+
+/* Global styles */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+html.dark body {
+  background-color: #000;
+  color: #fff;
+}
+
+html.light body {
+  background-color: #fff;
+  color: #111;
+}
+
+/* Ensure all headings are visible in dark mode */
+html.dark h1, 
+html.dark h2, 
+html.dark h3, 
+html.dark h4, 
+html.dark h5, 
+html.dark h6,
+html.dark .text-xl,
+html.dark .font-bold {
+  color: #ffffff;
+}
+
+/* Specifically target section titles */
+html.dark #experience h3,
+html.dark #skills h3,
+html.dark #projects h3,
+html.dark .font-bold {
+  color: #ffffff !important;
+}
+
+/* Fix for tech stack items in dark mode */
+html.dark .bg-gray-800 span,
+html.dark span.bg-gray-800,
+html.dark .bg-gray-800.text-white,
+html.dark span.bg-gray-800.text-white,
+html.dark span.text-white {
+  color: #ffffff !important;
+}
+
+/* Specifically target the tech stack spans */
+html.dark #skills span {
+  color: #ffffff !important;
+}
+
+/* Hover effects */
+.hover-grow {
+  transition: transform 0.3s ease;
+}
+
+.hover-grow:hover {
+  transform: scale(1.03);
+}
+
+/* Custom animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+/* Custom section styling */
+section {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Skills dots animation */
+.skill-dot {
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.skill-item:hover .skill-dot {
+  transform: scale(1.5);
+  background-color: #2563eb;
+}
+
+/* Contact form focus effects */
+.contact-input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+}
+
+/* Custom theme colors - can be adjusted */
+.text-primary {
+  color: #2563eb;
+}
+
+.bg-primary {
+  background-color: #2563eb;
+}
+
+/* Project card hover effect */
+.project-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Timeline line styling */
+.timeline-line {
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.3) 10%, rgba(255, 255, 255, 0.3) 90%, rgba(255, 255, 255, 0) 100%);
+}
+
+html.light .timeline-line {
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.2) 10%, rgba(0, 0, 0, 0.2) 90%, rgba(0, 0, 0, 0) 100%);
+}
+
+/* Card hover effects */
+.hover-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.hover-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+}
+
+html.dark .hover-card:hover {
+  border-color: #374151;
+}
+
+html.light .hover-card:hover {
+  border-color: #d1d5db;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+/* Skill tag hover effects */
+.skill-tag {
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.skill-tag:hover {
+  transform: scale(1.05);
+}
+
+html.dark .skill-tag:hover {
+  background-color: #374151;
+}
+
+html.light .skill-tag:hover {
+  background-color: #e5e7eb;
+}
+
+/* Button hover effects */
+.button-hover {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+html.dark .white-button:hover {
+  background-color: transparent;
+  color: #fff;
+  border-color: #fff;
+}
+
+html.light .white-button:hover {
+  background-color: transparent;
+  color: #000;
+  border-color: #000;
+}
+
+html.dark .outline-button:hover {
+  background-color: #fff;
+  color: #000;
+}
+
+html.light .outline-button:hover {
+  background-color: #000;
+  color: #fff;
+}
+
+/* Social icon hover effects */
+.social-icon {
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.social-icon:hover {
+  transform: translateY(-3px);
+}
+
+html.dark .social-icon:hover {
+  background-color: #374151;
+}
+
+html.light .social-icon:hover {
+  background-color: #f3f4f6;
+}
+
+/* Custom indicator dots */
+html.dark .indicator-dots .active {
+  background-color: #fff;
+}
+
+html.light .indicator-dots .active {
+  background-color: #000;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+html.dark ::-webkit-scrollbar-track {
+  background: #111;
+}
+
+html.dark ::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 5px;
+}
+
+html.dark ::-webkit-scrollbar-thumb:hover {
+  background: #444;
+}
+
+html.light ::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+html.light ::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 5px;
+}
+
+html.light ::-webkit-scrollbar-thumb:hover {
+  background: #aaa;
+}
+
+/* Chat button animation */
+.chat-button {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+  }
+}
+
+html.light .chat-button {
+  animation: pulse-light 2s infinite;
+}
+
+@keyframes pulse-light {
+  0% {
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.2);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+  }
+}
+
+/* Responsive fixes */
+@media (max-width: 768px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+/* Light/Dark theme toggle (for future implementation) */
+.theme-switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.theme-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #333;
+  transition: .4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+/* Theme transition effects */
+.bg-gray-900, .bg-gray-800, .text-white, .text-gray-300, .text-gray-400, .border-gray-800,
+.bg-black, .border-gray-700, .text-gray-500, .text-gray-600 {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Theme toggle button styles */
+#theme-toggle {
+  transition: all 0.3s ease;
+}
+
+html.light #theme-toggle {
+  border-color: #ddd;
+}
+
+html.light #theme-toggle:hover {
+  background-color: #f5f5f5;
+}
+
+/* All box elements transition */
+.bg-gray-900, .bg-gray-800, .bg-black, .p-6, .p-8, .rounded-lg, .rounded-md,
+.text-white, .text-gray-300, .text-gray-400, .text-gray-500, .text-gray-600,
+.border, .border-gray-700, .border-gray-800 {
+  transition: all 0.3s ease;
+}
+
+/* Box theme-specific styles */
+html.dark .bg-gray-900 {
+  background-color: #111827;
+  border-color: #374151;
+  color: #fff;
+}
+
+html.light .bg-gray-900 {
+  background-color: #f9fafb;
+  border-color: #e5e7eb;
+  color: #111827;
+}
+
+html.dark .bg-gray-800 {
+  background-color: #1f2937;
+  border-color: #374151;
+  color: #fff;
+}
+
+html.light .bg-gray-800 {
+  background-color: #f3f4f6;
+  border-color: #d1d5db;
+  color: #111827;
+}
+
+/* Text color theme-specific styles */
+html.dark .text-white {
+  color: #ffffff;
+}
+
+html.light .text-white {
+  color: #111827;
+}
+
+html.dark .text-gray-300 {
+  color: #d1d5db;
+}
+
+html.light .text-gray-300 {
+  color: #374151;
+}
+
+html.dark .text-gray-400 {
+  color: #9ca3af;
+}
+
+html.light .text-gray-400 {
+  color: #4b5563;
+}
+
+/* Border styles */
+html.dark .border-gray-800 {
+  border-color: #1f2937;
+}
+
+html.light .border-gray-800 {
+  border-color: #e5e7eb;
+}
+
+html.dark .border-gray-700 {
+  border-color: #374151;
+}
+
+html.light .border-gray-700 {
+  border-color: #d1d5db;
+}
+
+/* Theme toggle button specific styles */
+html.dark #theme-toggle {
+  border-color: #4b5563;
+}
+
+html.light #theme-toggle {
+  border-color: #d1d5db;
+}
+
+html.dark #theme-toggle:hover {
+  background-color: #1f2937;
+}
+
+html.light #theme-toggle:hover {
+  background-color: #f3f4f6;
+}
+
+/* Project cards, skill tags, etc */
+html.dark .hover-card:hover {
+  border-color: #374151;
+  background-color: #1e293b;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.4);
+}
+
+html.light .hover-card:hover {
+  border-color: #d1d5db;
+  background-color: #ffffff;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+/* Timeline styles for dark/light mode */
+html.dark .timeline-line {
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.3) 10%, rgba(255, 255, 255, 0.3) 90%, rgba(255, 255, 255, 0) 100%);
+}
+
+html.light .timeline-line {
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.2) 10%, rgba(0, 0, 0, 0.2) 90%, rgba(0, 0, 0, 0) 100%);
+}
+
+/* Section animations */
+section {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
