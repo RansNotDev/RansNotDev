@@ -3,7 +3,7 @@
 <h1 align="center">Hi, I'm RansNotDev! <img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" width="35"></h1>
 
 <p align="center">
-  <b>Capstone Project Arch</b><br>
+  <b>Full Stack Developer | Open to Opportunities</b><br>
   <a href="#tech-stack">Tech Stack</a> • <a href="#github-stats">GitHub Stats</a> • <a href="#trophies">Trophies</a> • <a href="#contact">Contact</a>
 </p>
 
@@ -11,9 +11,10 @@
 
 ## 🚀 About Me
 
-- 🎓 Passionate developer & lifelong learner
-- 🛠️ Building cool things with code
-- 🌱 Currently exploring new tech and frameworks
+- 💻 Full Stack Developer with a passion for creating innovative solutions
+- 🎯 Currently seeking opportunities in web development and software engineering
+- 🌱 Always learning and exploring new technologies
+- 🤝 Open to freelance projects and full-time positions
 
 ---
 
@@ -36,6 +37,16 @@
   <img src="https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white" alt="Figma" />
   <img src="https://img.shields.io/badge/Canva-%2300C4CC.svg?style=for-the-badge&logo=Canva&logoColor=white" alt="Canva" />
 </p>
+
+---
+
+## 💼 Looking For
+
+- 🏢 Full-time positions in web development
+- 🌐 Remote work opportunities
+- 🤝 Freelance projects
+- 🎯 Internship opportunities
+- 💡 Open source contributions
 
 ---
 
