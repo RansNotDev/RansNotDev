@@ -3,11 +3,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const chatInput = document.getElementById('chat-input');
     const chatMessages = document.getElementById('chat-messages');
     const closeBtn = document.getElementById('close-messenger-modal');
-    const assistantAvatar = '../images/profile.png';
+    const assistantAvatar = '../images/newprofile.png';
 
     // Add welcome message
     function addWelcomeMessage() {
-        const welcomeMessage = "Hi there! 👋🏻 Thanks for visiting my website. Feel free to ask me anything about programming, web development, or my experiences in tech. Let me know how I can help!";
+        const welcomeMessage = "Hi there! 👋🏻 I’m Rans’ assistant. Ask me about his skills, projects, certifications, experience, or how to contact him. For example: “What projects has Ranyboy built?” or “How do I reach him?”";
         addAssistantMessage(welcomeMessage);
     }
 
@@ -49,49 +49,89 @@ document.addEventListener('DOMContentLoaded', function() {
         return typingDiv;
     }
 
-    // Real Gemini API integration with retry mechanism
-    async function getAnswer(question, retryCount = 0) {
-        const API_KEY = 'AIzaSyDDQUq1W15CgSAtkcRyCu7bjnunjm7r2co';
-        const API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent';
-        const MAX_RETRIES = 2;
+    // Simple local fallback answer if API is not configured or fails
+    function getLocalAnswer(question) {
+        const prefix = getHumanPrefix();
 
+        // Minimal site knowledge for offline answers
+        const profile = {
+            name: 'Ranyboy Templado',
+            title: 'BS Information Technology Graduate | Freelance Web Developer',
+            location: 'Cavite, Philippines',
+            contact: 'ranyboytemplado001@gmail.com',
+            tech: {
+                frontend: ['JavaScript', 'HTML5', 'CSS3', 'Bootstrap', 'Tailwind CSS'],
+                backend: ['Python', 'Java', 'PHP', 'MySQL', 'Laravel'],
+                tools: ['Git', 'VS Code', 'Microsoft Office', 'Canva'],
+            },
+            projects: [
+                'Advanced Appointment System (dental clinics)',
+                'Real Estate Appointment System',
+                'School Club Event System',
+                'Weather App',
+            ],
+            certifications: [
+                'Responsive Web Design (FreeCodeCamp)',
+                'JavaScript Algorithms and Data Structures (FreeCodeCamp)',
+                'Java (HackerRank)',
+                'SQL Basics (HackerRank)',
+                'JavaScript Basics (HackerRank)',
+                'National Programming Challenge 2024 (Code Chum)',
+            ],
+            experience: [
+                'Enrolled BS IT (August 2021)',
+                'Hello World first code (August 2021)',
+                'Freelance web developer, student-friendly projects (2022 – Present)',
+                'OJT Intern, Municipal Accounting Office (July 2024)',
+                'Graduation BS IT (June 6, 2025)',
+            ],
+        };
+
+        const lowerQ = (question || '').toLowerCase();
+
+        // Simple keyword routing
+        if (lowerQ.includes('contact') || lowerQ.includes('email')) {
+            return `${prefix} You can reach ${profile.name} at ${profile.contact}.`;
+        }
+        if (lowerQ.includes('where') && lowerQ.includes('based')) {
+            return `${prefix} ${profile.name} is based in ${profile.location}.`;
+        }
+        if (lowerQ.includes('tech') || lowerQ.includes('stack') || lowerQ.includes('skills')) {
+            return `${prefix} Tech stack:\n- Frontend: ${profile.tech.frontend.join(', ')}\n- Backend: ${profile.tech.backend.join(', ')}\n- Tools: ${profile.tech.tools.join(', ')}`;
+        }
+        if (lowerQ.includes('project')) {
+            return `${prefix} Key projects include: ${profile.projects.join('; ')}.`;
+        }
+        if (lowerQ.includes('cert')) {
+            return `${prefix} Certifications: ${profile.certifications.join('; ')}.`;
+        }
+        if (lowerQ.includes('experience') || lowerQ.includes('journey') || lowerQ.includes('timeline')) {
+            return `${prefix} Experience timeline: ${profile.experience.join(' → ')}.`;
+        }
+        if (lowerQ.includes('who is') || lowerQ.includes('about') || lowerQ.includes('who are you')) {
+            return `${prefix} I’m an assistant for ${profile.name}, ${profile.title}, based in ${profile.location}. I can share details about skills, projects, certifications, and contact info.`;
+        }
+
+        // Default offline reply
+        return `${prefix} I’m offline but can help with what’s on this site. Ask about tech stack, projects, certifications, experience, or contact (${profile.contact}).`;
+    }
+
+    // Backend proxy call (serverless/relative) to avoid CORS and keep the key server-side.
+    // Falls back to local answer if the request fails.
+    async function getAnswer(question) {
         try {
-            const response = await fetch(`${API_URL}?key=${API_KEY}`, {
+            const resp = await fetch('/api/chat', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    contents: [{
-                        parts: [{
-                            text: `You are Rans, an AI assistant for Ranyboy Templado's portfolio website. 
-                            Answer the following question about Ranyboy based on his portfolio information: ${question}
-                            Keep responses concise and friendly. If the question is not related to Ranyboy's portfolio, 
-                            politely redirect the conversation back to his portfolio.`
-                        }]
-                    }]
-                })
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ question }),
             });
-
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-
-            const data = await response.json();
-            
-            if (data.candidates && data.candidates[0] && data.candidates[0].content) {
-                return data.candidates[0].content.parts[0].text;
-            } else {
-                throw new Error('Invalid response format from Gemini API');
-            }
-        } catch (error) {
-            console.error('Error calling Gemini API:', error);
-            if (retryCount < MAX_RETRIES) {
-                console.log(`Retrying... Attempt ${retryCount + 1} of ${MAX_RETRIES}`);
-                await new Promise(resolve => setTimeout(resolve, 1000 * (retryCount + 1)));
-                return getAnswer(question, retryCount + 1);
-            }
-            return "I apologize, but I'm having trouble connecting to my AI service right now. Please try again in a moment.";
+            if (!resp.ok) throw new Error('Backend error');
+            const data = await resp.json();
+            if (!data || !data.text) throw new Error('Empty response');
+            return data.text;
+        } catch (err) {
+            console.error('Backend fetch failed, using local answer:', err);
+            return getLocalAnswer(question);
         }
     }
 
@@ -119,7 +159,8 @@ document.addEventListener('DOMContentLoaded', function() {
         } catch (error) {
             typingIndicator.remove();
             console.error("Error fetching answer:", error);
-            addAssistantMessage("Sorry, I encountered an error trying to respond. Please try again.");
+            // Final safety fallback
+            addAssistantMessage(getLocalAnswer(userText));
             chatInput.disabled = false;
             chatInput.focus();
         }

@@ -17,6 +17,11 @@ body, html {
   min-width: 320px;
   max-width: 100vw;
   overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
 }
 
 html.dark body, html.dark {
@@ -30,6 +35,7 @@ html.dark body, html.dark {
   background: var(--primary-gradient);
   height: calc(100vh - var(--header-height) - var(--input-height));
   overflow-y: auto;
+  overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
 }
 
@@ -70,22 +76,25 @@ html.dark body, html.dark {
   border-bottom-right-radius: 0.25rem;
   margin-left: auto;
   margin-right: 0;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  font-size: 0.875rem;
-  line-height: 1.5;
-  padding: 0.75rem 1rem;
-  max-width: 85%;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  padding: 0.85rem 1.15rem;
+  max-width: calc(100% - 3rem);
   display: flex;
   align-items: center;
   transition: all 0.2s ease;
   word-wrap: break-word;
+  word-break: break-word;
+  overflow-wrap: anywhere;
 }
 
 @media (min-width: 640px) {
   .user-message .bubble {
-    font-size: 0.95rem;
-    padding: 0.875rem 1.25rem;
-    max-width: 320px;
+    font-size: 0.96rem;
+    padding: 0.95rem 1.35rem;
+    max-width: calc(100% - 3.5rem);
   }
 }
 
@@ -113,22 +122,25 @@ html.dark body, html.dark {
   border-bottom-left-radius: 0.25rem;
   margin-right: auto;
   margin-left: 0;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  font-size: 0.875rem;
-  line-height: 1.5;
-  padding: 0.75rem 1rem;
-  max-width: 85%;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  padding: 0.85rem 1.15rem;
+  max-width: calc(100% - 3rem);
   display: flex;
   align-items: center;
   transition: all 0.2s ease;
   word-wrap: break-word;
+  word-break: break-word;
+  overflow-wrap: anywhere;
 }
 
 @media (min-width: 640px) {
   .assistant-message .bubble {
-    font-size: 0.95rem;
-    padding: 0.875rem 1.25rem;
-    max-width: 320px;
+    font-size: 0.96rem;
+    padding: 0.95rem 1.35rem;
+    max-width: calc(100% - 3.5rem);
   }
 }
 
@@ -165,6 +177,10 @@ html.dark body, html.dark {
   opacity: 0.8;
   font-style: italic;
   background: var(--bubble-gradient);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  white-space: nowrap;
 }
 
 /* Input field */
