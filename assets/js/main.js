@@ -248,19 +248,19 @@ document.addEventListener('DOMContentLoaded', function() {
     // === Recommendations Auto-Rotation ===
     const recommendations = [
         {
-            text: '"Ranyboy was a dedicated intern who showed great aptitude for technology and problem-solving. His skills in data management and process optimization were valuable assets to our accounting department. He has a bright future ahead in the tech industry."',
-            author: 'Juan Dela Cruz',
-            role: 'Project Manager'
+            text: '"Ranyboy consistently demonstrates strong technical skills and a willingness to learn. He shows maturity in handling projects and a sincere dedication to his growth as an IT professional."',
+            author: 'Anthony Perez',
+            role: 'Dean, College of Computer Studies'
         },
         {
-            text: '"Ranyboy consistently demonstrated a strong work ethic and a passion for learning new technologies. He was a reliable team member and contributed significantly to our projects."',
-            author: 'Maria Santos',
-            role: 'IT Project Manager'
+            text: '"Working with Ranyboy has been great. He is reliable, easy to collaborate with, and always willing to help teammates solve problems and finish tasks on time."',
+            author: 'Aaron Dayto',
+            role: 'Colleague'
         },
         {
-            text: '"His attention to detail and ability to solve complex problems made him an asset to our organization. I highly recommend Ranyboy for any tech-related role."',
-            author: 'Carlos Reyes',
-            role: 'Teacher, Computer Science Department'
+            text: '"Students and clients appreciate how Ranyboy explains technical concepts clearly and delivers user-friendly systems. His responsiveness and attention to feedback make projects smooth and enjoyable."',
+            author: 'Clients & Students',
+            role: 'Feedback from projects and school work'
         }
     ];
     let currentRec = 0;
@@ -288,6 +288,10 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     // Only run if recommendations section exists
     if (document.getElementById('recommendation-content')) {
+        // Ensure the first recommendation + dots are in sync with the data
+        showRecommendation(currentRec);
+
+        // Auto-slide every 20 seconds
         setInterval(() => {
             currentRec = (currentRec + 1) % recommendations.length;
             showRecommendation(currentRec);
