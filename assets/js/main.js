@@ -261,6 +261,11 @@ document.addEventListener('DOMContentLoaded', function() {
             text: '"Students and clients appreciate how Ranyboy explains technical concepts clearly and delivers user-friendly systems. His responsiveness and attention to feedback make projects smooth and enjoyable."',
             author: 'Clients & Students',
             role: 'Feedback from projects and school work'
+        },
+        {
+            text: '"Rany Boy is a great customer service representative. He is always willing to help and is very patient with clients."',
+            author: 'Team Leader',
+            role: 'Feedback from Workplace'
         }
     ];
     let currentRec = 0;
@@ -290,12 +295,11 @@ document.addEventListener('DOMContentLoaded', function() {
     if (document.getElementById('recommendation-content')) {
         // Ensure the first recommendation + dots are in sync with the data
         showRecommendation(currentRec);
-
-        // Auto-slide every 20 seconds
+        // Auto-slide every 10 seconds
         setInterval(() => {
             currentRec = (currentRec + 1) % recommendations.length;
             showRecommendation(currentRec);
-        }, 20000);
+        }, 10000);
         // Allow clicking dots to jump to a recommendation
         Array.from(document.querySelectorAll('#recommendation-dots [data-dot]')).forEach((dot, i) => {
             dot.style.cursor = 'pointer';
