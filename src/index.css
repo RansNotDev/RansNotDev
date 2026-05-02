@@ -1,0 +1,75 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html { scroll-behavior: smooth; }
+
+/* ══════════════════════════════════════
+   DESIGN TOKENS
+   Dark  → near-black with indigo tint
+   Light → neutral warm-gray, black text
+   Terminal/CLI colors stay the same in both modes
+══════════════════════════════════════ */
+:root {
+  /* ── Dark mode (default) ── */
+  --bg:           #0e0e14;
+  --bg-2:         #0b0b10;
+  --bg-card:      rgba(255,255,255,0.04);
+  --border:       rgba(120,120,200,0.18);
+  --text:         #e4e4f0;
+  --text-muted:   rgba(200,200,230,0.58);
+  --text-dim:     rgba(200,200,230,0.32);
+  --accent:       #7c7ff5;
+  --accent-2:     #5c5fe8;
+  --accent-glow:  rgba(100,100,240,0.18);
+  --nav-bg:       rgba(10,10,18,0.88);
+  --tag-bg:       rgba(100,100,240,0.1);
+  --tag-border:   rgba(100,100,240,0.25);
+  --scrollbar:    #5c5fe8;
+
+  /* ── Terminal palette — same in both modes ── */
+  --cli-bg:       #0d1117;
+  --cli-bar:      #161b22;
+  --cli-kw:       #ff7b72;
+  --cli-var:      #79c0ff;
+  --cli-str:      #a8d8a8;
+  --cli-key:      #a5d6ff;
+  --cli-bool:     #f8c555;
+  --cli-op:       #e6edf3;
+  --cli-comment:  rgba(200,210,240,0.45);
+  --cli-green:    #22c55e;
+}
+
+[data-theme="light"] {
+  /* ── Light mode — neutral warm-gray, black text ── */
+  --bg:           #d8d8e0;
+  --bg-2:         #ceceda;
+  --bg-card:      rgba(255,255,255,0.55);
+  --border:       rgba(80,80,160,0.18);
+  --text:         #0a0a14;
+  --text-muted:   rgba(10,10,40,0.62);
+  --text-dim:     rgba(10,10,40,0.38);
+  --accent:       #4f52d8;
+  --accent-2:     #3b3ec4;
+  --accent-glow:  rgba(80,80,220,0.14);
+  --nav-bg:       rgba(200,200,215,0.92);
+  --tag-bg:       rgba(80,80,220,0.1);
+  --tag-border:   rgba(80,80,220,0.22);
+  --scrollbar:    #7c7ff5;
+
+  /* Terminal stays dark — intentional, CLI is always dark */
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', 'Space Grotesk', sans-serif;
+  overflow-x: hidden;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--scrollbar); border-radius: 3px; }

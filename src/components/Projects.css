@@ -1,0 +1,205 @@
+.projects {
+  position: relative;
+  padding: 6rem 2rem;
+  overflow: hidden;
+  background-color: var(--bg-2);
+  transition: background-color 0.3s;
+}
+
+.projects__bg-glow {
+  position: absolute;
+  top: 20%;
+  right: -10%;
+  width: 50vw;
+  height: 50vw;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(99,102,241,0.1) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.projects__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Section header ── */
+.projects__header {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 2.5rem;
+}
+
+.projects__prompt {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #22c55e;
+}
+
+.projects__heading {
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+  font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+  font-weight: 700;
+  color: var(--text);
+  white-space: nowrap;
+}
+
+.projects__line {
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+/* ── Grid ── */
+.projects__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+}
+
+/* ── Card ── */
+.projects__card {
+  background: var(--cli-bg);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+}
+
+[data-theme="light"] .projects__card {
+  border-color: rgba(0,0,0,0.1);
+}
+
+.projects__card:hover {
+  border-color: var(--accent);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(99,102,241,0.15);
+}
+
+/* Card top bar — like a code editor tab */
+.projects__card-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 1rem;
+  background: var(--cli-bar);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+[data-theme="light"] .projects__card-bar {
+  border-bottom-color: rgba(0,0,0,0.08);
+}
+
+.projects__card-dots {
+  display: flex;
+  gap: 5px;
+  flex-shrink: 0;
+}
+
+.projects__card-dots span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.projects__card-dots span:nth-child(1) { background: #ff5f57; }
+.projects__card-dots span:nth-child(2) { background: #febc2e; }
+.projects__card-dots span:nth-child(3) { background: #28c840; }
+
+.projects__card-index {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  color: rgba(200,210,240,0.4);
+  margin-left: 0.25rem;
+}
+
+.projects__card-status {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  margin-left: auto;
+  letter-spacing: 0.04em;
+}
+
+/* Card body — always dark card, so always light text */
+.projects__card-body {
+  padding: 1.25rem 1.4rem 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.projects__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.projects__tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.62rem;
+  font-weight: 500;
+  color: #818cf8;
+  background: rgba(100,100,240,0.12);
+  border: 1px solid rgba(100,100,240,0.28);
+  border-radius: 4px;
+  padding: 0.15rem 0.55rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* Title and desc always light — card is always dark */
+.projects__title {
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #e4e4f0;
+  line-height: 1.4;
+}
+
+.projects__desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.83rem;
+  color: rgba(200,200,230,0.6);
+  line-height: 1.65;
+}
+
+/* Card index and status — always light on dark bar */
+.projects__card-index {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  color: rgba(200,210,240,0.4);
+  margin-left: 0.25rem;
+}
+
+.projects__card-status {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  margin-left: auto;
+  letter-spacing: 0.04em;
+}
+
+/* Stack */
+.projects__stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: 0.25rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+.projects__stack-item {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  color: rgba(200,210,240,0.4);
+  background: rgba(255,255,255,0.04);
+  border-radius: 4px;
+  padding: 0.15rem 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .projects__grid { grid-template-columns: 1fr; }
+}

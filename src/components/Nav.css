@@ -1,0 +1,89 @@
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background-color: var(--nav-bg);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
+  height: 64px;
+  /* Hidden by default — slides in on scroll past hero */
+  transform: translateY(-100%);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.35s ease, opacity 0.35s ease, background-color 0.3s;
+}
+
+/* Shown once hero leaves viewport */
+.nav--visible {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: all;
+}
+
+.nav__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* ── Brand ── */
+.nav__brand {
+  display: flex;
+  align-items: baseline;
+  gap: 0.15rem;
+  text-decoration: none;
+}
+
+.nav__brand-name {
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.02em;
+  transition: color 0.2s;
+}
+
+.nav__brand-cursor {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--accent);
+  animation: cursor-blink 1.2s step-end infinite;
+}
+
+@keyframes cursor-blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+.nav__brand:hover .nav__brand-name { color: var(--accent); }
+
+/* ── Theme toggle (in nav) ── */
+.nav__theme-toggle {
+  background: var(--tag-bg);
+  border: 1px solid var(--tag-border);
+  border-radius: 8px;
+  color: var(--text);
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.2s, border-color 0.2s, color 0.2s, transform 0.2s;
+}
+
+.nav__theme-toggle:hover {
+  background: rgba(99,102,241,0.2);
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: rotate(15deg);
+}

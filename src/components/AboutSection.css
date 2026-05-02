@@ -1,0 +1,382 @@
+.about {
+  position: relative;
+  padding: 6rem 2rem;
+  background-color: var(--bg);
+  overflow: hidden;
+  transition: background-color 0.3s;
+}
+
+.about__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Section header with prompt ── */
+.about__section-header {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 1.75rem;
+}
+
+.about__section-prompt {
+  font-family: 'Courier New', monospace;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #22c55e;
+}
+
+.about__section-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(1.2rem, 2vw, 1.6rem);
+  font-weight: 700;
+  color: var(--text);
+  white-space: nowrap;
+}
+
+.about__section-line {
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+/* ══════════════════════════════
+   TERMINAL — About Me
+══════════════════════════════ */
+.about__terminal {
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: var(--cli-bg);
+  margin-bottom: 2rem;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+}
+
+/* Terminal stays dark in both modes — intentional */
+[data-theme="light"] .about__terminal {
+  border-color: rgba(0,0,0,0.2);
+}
+
+.about__terminal-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.6rem 1rem;
+  background: var(--cli-bar);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+[data-theme="light"] .about__terminal-bar {
+  border-bottom-color: rgba(0,0,0,0.12);
+}
+
+.about__terminal-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.about__terminal-dot--red    { background: #ff5f57; }
+.about__terminal-dot--yellow { background: #febc2e; }
+.about__terminal-dot--green  { background: #28c840; }
+
+.about__terminal-filename {
+  font-family: 'Courier New', monospace;
+  font-size: 0.75rem;
+  color: rgba(200,210,240,0.5);
+  margin-left: 0.5rem;
+}
+
+/* Code body */
+.about__terminal-body {
+  padding: 1.25rem 1.5rem;
+  overflow-x: auto;
+}
+
+.about__code {
+  font-family: 'Courier New', monospace;
+  font-size: 0.82rem;
+  line-height: 1.7;
+  white-space: pre;
+  margin: 0;
+}
+
+/* Syntax colours — always dark terminal, same in both modes */
+.c-keyword { color: var(--cli-kw); }
+.c-var     { color: var(--cli-var); }
+.c-op      { color: var(--cli-op); }
+.c-key     { color: var(--cli-key); }
+.c-str     { color: var(--cli-str); }
+.c-bool    { color: var(--cli-bool); }
+
+/* ══════════════════════════════
+   TECH STACK — flat pill layout
+══════════════════════════════ */
+.about__techs { display: flex; flex-direction: column; }
+
+.about__tech-group { margin-bottom: 1.75rem; }
+
+.about__tech-label {
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.75;
+}
+
+.about__tech-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+/* Flat pill — icon + name, no box */
+.about__tech-card {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.3rem 0.8rem 0.3rem 0.45rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.1);
+  background: transparent;
+  cursor: default;
+  position: relative;
+  transition: border-color 0.2s, background 0.2s, transform 0.15s;
+}
+
+[data-theme="light"] .about__tech-card {
+  border-color: rgba(0,0,0,0.1);
+}
+
+.about__tech-card:hover {
+  border-color: var(--accent);
+  background: rgba(99,102,241,0.08);
+  transform: translateY(-2px);
+}
+
+.about__tech-icon {
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.about__tech-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.about__tech-emoji {
+  font-size: 0.95rem;
+  line-height: 1;
+}
+
+/* Name always visible inline */
+.about__tech-tooltip {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  white-space: nowrap;
+  transition: color 0.2s;
+  /* reset any absolute positioning from previous version */
+  position: static;
+  transform: none;
+  background: none;
+  border: none;
+  padding: 0;
+  opacity: 1;
+  pointer-events: none;
+  bottom: auto;
+  left: auto;
+}
+
+.about__tech-tooltip::after { display: none; }
+
+.about__tech-card:hover .about__tech-tooltip {
+  color: var(--text);
+  opacity: 1;
+  transform: none;
+}
+
+/* Bio typewriter cursor */
+.about__bio-cursor {
+  display: inline-block;
+  color: var(--accent);
+  font-weight: 700;
+  animation: bio-blink 0.8s step-end infinite;
+  margin-left: 1px;
+}
+
+@keyframes bio-blink {
+  0%,100% { opacity: 1; }
+  50%      { opacity: 0; }
+}
+
+/* C++ code block in experience hover */
+.about__timeline-code {
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 0.72rem;
+  line-height: 1.6;
+  white-space: pre;
+  margin: 0;
+  padding-top: 0.3rem;
+}
+.about__timeline { display: flex; flex-direction: column; }
+
+.about__timeline-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  cursor: default;
+  border-radius: 8px;
+  padding: 0.4rem 0.5rem 0 0.25rem;
+  transition: background 0.2s;
+}
+
+.about__timeline-item--active {
+  background: rgba(113,39,186,0.07);
+}
+
+/* Marker */
+.about__timeline-marker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  width: 18px;
+  padding-top: 4px;
+}
+
+.about__timeline-square {
+  width: 13px;
+  height: 13px;
+  border: 2px solid;
+  border-radius: 2px;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+  transition: background 0.2s, box-shadow 0.2s;
+}
+
+.about__timeline-line {
+  width: 1px;
+  flex: 1;
+  min-height: 28px;
+  background: var(--border);
+}
+
+/* Content */
+.about__timeline-content {
+  padding-bottom: 1.25rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.about__timeline-item:last-child .about__timeline-content { padding-bottom: 0; }
+
+.about__timeline-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.about__timeline-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.4;
+  transition: color 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.about__timeline-item--active .about__timeline-title {
+  color: #ffffff;
+}
+
+/* "current" badge */
+.about__timeline-current-badge {
+  font-family: 'Courier New', monospace;
+  font-size: 0.6rem;
+  font-weight: 700;
+  color: #22c55e;
+  background: rgba(34,197,94,0.12);
+  border: 1px solid rgba(34,197,94,0.35);
+  border-radius: 4px;
+  padding: 0.1rem 0.4rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  animation: badge-pulse 2s ease-in-out infinite;
+}
+
+@keyframes badge-pulse {
+  0%,100% { opacity: 1; }
+  50%      { opacity: 0.6; }
+}
+
+/* Bio block below terminal */
+.about__bio-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.about__bio {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.75;
+}
+
+.about__timeline-year {
+  font-family: 'Courier New', monospace;
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  flex-shrink: 0;
+}
+
+/* Hover description — dev comment style */
+.about__timeline-desc {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.25s ease, opacity 0.2s;
+  opacity: 0;
+}
+
+.about__timeline-desc--visible {
+  max-height: 140px;
+  opacity: 1;
+}
+
+.about__timeline-desc-text {
+  font-family: 'Courier New', monospace;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  display: block;
+  padding-top: 0.3rem;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .about__container {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}

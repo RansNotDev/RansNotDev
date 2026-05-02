@@ -1,0 +1,262 @@
+.footer {
+  background-color: var(--bg);
+  border-top: 1px solid var(--border);
+  padding: 0 2rem 2rem;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.footer__container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ── Terminal header bar ── */
+.footer__terminal-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 3rem;
+}
+
+.footer__terminal-dots {
+  display: flex;
+  gap: 5px;
+}
+
+.footer__terminal-dots span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.footer__terminal-dots span:nth-child(1) { background: #ff5f57; }
+.footer__terminal-dots span:nth-child(2) { background: #febc2e; }
+.footer__terminal-dots span:nth-child(3) { background: #28c840; }
+
+.footer__terminal-file {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  margin-left: 0.4rem;
+}
+
+/* ── Body ── */
+.footer__body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  margin-bottom: 3rem;
+}
+
+/* ── CTA left ── */
+.footer__cta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.footer__cta-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.footer__prompt {
+  color: #22c55e;
+  font-weight: 700;
+}
+
+.footer__cta-heading {
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.1;
+}
+
+.footer__cta-sub {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 0.5rem;
+}
+
+/* Email button with Hire Me hover */
+.footer__email-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  position: relative;
+  overflow: hidden;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text);
+  background: var(--tag-bg);
+  border: 1px solid var(--tag-border);
+  border-radius: 8px;
+  padding: 0.65rem 1.25rem;
+  text-decoration: none;
+  width: fit-content;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.footer__email-btn:hover {
+  border-color: var(--accent);
+  background: rgba(99,102,241,0.18);
+}
+
+.footer__email-default,
+.footer__email-hover {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.footer__email-hover {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%) translateY(120%);
+  opacity: 0;
+  white-space: nowrap;
+  font-weight: 700;
+  color: #22c55e;
+}
+
+.footer__email-btn:hover .footer__email-default {
+  transform: translateY(-120%);
+  opacity: 0;
+}
+
+.footer__email-btn:hover .footer__email-hover {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
+/* ── Right links ── */
+.footer__links {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.footer__block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.footer__label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--text-dim);
+  letter-spacing: 0.06em;
+}
+
+/* Socials */
+.footer__socials {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.footer__social-link {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  width: fit-content;
+  transition: color 0.2s, transform 0.2s;
+}
+
+.footer__social-link:hover {
+  color: var(--accent);
+  transform: translateX(4px);
+}
+
+/* Resume button with Hire Me hover */
+.footer__resume-btn {
+  position: relative;
+  overflow: hidden;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text);
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.55rem 1.1rem;
+  text-decoration: none;
+  width: fit-content;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.footer__resume-btn:hover {
+  border-color: #22c55e;
+}
+
+.footer__resume-default,
+.footer__resume-hover {
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  white-space: nowrap;
+}
+
+.footer__resume-hover {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%) translateY(120%);
+  opacity: 0;
+  color: #22c55e;
+  font-weight: 700;
+}
+
+.footer__resume-btn:hover .footer__resume-default {
+  transform: translateY(-120%);
+  opacity: 0;
+}
+
+.footer__resume-btn:hover .footer__resume-hover {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
+/* ── Bottom bar ── */
+.footer__bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.footer__copy,
+.footer__copy-right {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--text-dim);
+}
+
+.footer__copy-comment { color: var(--text-dim); }
+.footer__copy-green   { color: #22c55e; opacity: 0.8; }
+
+@media (max-width: 768px) {
+  .footer__body { grid-template-columns: 1fr; gap: 2.5rem; }
+  .footer__bottom { flex-direction: column; align-items: flex-start; }
+}

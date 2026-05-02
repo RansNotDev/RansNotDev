@@ -1,0 +1,7 @@
+.app {
+  background-color: var(--bg);
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+  transition: background-color 0.3s;
+}
