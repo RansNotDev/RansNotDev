@@ -73,7 +73,7 @@ My customer service background trained me to:
 
 **AI Tools**
 
-![Groq](https://img.shields.io/badge/Groq-F55036?style=flat-square&logo=groq&logoColor=white)
+![Groq](https://img.shields.io/badge/Groq-F55036?style=flat-square&logoColor=white)
 ![Kiro AI](https://img.shields.io/badge/Kiro_AI-7c7ff5?style=flat-square&logoColor=white)
 
 ---
@@ -94,11 +94,11 @@ My customer service background trained me to:
 
 <div align="center">
 
-![Rany's GitHub Stats](https://github-readme-stats.vercel.app/api?username=ranyboytemplado&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0e0e14&title_color=7c7ff5&icon_color=7c7ff5&text_color=e4e4f0)
+![Rany's GitHub Stats](https://github-readme-stats.vercel.app/api?username=RansNotDev&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0e0e14&title_color=7c7ff5&icon_color=7c7ff5&text_color=e4e4f0)
 
-![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=ranyboytemplado&layout=compact&theme=tokyonight&hide_border=true&bg_color=0e0e14&title_color=7c7ff5&text_color=e4e4f0)
+![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=RansNotDev&layout=compact&theme=tokyonight&hide_border=true&bg_color=0e0e14&title_color=7c7ff5&text_color=e4e4f0)
 
-![GitHub Streak](https://streak-stats.demolab.com?user=ranyboytemplado&theme=tokyonight&hide_border=true&background=0e0e14&ring=7c7ff5&fire=f59e0b&currStreakLabel=7c7ff5)
+![GitHub Streak](https://streak-stats.demolab.com?user=RansNotDev&theme=tokyonight&hide_border=true&background=0e0e14&ring=7c7ff5&fire=f59e0b&currStreakLabel=7c7ff5)
 
 </div>
 
@@ -108,7 +108,7 @@ My customer service background trained me to:
 
 <div align="center">
 
-![Snake animation](https://raw.githubusercontent.com/ranyboytemplado/ranyboytemplado/output/github-contribution-grid-snake-dark.svg)
+![Snake animation](https://raw.githubusercontent.com/RansNotDev/RansNotDev/output/github-contribution-grid-snake-dark.svg)
 
 </div>
 
