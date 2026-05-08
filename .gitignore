@@ -4,12 +4,12 @@ node_modules/
 # Build output
 dist/
 
-# Environment variables — NEVER commit
+# Environment variables — NEVER commit and fix something
 .env
 .env.local
 .env.production
 
-# Editor
+# Editor 
 .vscode/
 *.log
 .vercel
