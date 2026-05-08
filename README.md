@@ -19,9 +19,9 @@
 
 I'm a **self-taught developer and BSIT graduate** from Trece Martires City, Cavite, Philippines.
 
-My path wasn't linear — I started coding in 2021, graduated in 2025, spent time in BPO sharpening communication and problem-solving under pressure, and I'm now fully transitioning back to tech. Every role taught me something the next one needed.
+My path wasn't linear I started coding in 2021, graduated in 2025, spent time in BPO sharpening communication and problem-solving under pressure, and I'm now fully transitioning back to tech. Every role taught me something the next one needed.
 
-> *"Code is not just instructions for a machine — it's a solution waiting to make someone's life easier."*
+> *"Code is not just instructions for a machine it's a solution waiting to make someone's life easier."*
 
 ---
 
