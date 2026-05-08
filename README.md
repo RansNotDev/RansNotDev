@@ -30,7 +30,8 @@ My path wasn't linear — I started coding in 2021, graduated in 2025, spent tim
 - Transitioning from BPO → Software Engineering
 - Building practical, deployable web applications
 - Deepening knowledge in systems design and development workflows
-- Exploring AI-assisted development (vibe coding with Kiro AI)
+- Exploring AI-assisted development (vibe coding)
+- Improving my GitHub profile and personal branding
 
 ---
 
@@ -73,20 +74,24 @@ My customer service background trained me to:
 
 **AI Tools**
 
-![Groq](https://img.shields.io/badge/Groq-F55036?style=flat-square&logoColor=white)
-![Kiro AI](https://img.shields.io/badge/Kiro_AI-7c7ff5?style=flat-square&logoColor=white)
+![Antigravity](https://img.shields.io/badge/Antigravity-111827?style=flat-square&logoColor=white)
+![Claude](https://img.shields.io/badge/Claude-D97706?style=flat-square&logoColor=white)
+![Anthropic](https://img.shields.io/badge/Anthropic-191919?style=flat-square&logoColor=white)
+![Gemini](https://img.shields.io/badge/Gemini-4285F4?style=flat-square&logo=google&logoColor=white)
+![OpenAI](https://img.shields.io/badge/OpenAI-412991?style=flat-square&logo=openai&logoColor=white)
+![ChatGPT](https://img.shields.io/badge/ChatGPT-10A37F?style=flat-square&logo=openai&logoColor=white)
+![Qwen](https://img.shields.io/badge/Qwen-7c7ff5?style=flat-square&logoColor=white)
+![Grok](https://img.shields.io/badge/Grok-000000?style=flat-square&logoColor=white)
 
 ---
 
-## 🏗️ Projects
+## ⚡ What I Did Right Now
 
-| Project | Description | Stack |
-|---|---|---|
-| 🏥 **Advanced Appointment System** | Dental clinic with automated scheduling & patient records | PHP · MySQL · JS |
-| 🏠 **Real Estate Appointment System** | Listings, client management & transaction tracking | PHP · MySQL · CSS |
-| 🎓 **School Club Event System** | Event scheduling & member registration for student orgs | JS · PHP · MySQL |
-| 🌤️ **Weather App** | Real-time weather with automatic location detection | JS · HTML · CSS |
-| 🤖 **AI Portfolio** | Vibe-coded portfolio with Groq AI chat, deployed on AWS | React · Vite · Groq · AWS |
+- Updated the README with a cleaner, profile-style layout
+- Replaced the AI tools list with my current AI stack
+- Improved GitHub stats and top languages cards
+- Added real-time contribution visuals and snake animation
+- Added a coding meme to match the vibe
 
 ---
 
@@ -94,9 +99,9 @@ My customer service background trained me to:
 
 <div align="center">
 
-![Rany's GitHub Stats](https://github-readme-stats.vercel.app/api?username=RansNotDev&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0e0e14&title_color=7c7ff5&icon_color=7c7ff5&text_color=e4e4f0)
+<img height="170" src="https://github-readme-stats.vercel.app/api?username=RansNotDev&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0e0e14&title_color=7c7ff5&icon_color=7c7ff5&text_color=e4e4f0&count_private=true&include_all_commits=true" />
 
-![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=RansNotDev&layout=compact&theme=tokyonight&hide_border=true&bg_color=0e0e14&title_color=7c7ff5&text_color=e4e4f0)
+<img height="170" src="https://github-readme-stats.vercel.app/api/top-langs/?username=RansNotDev&layout=compact&theme=tokyonight&hide_border=true&bg_color=0e0e14&title_color=7c7ff5&text_color=e4e4f0&langs_count=8" />
 
 ![GitHub Streak](https://streak-stats.demolab.com?user=RansNotDev&theme=tokyonight&hide_border=true&background=0e0e14&ring=7c7ff5&fire=f59e0b&currStreakLabel=7c7ff5)
 
@@ -104,11 +109,23 @@ My customer service background trained me to:
 
 ---
 
-## 🐍 Contribution Snake
+## 🐍 Real-time Contributions
 
 <div align="center">
 
+![Contribution Graph](https://github-readme-activity-graph.vercel.app/graph?username=RansNotDev&theme=tokyo-night&hide_border=true&bg_color=0e0e14&line=7c7ff5&point=e4e4f0)
+
 ![Snake animation](https://raw.githubusercontent.com/RansNotDev/RansNotDev/output/github-contribution-grid-snake-dark.svg)
+
+</div>
+
+---
+
+## ⌨️ Coding Mood
+
+<div align="center">
+
+![Typing meme](https://media.giphy.com/media/13GIgrGdslD9oQ/giphy.gif)
 
 </div>
 
@@ -126,7 +143,7 @@ My customer service background trained me to:
 
 <div align="center">
 
-*Built with purpose · Deployed with AWS · Powered by persistence*
+*Built with purpose · Powered by persistence*
 
 `// coded → graduated → BPO → back to tech`
 
