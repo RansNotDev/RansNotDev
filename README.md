@@ -109,7 +109,7 @@ My customer service background trained me to:
 
 <div align="center">
 
-<img height="170" src="https://github-readme-stats.vercel.app/api?username=RansNotDev&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0e0e14&title_color=7c7ff5&icon_color=7c7ff5&text_color=e4e4f0&count_private=true&include_all_commits=true" />
+<img height="170" src="https://github-readme-stats.vercel.app/api?username=RansNotDev&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0e0e14&title_color=7c7ff5&icon_color=7c7ff5&text_color=e4e4f0&count_private=true&cache_seconds=1800" />
 
 <img height="170" src="https://github-readme-stats.vercel.app/api/top-langs/?username=RansNotDev&layout=compact&theme=tokyonight&hide_border=true&bg_color=0e0e14&title_color=7c7ff5&text_color=e4e4f0&langs_count=8" />
 
