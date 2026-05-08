@@ -109,12 +109,9 @@ My customer service background trained me to:
 
 <div align="center">
 
-![](https://github-readme-stats.shion.dev/api?username=ransnotdev&theme=dark&hide_border=false&include_all_commits=false&count_private=false)<br/>
 ![](https://streak-stats.demolab.com/?user=ransnotdev&theme=dark&hide_border=false)<br/>
-![](https://github-readme-stats.shion.dev/api/top-langs/?username=ransnotdev&theme=dark&hide_border=false&include_all_commits=false&count_private=false&layout=compact)
 
 </div>
----
 
 ## ✍️ Random Dev Quote
 
