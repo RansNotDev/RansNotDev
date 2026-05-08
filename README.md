@@ -109,17 +109,14 @@ My customer service background trained me to:
 
 <div align="center">
 
-<img height="170" src="https://github-readme-stats.vercel.app/api?username=RansNotDev&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0e0e14&title_color=7c7ff5&icon_color=7c7ff5&text_color=e4e4f0&count_private=true&cache_seconds=1800" />
-
-<img height="170" src="https://github-readme-stats.vercel.app/api/top-langs/?username=RansNotDev&layout=compact&theme=tokyonight&hide_border=true&bg_color=0e0e14&title_color=7c7ff5&text_color=e4e4f0&langs_count=8" />
-
-![GitHub Streak](https://streak-stats.demolab.com?user=RansNotDev&theme=tokyonight&hide_border=true&background=0e0e14&ring=7c7ff5&fire=f59e0b&currStreakLabel=7c7ff5)
+![](https://github-readme-stats.shion.dev/api?username=ransnotdev&theme=dark&hide_border=false&include_all_commits=false&count_private=false)<br/>
+![](https://streak-stats.demolab.com/?user=ransnotdev&theme=dark&hide_border=false)<br/>
+![](https://github-readme-stats.shion.dev/api/top-langs/?username=ransnotdev&theme=dark&hide_border=false&include_all_commits=false&count_private=false&layout=compact)
 
 </div>
 
----
 
-## 🐍 Real-time Contributions
+## 🐍 Contributions
 
 <div align="center">
 
@@ -133,7 +130,7 @@ My customer service background trained me to:
 
 <div align="center">
 
-![Dev Quote](https://quotes-github-readme.vercel.app/api?type=horizontal&theme=tokyonight)
+![](https://quotes-github-readme.vercel.app/api?type=horizontal&theme=radical)
 
 </div>
 
@@ -145,4 +142,8 @@ My customer service background trained me to:
 
 `// coded → graduated → BPO → back to tech`
 
+</div>
+
+<div align="left">
+[![](https://komarev.com/ghpvc/?username=ransnotdev&icon=0&color=0)](https://visitcount.itsvg.in)
 </div>
