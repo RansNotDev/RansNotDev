@@ -56,42 +56,48 @@ My customer service background trained me to:
 
 ## 💻 Tech Stack
 
-**Frontend**
+<div align="center">
 
-![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
-![Bootstrap](https://img.shields.io/badge/Bootstrap-7952B3?style=flat-square&logo=bootstrap&logoColor=white)
-![React](https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=react&logoColor=black)
-![Vite](https://img.shields.io/badge/Vite-646CFF?style=flat-square&logo=vite&logoColor=white)
+![CLI Stack](https://readme-typing-svg.demolab.com?font=Fira+Code&size=17&pause=1200&color=7C7FF5&center=true&vCenter=true&width=900&lines=%24+rany+stack+--show;frontend+%3A+html+css+javascript+bootstrap+react+vite;backend+%3A+php+python+java+cpp+mysql;cloud+%26+tools+%3A+aws+git+github+vscode+canva+figma;ai+tools+%3A+antigravity+claude+anthropic+gemini+openai+chatgpt+qwen+grok)
 
-**Backend & Languages**
+</div>
 
-![PHP](https://img.shields.io/badge/PHP-777BB4?style=flat-square&logo=php&logoColor=white)
-![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
-![Java](https://img.shields.io/badge/Java-ED8B00?style=flat-square&logo=openjdk&logoColor=white)
-![C++](https://img.shields.io/badge/C++-00599C?style=flat-square&logo=cplusplus&logoColor=white)
-![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=flat-square&logo=mysql&logoColor=white)
+```bash
+RansnotDEV@portfolio:~$ stack --list --modern
 
-**Cloud & Tools**
+[frontend]
+  - HTML5
+  - CSS3
+  - JavaScript
+  - Bootstrap
+  - React
+  - Vite
 
-![AWS](https://img.shields.io/badge/AWS-232F3E?style=flat-square&logo=amazonaws&logoColor=white)
-![Git](https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white)
-![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white)
-![VS Code](https://img.shields.io/badge/VS_Code-007ACC?style=flat-square&logo=visualstudiocode&logoColor=white)
-![Canva](https://img.shields.io/badge/Canva-00C4CC?style=flat-square&logo=canva&logoColor=white)
-![Figma](https://img.shields.io/badge/Figma-F24E1E?style=flat-square&logo=figma&logoColor=white)
+[backend]
+  - PHP
+  - Python
+  - Java
+  - C++
+  - MySQL
 
-**AI Tools**
+[cloud_and_tools]
+  - AWS
+  - Git
+  - GitHub
+  - VS Code
+  - Canva
+  - Figma
 
-![Antigravity](https://img.shields.io/badge/Antigravity-111827?style=flat-square&logoColor=white)
-![Claude](https://img.shields.io/badge/Claude-D97706?style=flat-square&logoColor=white)
-![Anthropic](https://img.shields.io/badge/Anthropic-191919?style=flat-square&logoColor=white)
-![Gemini](https://img.shields.io/badge/Gemini-4285F4?style=flat-square&logo=google&logoColor=white)
-![OpenAI](https://img.shields.io/badge/OpenAI-412991?style=flat-square&logo=openai&logoColor=white)
-![ChatGPT](https://img.shields.io/badge/ChatGPT-10A37F?style=flat-square&logo=openai&logoColor=white)
-![Qwen](https://img.shields.io/badge/Qwen-7c7ff5?style=flat-square&logoColor=white)
-![Grok](https://img.shields.io/badge/Grok-000000?style=flat-square&logoColor=white)
+[ai_tools]
+  - Antigravity
+  - Claude
+  - Anthropic
+  - Gemini
+  - OpenAI
+  - ChatGPT
+  - Qwen
+  - Grok
+```
 
 ---
 
