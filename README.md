@@ -141,9 +141,6 @@ My customer service background trained me to:
 *Built with purpose · Powered by persistence*
 
 `// coded → graduated → BPO → back to tech`
-
-</div>
-
-<div align="left">
 [![](https://komarev.com/ghpvc/?username=ransnotdev&icon=0&color=0)](https://visitcount.itsvg.in)
+
 </div>
