@@ -25,6 +25,16 @@ My path wasn't linear — I started coding in 2021, graduated in 2025, spent tim
 
 ---
 
+## ⌨️ Coding Mood
+
+<div align="center">
+
+![Typing meme](https://media.giphy.com/media/13GIgrGdslD9oQ/giphy.gif)
+
+</div>
+
+---
+
 ## 🚀 Current Focus
 
 - Transitioning from BPO → Software Engineering
@@ -90,7 +100,7 @@ My customer service background trained me to:
 - Updated the README with a cleaner, profile-style layout
 - Replaced the AI tools list with my current AI stack
 - Improved GitHub stats and top languages cards
-- Added real-time contribution visuals and snake animation
+- Added contribution snake animation
 - Added a coding meme to match the vibe
 
 ---
@@ -113,19 +123,7 @@ My customer service background trained me to:
 
 <div align="center">
 
-![Contribution Graph](https://github-readme-activity-graph.vercel.app/graph?username=RansNotDev&theme=tokyo-night&hide_border=true&bg_color=0e0e14&line=7c7ff5&point=e4e4f0)
-
 ![Snake animation](https://raw.githubusercontent.com/RansNotDev/RansNotDev/output/github-contribution-grid-snake-dark.svg)
-
-</div>
-
----
-
-## ⌨️ Coding Mood
-
-<div align="center">
-
-![Typing meme](https://media.giphy.com/media/13GIgrGdslD9oQ/giphy.gif)
 
 </div>
 
