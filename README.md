@@ -114,16 +114,6 @@ My customer service background trained me to:
 ![](https://github-readme-stats.shion.dev/api/top-langs/?username=ransnotdev&theme=dark&hide_border=false&include_all_commits=false&count_private=false&layout=compact)
 
 </div>
-
-
-## 🐍 Contributions
-
-<div align="center">
-
-![Snake animation](https://raw.githubusercontent.com/RansNotDev/RansNotDev/output/github-contribution-grid-snake-dark.svg)
-
-</div>
-
 ---
 
 ## ✍️ Random Dev Quote
@@ -142,7 +132,14 @@ My customer service background trained me to:
 
 `// coded → graduated → BPO → back to tech`
 
----
-[![](https://komarev.com/ghpvc/?username=ransnotdev&icon=0&color=0)](https://visitcount.itsvg.in)
-
 </div>
+## 🐍 Contributions
+
+<div align="center">
+
+![Snake animation](https://raw.githubusercontent.com/RansNotDev/RansNotDev/output/github-contribution-grid-snake-dark.svg)
+
+##
+[![](https://komarev.com/ghpvc/?username=ransnotdev&icon=0&color=0)](https://visitcount.itsvg.in)
+</div>
+
