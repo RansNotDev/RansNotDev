@@ -140,7 +140,7 @@ RansnotDEV@portfolio:~$ stack --icons --modern
 `// coded → graduated → BPO → back to tech`
 
 </div>
-## 🐍 Contributions
+ 🐍 Contributions
 
 <div align="center">
 
