@@ -103,18 +103,6 @@ RansnotDEV@portfolio:~$ stack --icons --modern
 ![Qwen](https://img.shields.io/badge/Qwen-7c7ff5?style=for-the-badge&logo=alibabacloud&logoColor=white)
 ![Grok](https://img.shields.io/badge/Grok-000000?style=for-the-badge&logo=x&logoColor=white)
 
----
-
-## ⚡ What I Did Right Now
-
-- Updated the README with a cleaner, profile-style layout
-- Replaced the AI tools list with my current AI stack
-- Improved GitHub stats and top languages cards
-- Added contribution snake animation
-- Added a coding meme to match the vibe
-
----
-
 ## 📊 GitHub Stats
 
 <div align="center">
