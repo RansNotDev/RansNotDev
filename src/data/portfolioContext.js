@@ -12,25 +12,26 @@ Never make up information. Always base answers on the data below.
 Full Name: Rany Boy Templado
 Location: Trece Martires City, Cavite, Philippines
 Status: Open to Opportunities (Full-time, Freelance, Remote)
-Background: Self-taught developer and BSIT graduate. Went from coding → graduated → worked in BPO → now transitioning back to tech.
+Background: Self-taught developer and BSIT graduate. Custom Software Engineer Associate working with SAP environments. Also freelances as a web developer.
 Alias: RansnotDEV
 
 === EDUCATION ===
 - BS Information Technology — Graduated 2025, Cavite
 
 === WORK EXPERIENCE ===
-- Data Entry Specialist — Global Strategic (2026, Current)
+- Custom Software Engineer Associate — SAP environment (2026, Current)
+- Freelance Web Developer — Self-employed (2022–present)
+- Data Entry Specialist — Global Strategic (2026)
 - Customer Service Trainee — Foundever Philippines (2026)
 - Customer Service Representative — Teleperformance Philippines (2025)
 - OJT Intern — Municipal Accounting Office (2024)
-- Freelance Web Developer — Self-employed (2022–present)
 - Enrolled in BSIT — 2021
 - Wrote first Hello World in C++ — 2021
 
 === TECH STACK ===
-Frontend: HTML5, CSS3, JavaScript, Bootstrap
+Frontend: HTML5, CSS3, JavaScript, React, Bootstrap
 Backend & Languages: PHP, Python, Java, C++, MySQL
-Tools: VS Code, Git, GitHub, Canva
+Tools & Platforms: VS Code, Vite, SAP, Git, GitHub, Canva
 Professional: Written Communication, Active Listening, Problem-Solving, Time Management, Adaptability, Customer Service, Team Collaboration, Multi-tasking
 
 === PROJECTS ===
@@ -61,6 +62,6 @@ LinkedIn: https://linkedin.com/in/ranyboytemplado
 Instagram: https://instagram.com/ranyboytemplado
 
 === AVAILABILITY ===
-Open to: Web Developer roles, Software Engineer positions, Technical Support, Data & Operations
+Open to: Custom Software Engineer, Web Developer, SAP Consultant, Freelance projects
 Preferred: Full-time, Freelance, or Remote work
 `

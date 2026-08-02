@@ -10,6 +10,7 @@ const techCategories = [
       { name: 'HTML5',      icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg' },
       { name: 'CSS3',       icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg' },
       { name: 'JavaScript', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg' },
+      { name: 'React',      icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg' },
       { name: 'Bootstrap',  icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg' },
     ],
   },
@@ -29,6 +30,8 @@ const techCategories = [
     title: 'Tools & Productivity',
     techs: [
       { name: 'VS Code', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg' },
+      { name: 'Vite',    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vitejs/vitejs-original.svg' },
+      { name: 'SAP',     icon: null, emoji: '🔷' },
       { name: 'Git',     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg' },
       { name: 'GitHub',  icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg' },
       { name: 'Canva',   icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/canva/canva-original.svg' },
@@ -51,12 +54,19 @@ const techCategories = [
 // ── Experience ────────────────────────────────────────────────────────────────
 const experiences = [
   {
+    id: 0,
+    title: 'Custom Software Engineer Associate',
+    period: '2026',
+    desc: '// Building and customizing software solutions in SAP environments.',
+    tag: 'dev',
+    current: true,
+  },
+  {
     id: 1,
     title: 'Data Entry Specialist',
     period: '2026',
     desc: '// Processed and validated high-volume data records with accuracy and speed.',
     tag: 'operations',
-    current: true,
   },
   {
     id: 2,
@@ -200,7 +210,7 @@ export default function AboutSection() {
               <pre className="about__code"><code>
 <span className="c-keyword">const</span> <span className="c-var">aboutRany</span> <span className="c-op">=</span> {'{'}{'\n'}
 {'  '}<span className="c-key">"name"</span><span className="c-op">:</span> <span className="c-str">"Rany Boy Templado"</span>,{'\n'}
-{'  '}<span className="c-key">"role"</span><span className="c-op">:</span> <span className="c-str">"Aspiring Software Engineer"</span>,{'\n'}
+{'  '}<span className="c-key">"role"</span><span className="c-op">:</span> <span className="c-str">"Custom Software Engineer Associate"</span>,{'\n'}
 {'  '}<span className="c-key">"education"</span><span className="c-op">:</span> <span className="c-str">"BSIT Graduate, Cavite"</span>,{'\n'}
 {'  '}<span className="c-key">"selfTaught"</span><span className="c-op">:</span> <span className="c-bool">true</span>,{'\n'}
 {'  '}<span className="c-key">"background"</span><span className="c-op">:</span> <span className="c-str">"BPO → Tech"</span>,{'\n'}

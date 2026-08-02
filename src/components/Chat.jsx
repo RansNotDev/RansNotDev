@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react'
-import { sendMessage } from '../services/gemini'
+import { sendMessage } from '../services/ai'
 import './Chat.css'
 
 const SUGGESTIONS = [
@@ -144,7 +144,7 @@ export default function Chat() {
               <p className="chat-header__name">Tech Mentor & AI Strategist</p>
               <p className="chat-header__status">
                 <span className="chat-header__dot" />
-                Powered by Groq · Llama 3.1
+                Powered by Groq · Llama 3.1 8B
               </p>
             </div>
           </div>
@@ -191,8 +191,10 @@ export default function Chat() {
 
         {/* Input */}
         <div className="chat-input-wrap">
+          <label htmlFor="chat-input" className="sr-only">Ask about code, career, or Rany's work</label>
           <input
             ref={inputRef}
+            id="chat-input"
             className="chat-input"
             type="text"
             placeholder="Ask about code, career, or Rany's work..."

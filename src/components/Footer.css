@@ -260,3 +260,21 @@
   .footer__body { grid-template-columns: 1fr; gap: 2.5rem; }
   .footer__bottom { flex-direction: column; align-items: flex-start; }
 }
+
+/* ── Back to top link ── */
+.footer__back-top {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  width: fit-content;
+  transition: color 0.2s, transform 0.2s;
+}
+
+.footer__back-top:hover {
+  color: var(--accent);
+  transform: translateY(-2px);
+}

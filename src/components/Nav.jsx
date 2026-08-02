@@ -15,7 +15,7 @@ export default function Nav({ theme, toggleTheme }) {
   }, [])
 
   return (
-    <nav className={`nav${visible ? ' nav--visible' : ''}`} aria-hidden={!visible}>
+    <nav className={`nav${visible ? ' nav--visible' : ''}`}>
       <div className="nav__inner">
         <a href="#hero" className="nav__brand">
           <span className="nav__brand-name">RansnotDEV</span>

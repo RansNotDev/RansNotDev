@@ -95,12 +95,23 @@ export default function Footer() {
               </div>
             </div>
 
-            {/* Back to top */}
+            {/* Resume */}
             <div className="footer__block">
               <p className="footer__label">// Resume</p>
-              <a href="#" className="footer__resume-btn">
+              <a href="/RanyBoy_Templado_Resume.pdf" target="_blank" rel="noopener noreferrer" className="footer__resume-btn">
                 <span className="footer__resume-default">View Resume</span>
-                <span className="footer__resume-hover">Hire Me 🚀</span>
+                <span className="footer__resume-hover">Download PDF</span>
+              </a>
+            </div>
+
+            {/* Back to top */}
+            <div className="footer__block">
+              <p className="footer__label">// navigate</p>
+              <a href="#hero" className="footer__back-top">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true">
+                  <polyline points="18 15 12 9 6 15"/>
+                </svg>
+                Back to Top
               </a>
             </div>
 
