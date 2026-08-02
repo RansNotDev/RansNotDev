@@ -169,18 +169,34 @@ const BLOCKED_TOPICS = [
   /\b(crypto|bitcoin|nft|trading|stock|forex|invest)\b/i,
 ]
 
-const OFF_TOPIC_RESPONSE = `🚫 **Off-topic question detected.**
+const OFF_TOPIC_RESPONSE = `🚫 **Sorry, I can't help with that.**
 
-I'm specifically designed to help with **developer-related topics** only:
+This chatbot runs on AI tokens that cost real money, so I only answer questions related to:
 
-• **Programming** — languages, frameworks, concepts, debugging
-• **Tech careers** — interviews, portfolios, learning paths
-• **AI for developers** — how to leverage AI as a coding partner
-• **About Rany** — skills, projects, experience, availability
+• **Programming & software development**
+• **Tech careers & learning paths**
+• **AI tools for developers**
+• **About Rany** — skills, projects, experience
 
-I can't help with questions outside the software development space. Let's keep the conversation focused on tech! 💻
+For anything else, you're better off searching the internet. Thanks for understanding! 💻`
 
-*What dev topic can I help you with?*`
+const OTHER_PEOPLE_RESPONSE = `🚫 **I only have information about Rany Boy Templado.**
+
+I can't answer questions about other people — this is Rany's portfolio assistant. If you want to know about his skills, projects, or experience, I'm happy to help!`
+
+// ── Detect if asking about other people (not Rany) ─────────────────────────
+const OTHER_PEOPLE_PATTERNS = [
+  /who is (?!rany)(\w+)/i,
+  /tell me about (?!rany|you|yourself)(\w+)/i,
+  /do you know (?!rany)(\w+)/i,
+  /what about (?!rany)(\w+)/i,
+  /\b(elon musk|mark zuckerberg|jeff bezos|bill gates|steve jobs|linus torvalds)\b/i,
+  /\b(taylor swift|beyonce|drake|kanye|lebron|messi|ronaldo)\b/i,
+]
+
+function isAboutOtherPeople(message) {
+  return OTHER_PEOPLE_PATTERNS.some(p => p.test(message))
+}
 
 function isOffTopic(message) {
   const m = message.toLowerCase().trim()
@@ -215,7 +231,10 @@ You MUST ONLY answer questions related to:
 - About Rany Boy Templado (his skills, projects, experience, availability)
 
 If a user asks about ANYTHING outside these topics (recipes, sports, politics, relationships, entertainment, medical, legal, finance/crypto, etc.), you MUST decline politely:
-"I appreciate the question, but I'm focused exclusively on developer and tech topics. Ask me about coding, career advice, or Rany's work instead!"
+"Sorry, I can't help with that. This chatbot runs on AI tokens that cost real money, so I only answer developer and tech-related questions. For anything else, you're better off searching the internet!"
+
+If a user asks about OTHER PEOPLE (celebrities, other developers, anyone who isn't Rany), decline with:
+"I only have information about Rany Boy Templado. This is his portfolio assistant — ask me about his skills, projects, or experience instead!"
 
 Do NOT answer off-topic questions even if the user insists or reframes them.
 
@@ -436,7 +455,12 @@ export async function sendMessage(history, userMessage, onChunk) {
     return streamWords(response, onChunk, 18)
   }
 
-  // ── Rule 2: Off-topic → reject without using API tokens ─────────────────
+  // ── Rule 2: Asking about other people → reject ──────────────────────────
+  if (isAboutOtherPeople(userMessage)) {
+    return streamWords(OTHER_PEOPLE_RESPONSE, onChunk, 14)
+  }
+
+  // ── Rule 3: Off-topic → reject without using API tokens ─────────────────
   if (isOffTopic(userMessage)) {
     return streamWords(OFF_TOPIC_RESPONSE, onChunk, 14)
   }
