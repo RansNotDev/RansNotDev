@@ -98,7 +98,7 @@ export default function Footer() {
             {/* Resume */}
             <div className="footer__block">
               <p className="footer__label">// Resume</p>
-              <a href="/RanyBoy_Templado_Resume.pdf" target="_blank" rel="noopener noreferrer" className="footer__resume-btn">
+              <a href="/Rany_Boy_Templado_Resume.pdf" target="_blank" rel="noopener noreferrer" className="footer__resume-btn">
                 <span className="footer__resume-default">View Resume</span>
                 <span className="footer__resume-hover">Download PDF</span>
               </a>

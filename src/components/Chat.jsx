@@ -144,7 +144,7 @@ export default function Chat() {
               <p className="chat-header__name">Tech Mentor & AI Strategist</p>
               <p className="chat-header__status">
                 <span className="chat-header__dot" />
-                Powered by Groq · Llama 3.1 8B
+                Powered by Ai
               </p>
             </div>
           </div>
