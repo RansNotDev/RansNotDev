@@ -94,10 +94,11 @@ const RANY_PATTERNS = [
   /who (are you|is rany|is he)/i,
   /tell me about (you|rany|yourself|him)/i,
   /\b(open to work|available|hire|hiring|portfolio|resume|cv)\b/i,
-  /\b(project|appointment|weather app|real estate|school club)\b/i,
-  /\b(bsit|cavite|philippines|teleperformance|foundever|global strategic)\b/i,
-  /\b(tech stack|html|css|javascript|php|python|mysql|bootstrap|sap)\b/i,
+  /\b(project|appointment|weather app|real estate|object detect|computer vision)\b/i,
+  /\b(bsit|cavite|philippines|teleperformance|foundever|global strategic|accenture|perpetual help)\b/i,
+  /\b(tech stack|html|css|javascript|php|python|mysql|bootstrap|sap|abap)\b/i,
   /\b(contact|email|linkedin|github|instagram|social|reach|connect)\b/i,
+  /\b(cert|certification|hackerrank|freecodecamp|codechum)\b/i,
   /how (can i|do i|to) (contact|reach|find|connect|get in touch)/i,
   /where (can i|do i) (find|reach|contact)/i,
   /get in touch/i,
@@ -231,13 +232,14 @@ ${PORTFOLIO_CONTEXT}`
 // ── Portfolio-based local responses ────────────────────────────────────────
 const LOCAL = {
   greeting:    `Hey! Ask me anything about Rany — his skills, projects, experience, or availability. 👋`,
-  who:         `**Rany Boy Templado** — Custom Software Engineer Associate & Freelance Web Developer. BSIT graduate from Trece Martires City, Cavite, Philippines.\n\nAlias: **RansnotDEV >_**\n\nHis story: Started coding in 2021 → Graduated BSIT 2025 → Worked in BPO → Now a Custom Software Engineer working with SAP environments + freelancing on the side.\n\n> "Every role was a lesson the next one needed."`,
-  stack:       `**Rany's Tech Stack:**\n\n🖥️ **Frontend:** HTML5, CSS3, JavaScript, React, Bootstrap\n⚙️ **Backend:** PHP, Python, Java, C++, MySQL\n🛠️ **Tools:** VS Code, Vite, SAP, Git, GitHub, Canva\n\n💡 *Tip: Master the fundamentals of each layer before jumping to frameworks.*`,
-  projects:    `**Rany's Projects:**\n\n1. 🏥 **Advanced Appointment System** — Dental clinic scheduling (PHP, MySQL, JS)\n2. 🏠 **Real Estate Appointment System** — Property management dashboard (PHP, MySQL)\n3. 🎓 **School Club Event System** — Event & member management (JS, PHP, MySQL)\n4. 🌤️ **Weather App** — Real-time weather with location detection (JS, HTML, CSS)\n\n💡 *Building real projects is the fastest path to growth.*`,
-  experience:  `**Rany's Experience:**\n\n- 💻 Custom Software Engineer Associate — SAP environment *(2026, current)*\n- 🖥️ Freelance Web Developer *(2022–present)*\n- 📊 Data Entry Specialist — Global Strategic *(2026)*\n- 📞 Customer Service Trainee — Foundever Philippines *(2026)*\n- 📞 Customer Service Rep — Teleperformance Philippines *(2025)*\n- 🎓 BSIT Graduate *(2025)*\n- 💼 OJT Intern — Municipal Accounting Office *(2024)*\n- 👨‍💻 Hello, World! in C++ *(2021)*`,
-  education:   `**Education:**\n\nBS Information Technology — Graduated **2025**, Cavite\n\nAlso a **self-taught developer** — started coding in 2021 through real projects and freelance work.\n\n> Formal education + self-teaching = powerful combination.`,
-  available:   `✅ **Rany is open to opportunities!**\n\n- Full-time · Freelance · Remote\n- Roles: Custom Software Engineer, Web Developer, SAP Consultant\n\n📧 ranyboytemplado001@gmail.com`,
-  contact:     `📧 [ranyboytemplado001@gmail.com](mailto:ranyboytemplado001@gmail.com)\n💼 [linkedin.com/in/ranyboytemplado](https://linkedin.com/in/ranyboytemplado)\n🐙 [github.com/ranyboytemplado](https://github.com/ranyboytemplado)\n📸 [instagram.com/ranyboytemplado](https://instagram.com/ranyboytemplado)`,
+  who:         `**Rany Boy Templado** — Associate Software Engineer at Accenture & Freelance Web Developer. BSIT graduate from Trece Martires City, Cavite, Philippines.\n\nAlias: **RansnotDEV >_**\n\nHis story: Started coding in 2021 → Graduated BSIT 2025 → Worked in BPO → Now an Associate Software Engineer at Accenture (SAP) + freelancing on the side.\n\n> "Every role was a lesson the next one needed."`,
+  stack:       `**Rany's Tech Stack:**\n\n🖥️ **Programming:** JavaScript, PHP, Java, C++, SQL, HTML5, CSS3\n⚙️ **Frontend:** React, Bootstrap\n🗄️ **Database:** MySQL\n🏢 **Enterprise:** SAP, Data Migration, Data Validation, ETL, ABAP Fundamentals\n🛠️ **Tools:** Git, GitHub, VS Code, Vite, REST APIs\n🤖 **AI/ML:** Python, YOLO, OpenCV\n\n💡 *Tip: Master the fundamentals of each layer before jumping to frameworks.*`,
+  projects:    `**Rany's Projects:**\n\n1. 🌐 **Personal Portfolio** — React + AI chatbot, deployed on Vercel\n2. 👁️ **Computer Vision Object Detection** — YOLO + OpenCV (Python)\n3. 🏥 **Dental Appointment Management System** — PHP, MySQL, JS\n4. 🏠 **Real Estate Appointment System** — PHP, MySQL\n5. 🌤️ **Weather Forecast Application** — JavaScript, Weather API\n\n💡 *Building real projects is the fastest path to growth.*`,
+  experience:  `**Rany's Experience:**\n\n- 💻 Associate Software Engineer — Accenture *(May 2026–Present)*\n- 📊 Data Entry Associate — Global Strategic *(Mar–May 2026)*\n- 📞 Customer Service Rep — Foundever *(Feb–Mar 2026)*\n- 📞 Customer Service Rep — Teleperformance *(Oct 2025–Jan 2026)*\n- 🎓 BSIT — Perpetual Help College *(Aug 2021–Jun 2025)*\n- 🖥️ Freelance Web Developer *(2022–Present)*`,
+  education:   `**Education:**\n\nBS Information Technology — **Perpetual Help College of Pangasinan**\nGraduated **June 2025**\n\nAlso a **self-taught developer** — started coding in 2021 through real projects and freelance work.\n\n> Formal education + self-teaching = powerful combination.`,
+  available:   `✅ **Rany is open to opportunities!**\n\n- Full-time · Freelance · Remote\n- Roles: Software Engineer, Web Developer, SAP Consultant\n\n📧 ranyboytemplado@gmail.com\n🌐 ransnotdev.vercel.app`,
+  contact:     `📧 [ranyboytemplado@gmail.com](mailto:ranyboytemplado@gmail.com)\n💼 [linkedin.com/in/ranyboytemplado](https://linkedin.com/in/ranyboytemplado)\n🐙 [github.com/ranyboytemplado](https://github.com/ranyboytemplado)\n📸 [instagram.com/ranyboytemplado](https://instagram.com/ranyboytemplado)\n🌐 [ransnotdev.vercel.app](https://ransnotdev.vercel.app)`,
+  certs:       `**Rany's Certifications:**\n\n🤖 AI Engineer for Developers Associate\n🏆 CodeChum National Programming Challenge 2024 — Participant\n📜 JavaScript (Basics) — HackerRank\n📜 SQL (Basics) — HackerRank\n📜 Java (Basics) — HackerRank\n🎓 Responsive Web Design — freeCodeCamp\n🎓 Front End Development Libraries — freeCodeCamp`,
   location:    `📍 **Trece Martires City, Cavite, Philippines**\n\nOpen to remote work worldwide.`,
   default:     `I can help with:\n\n• **About Rany** — skills, projects, experience, availability\n• **Programming** — web dev, code concepts, best practices\n• **Career advice** — breaking into tech, transitioning roles\n• **AI strategy** — how to use AI tools effectively\n\nWhat would you like to explore?`,
 }
@@ -247,10 +249,11 @@ function getLocalResponse(message) {
   if (/hi|hello|hey|good\s*morning|good\s*evening/.test(m))                return LOCAL.greeting
   if (/who (are you|is rany|is he)|tell me about (you|rany|yourself|him)/.test(m)) return LOCAL.who
   if (/stack|skill|tech|language|tool|html|css|php|python|javascript|sap/.test(m)) return LOCAL.stack
-  if (/project|appointment|weather|real.?estate|school.?club/.test(m))     return LOCAL.projects
-  if (/experience|work|job|bpo|call.?center|freelance|career/.test(m))     return LOCAL.experience
-  if (/education|degree|bsit|graduate|study|school/.test(m))               return LOCAL.education
+  if (/project|appointment|weather|real.?estate|portfolio|object.?detect|computer.?vision/.test(m)) return LOCAL.projects
+  if (/experience|work|job|bpo|call.?center|freelance|career|accenture/.test(m)) return LOCAL.experience
+  if (/education|degree|bsit|graduate|study|school|perpetual/.test(m))     return LOCAL.education
   if (/available|hire|open|opportunit|looking|position|role/.test(m))      return LOCAL.available
+  if (/cert|certification|hackerrank|freecodecamp|codechum/.test(m))       return LOCAL.certs
   if (/contact|email|reach|linkedin|github|instagram|social|connect|get.?in.?touch|give.*(contact|link)|here.*(contact|link)/.test(m)) return LOCAL.contact
   if (/where|location|city|country|cavite|philippines/.test(m))            return LOCAL.location
   if (/rany|ransnotdev/.test(m))                                            return LOCAL.who

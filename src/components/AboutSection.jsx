@@ -31,10 +31,21 @@ const techCategories = [
     techs: [
       { name: 'VS Code', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg' },
       { name: 'Vite',    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vitejs/vitejs-original.svg' },
-      { name: 'SAP',     icon: null, emoji: '🔷' },
       { name: 'Git',     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg' },
       { name: 'GitHub',  icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg' },
       { name: 'Canva',   icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/canva/canva-original.svg' },
+    ],
+  },
+  {
+    id: 'enterprise',
+    title: 'Enterprise & Data',
+    techs: [
+      { name: 'SAP',             icon: null, emoji: '🔷' },
+      { name: 'Data Migration',  icon: null, emoji: '📦' },
+      { name: 'Data Validation', icon: null, emoji: '✅' },
+      { name: 'ETL Concepts',   icon: null, emoji: '🔄' },
+      { name: 'ABAP',           icon: null, emoji: '⚙️' },
+      { name: 'REST APIs',      icon: null, emoji: '🔗' },
     ],
   },
   {
@@ -55,69 +66,54 @@ const techCategories = [
 const experiences = [
   {
     id: 0,
-    title: 'Custom Software Engineer Associate',
-    period: '2026',
-    desc: '// Building and customizing software solutions in SAP environments.',
+    title: 'Associate Software Engineer — Accenture',
+    period: 'May 2026',
+    desc: '// Enterprise SAP training: data migration, validation, system integration & team collaboration.',
     tag: 'dev',
     current: true,
   },
   {
     id: 1,
-    title: 'Data Entry Specialist',
-    period: '2026',
-    desc: '// Processed and validated high-volume data records with accuracy and speed.',
+    title: 'Data Entry Associate — Global Strategic',
+    period: 'Mar–May 2026',
+    desc: '// Processed high-volume billing records, resolved data inconsistencies, maintained quality.',
     tag: 'operations',
   },
   {
     id: 2,
-    title: 'Customer Service Representative',
-    period: '2026',
-    desc: '// Handled inbound queries, learned CRM tools, and resolved client concerns.',
+    title: 'Customer Service Rep — Foundever',
+    period: 'Feb–Mar 2026',
+    desc: '// Completed technical onboarding, strengthened communication & documentation skills.',
     tag: 'bpo',
   },
   {
     id: 3,
-    title: 'Customer Service Representative',
-    period: '2025',
-    desc: '// Managed high-volume calls, improved CSAT scores, and documented resolutions.',
+    title: 'Customer Service Rep — Teleperformance',
+    period: 'Oct 2025–Jan 2026',
+    desc: '// Resolved inquiries, documented interactions, met quality & performance targets.',
     tag: 'bpo',
   },
   {
     id: 4,
-    title: 'BS Information Technology',
-    period: '2025',
+    title: 'BS Information Technology — Perpetual Help College',
+    period: 'Aug 2021–Jun 2025',
     desc: '// Graduated with focus on systems analysis, databases, and web technologies.',
     tag: 'education',
   },
   {
     id: 5,
-    title: 'IT Intern',
-    period: '2024',
-    desc: '// Supported IT operations at Municipal Accounting Office — systems & documentation.',
-    tag: 'internship',
-  },
-  {
-    id: 6,
     title: 'Freelance Web Developer',
-    period: '2022',
+    period: '2022–Present',
     desc: '// Built and deployed web projects for clients — self-taught, shipped real products.',
     tag: 'dev',
   },
   {
-    id: 7,
+    id: 6,
     title: 'Hello, World!',
     period: '2021',
-    // C++ Hello World shown on hover
     desc: `#include <iostream>\nusing namespace std;\nint main() {\n  cout << "Hello, World!";\n  return 0;\n}`,
     tag: 'milestone',
     isCode: true,
-  },
-  {
-    id: 8,
-    title: 'Enrolled in BSIT',
-    period: '2021',
-    desc: '// Started the IT journey. Chose to bet on technology.',
-    tag: 'education',
   },
 ]
 
@@ -210,10 +206,10 @@ export default function AboutSection() {
               <pre className="about__code"><code>
 <span className="c-keyword">const</span> <span className="c-var">aboutRany</span> <span className="c-op">=</span> {'{'}{'\n'}
 {'  '}<span className="c-key">"name"</span><span className="c-op">:</span> <span className="c-str">"Rany Boy Templado"</span>,{'\n'}
-{'  '}<span className="c-key">"role"</span><span className="c-op">:</span> <span className="c-str">"Custom Software Engineer Associate"</span>,{'\n'}
+{'  '}<span className="c-key">"role"</span><span className="c-op">:</span> <span className="c-str">"Associate Software Engineer @ Accenture"</span>,{'\n'}
 {'  '}<span className="c-key">"education"</span><span className="c-op">:</span> <span className="c-str">"BSIT Graduate, Cavite"</span>,{'\n'}
 {'  '}<span className="c-key">"selfTaught"</span><span className="c-op">:</span> <span className="c-bool">true</span>,{'\n'}
-{'  '}<span className="c-key">"background"</span><span className="c-op">:</span> <span className="c-str">"BPO → Tech"</span>,{'\n'}
+{'  '}<span className="c-key">"background"</span><span className="c-op">:</span> <span className="c-str">"BPO → Accenture (SAP)"</span>,{'\n'}
 {'  '}<span className="c-key">"interests"</span><span className="c-op">:</span> [{'\n'}
 {'    '}<span className="c-str">"Web Development"</span>,{'\n'}
 {'    '}<span className="c-str">"System Design"</span>,{'\n'}

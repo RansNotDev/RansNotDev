@@ -4,6 +4,7 @@ import Loader from './components/Loader'
 import Hero from './components/Hero'
 import AboutSection from './components/AboutSection'
 import Projects from './components/Projects'
+import Certifications from './components/Certifications'
 import Footer from './components/Footer'
 import Chat from './components/Chat'
 import './App.css'
@@ -29,6 +30,7 @@ function App() {
           <Hero theme={theme} toggleTheme={toggleTheme} />
           <AboutSection />
           <Projects />
+          <Certifications />
         </main>
         <Footer />
 

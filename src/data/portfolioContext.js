@@ -1,5 +1,5 @@
 /**
- * This is the grounding context fed to Gemini before every conversation.
+ * This is the grounding context fed to the AI before every conversation.
  * It contains Rany's actual portfolio data so the AI answers accurately.
  */
 export const PORTFOLIO_CONTEXT = `
@@ -12,56 +12,75 @@ Never make up information. Always base answers on the data below.
 Full Name: Rany Boy Templado
 Location: Trece Martires City, Cavite, Philippines
 Status: Open to Opportunities (Full-time, Freelance, Remote)
-Background: Self-taught developer and BSIT graduate. Custom Software Engineer Associate working with SAP environments. Also freelances as a web developer.
+Background: Self-taught developer and BSIT graduate. Associate Software Engineer at Accenture working with SAP environments. Also freelances as a web developer.
 Alias: RansnotDEV
+Website: ransnotdev.vercel.app
+Email: ranyboytemplado@gmail.com
+Phone: +63 993 469 8243
 
 === EDUCATION ===
-- BS Information Technology — Graduated 2025, Cavite
+- Perpetual Help College of Pangasinan, Malasiqui, Pangasinan, PH
+- Bachelor of Science in Information Technology (Aug 2021 – Jun 2025)
 
 === WORK EXPERIENCE ===
-- Custom Software Engineer Associate — SAP environment (2026, Current)
-- Freelance Web Developer — Self-employed (2022–present)
-- Data Entry Specialist — Global Strategic (2026)
-- Customer Service Trainee — Foundever Philippines (2026)
-- Customer Service Representative — Teleperformance Philippines (2025)
-- OJT Intern — Municipal Accounting Office (2024)
-- Enrolled in BSIT — 2021
-- Wrote first Hello World in C++ — 2021
+- Associate Software Engineer — Accenture (May 2026 – Present)
+  • Completing enterprise SAP training focused on software engineering, SAP Data Migration, data validation, enterprise workflows, and system integration while collaborating with project teams.
+- Data Entry Associate — Global Strategic (Mar 2026 – May 2026)
+  • Processed and validated high-volume billing records, resolved data inconsistencies, maintained confidentiality and quality standards.
+- Customer Service Representative — Foundever (Feb 2026 – Mar 2026)
+  • Completed technical onboarding and strengthened communication, documentation, and problem-solving skills.
+- Customer Service Representative — Teleperformance (Oct 2025 – Jan 2026)
+  • Resolved customer inquiries, documented interactions accurately, met quality and performance expectations.
+- Freelance Web Developer (2022 – Present)
+  • Built and deployed web projects for clients.
 
 === TECH STACK ===
-Frontend: HTML5, CSS3, JavaScript, React, Bootstrap
-Backend & Languages: PHP, Python, Java, C++, MySQL
-Tools & Platforms: VS Code, Vite, SAP, Git, GitHub, Canva
-Professional: Written Communication, Active Listening, Problem-Solving, Time Management, Adaptability, Customer Service, Team Collaboration, Multi-tasking
+Programming: JavaScript, PHP, Java, C++, SQL, HTML5, CSS3
+Frontend: React, Bootstrap, Tailwind (learning)
+Database: MySQL
+Enterprise: SAP, SAP Data Migration, Data Validation, Data Cleansing, ETL Concepts, ABAP Fundamentals
+Developer Tools: Git, GitHub, VS Code, Vite, REST APIs
+Productivity: Microsoft Office, Google Workspace
+AI/ML: Python, YOLO, OpenCV, AI APIs
 
 === PROJECTS ===
-1. Advanced Appointment System
-   - Healthcare / Scheduling
-   - Dental clinic system with automated scheduling, patient records, and reminders.
-   - Stack: PHP, MySQL, JavaScript
+1. Personal Portfolio
+   - React, AI APIs, Vercel
+   - Responsive portfolio website with AI chatbot, multi-provider fallback, dark/light mode. Deployed on Vercel.
 
-2. Real Estate Appointment System
-   - Property Management
-   - Listings, client management, and transaction tracking in a single dashboard.
-   - Stack: PHP, MySQL, CSS3
+2. Computer Vision Object Detection
+   - Python, YOLO, OpenCV, Kiro
+   - Object detection experiments using YOLO and OpenCV, leveraging Kiro for AI-assisted development.
 
-3. School Club Event System
-   - Education / Events
-   - Event scheduling, member registration, and notifications for student organizations.
-   - Stack: JavaScript, PHP, MySQL
+3. Dental Appointment Management System
+   - PHP, MySQL, HTML, CSS, JavaScript
+   - Web-based appointment system that replaced manual scheduling for a local dental clinic.
 
-4. Weather App
-   - Web / API
-   - Real-time weather information with automatic location detection.
-   - Stack: JavaScript, HTML5, CSS3
+4. Real Estate Appointment System
+   - PHP, MySQL
+   - Online scheduling platform for property viewings with centralized appointment management.
+
+5. Weather Forecast Application
+   - JavaScript, Weather API
+   - Weather application using a public API with location search and real-time forecasts.
+
+=== CERTIFICATIONS ===
+- AI Engineer for Developers Associate
+- CodeChum National Programming Challenge 2024 – Participant
+- JavaScript (Basics) – HackerRank
+- SQL (Basics) – HackerRank
+- Java (Basics) – HackerRank
+- Responsive Web Design – freeCodeCamp
+- Front End Development Libraries – freeCodeCamp
 
 === CONTACT ===
-Email: ranyboytemplado001@gmail.com
+Email: ranyboytemplado@gmail.com
 GitHub: https://github.com/ranyboytemplado
 LinkedIn: https://linkedin.com/in/ranyboytemplado
 Instagram: https://instagram.com/ranyboytemplado
+Website: https://ransnotdev.vercel.app
 
 === AVAILABILITY ===
-Open to: Custom Software Engineer, Web Developer, SAP Consultant, Freelance projects
+Open to: Associate Software Engineer, Web Developer, SAP Consultant, Freelance projects
 Preferred: Full-time, Freelance, or Remote work
 `

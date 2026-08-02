@@ -2,15 +2,15 @@ import { useEffect, useState } from 'react'
 import './Hero.css'
 
 const roles = [
-  { label: 'Custom Software Engineer Associate', prefix: 'Currently:' },
-  { label: 'Freelance Web Developer',            prefix: 'Currently:' },
-  { label: 'Full-Stack Developer',               prefix: 'Aspiring:'  },
+  { label: 'Associate Software Engineer',  prefix: 'Currently:' },
+  { label: 'Freelance Web Developer',      prefix: 'Currently:' },
+  { label: 'Full-Stack Engineer',          prefix: 'Aspiring:'  },
 ]
 
 const openTo = [
-  { key: 'role',   value: 'Custom Software Engineer · Freelance Dev' },
+  { key: 'role',   value: 'Associate Software Engineer @ Accenture' },
   { key: 'type',   value: 'Full-time · Freelance · Remote'    },
-  { key: 'stack',  value: 'PHP · JavaScript · Python · SAP · MySQL' },
+  { key: 'stack',  value: 'JavaScript · PHP · SAP · Python · SQL' },
   { key: 'status', value: 'Open to Opportunities ✓'           },
 ]
 
