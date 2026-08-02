@@ -8,13 +8,9 @@ const SUGGESTIONS = [
   "Is Rany open to work?",
   "How should I use AI as a developer?",
 ]
-
-// Parse markdown links [text](url) and **bold** into JSX
 function parseText(text) {
-  // Split on markdown links and bold
   const parts = text.split(/(\[.+?\]\(.+?\)|\*\*.+?\*\*)/g)
   return parts.map((part, i) => {
-    // Markdown link: [label](url)
     const linkMatch = part.match(/^\[(.+?)\]\((.+?)\)$/)
     if (linkMatch) {
       return (
