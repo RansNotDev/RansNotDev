@@ -7,7 +7,7 @@
 }
 
 .articles__container {
-  max-width: 1200px;
+  max-width: 1100px;
   margin: 0 auto;
   position: relative;
   z-index: 1;
@@ -18,7 +18,7 @@
   display: flex;
   align-items: center;
   gap: 0.6rem;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.6rem;
 }
 
 .articles__prompt {
@@ -44,7 +44,7 @@
 
 .articles__subtitle {
   font-family: 'Inter', sans-serif;
-  font-size: 0.9rem;
+  font-size: 0.92rem;
   color: var(--text-muted);
   margin-bottom: 2.5rem;
   line-height: 1.6;
@@ -65,9 +65,9 @@
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 0.8rem;
   opacity: 0;
-  transform: translateY(20px);
+  transform: translateY(16px);
   transition: opacity var(--duration-slow) var(--ease-out),
               transform var(--duration-slow) var(--ease-out),
               border-color var(--duration-normal),
@@ -76,28 +76,19 @@
   cursor: pointer;
 }
 
-[data-theme="light"] .articles__card {
-  background: var(--bg-card);
-  border-color: rgba(0,0,0,0.06);
-}
-
 .articles__card--visible {
   opacity: 1;
   transform: translateY(0);
 }
 
 .articles__card:hover {
-  border-color: var(--accent);
-  box-shadow: 0 12px 40px rgba(99,102,241,0.08), 0 0 0 1px rgba(99,102,241,0.06);
-  transform: translateY(-4px);
+  border-color: var(--border-hover);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+  transform: translateY(-3px);
   background: var(--bg-elevated);
 }
 
-[data-theme="light"] .articles__card:hover {
-  box-shadow: 0 12px 40px rgba(99,102,241,0.06);
-}
-
-/* Card top — icon + meta */
+/* Card top */
 .articles__card-top {
   display: flex;
   align-items: center;
@@ -105,15 +96,15 @@
 }
 
 .articles__card-icon {
-  font-size: 1.6rem;
-  width: 2.6rem;
-  height: 2.6rem;
+  font-size: 1.5rem;
+  width: 2.5rem;
+  height: 2.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
   background: var(--accent-soft);
   border-radius: var(--radius-md);
-  border: 1px solid rgba(99,102,241,0.1);
+  border: 1px solid var(--tag-border);
 }
 
 .articles__card-meta {
@@ -121,7 +112,7 @@
   align-items: center;
   gap: 0.35rem;
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.65rem;
+  font-size: 0.62rem;
   color: var(--text-dim);
 }
 
@@ -132,10 +123,10 @@
 /* Card title */
 .articles__card-title {
   font-family: 'Space Grotesk', 'Inter', sans-serif;
-  font-size: 1rem;
+  font-size: 0.98rem;
   font-weight: 700;
   color: var(--text);
-  line-height: 1.4;
+  line-height: 1.35;
   transition: color var(--duration-fast);
 }
 
@@ -146,7 +137,7 @@
 /* Card excerpt */
 .articles__card-excerpt {
   font-family: 'Inter', sans-serif;
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   color: var(--text-muted);
   line-height: 1.7;
   flex: 1;
@@ -169,13 +160,13 @@
 
 .articles__card-tag {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.58rem;
+  font-size: 0.56rem;
   font-weight: 500;
   color: var(--accent);
   background: var(--tag-bg);
   border: 1px solid var(--tag-border);
   border-radius: 4px;
-  padding: 0.12rem 0.5rem;
+  padding: 0.1rem 0.45rem;
   letter-spacing: 0.04em;
   text-transform: uppercase;
 }

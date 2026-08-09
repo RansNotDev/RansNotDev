@@ -5,14 +5,14 @@
   right: 0;
   z-index: 100;
   background-color: var(--nav-bg);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px) saturate(1.2);
+  -webkit-backdrop-filter: blur(20px) saturate(1.2);
   border-bottom: 1px solid var(--border);
   height: 64px;
   transform: translateY(-100%);
   opacity: 0;
   pointer-events: none;
-  transition: transform 0.4s var(--ease-out), opacity 0.4s var(--ease-out), background-color var(--duration-normal);
+  transition: transform 0.4s var(--ease-out), opacity 0.4s var(--ease-out);
 }
 
 .nav--visible {
@@ -22,7 +22,7 @@
 }
 
 .nav__inner {
-  max-width: 1200px;
+  max-width: 1100px;
   margin: 0 auto;
   padding: 0 2rem;
   height: 100%;
@@ -43,7 +43,7 @@
 
 .nav__brand-name {
   font-family: 'Space Grotesk', 'Inter', sans-serif;
-  font-size: 1.05rem;
+  font-size: 1.02rem;
   font-weight: 700;
   color: var(--text);
   letter-spacing: -0.02em;
@@ -52,7 +52,7 @@
 
 .nav__brand-cursor {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   font-weight: 700;
   color: var(--accent);
   animation: cursor-blink 1.2s step-end infinite;
@@ -69,7 +69,7 @@
 .nav__links {
   display: flex;
   align-items: center;
-  gap: 0.2rem;
+  gap: 0.15rem;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -77,11 +77,11 @@
 
 .nav__link {
   font-family: 'Inter', sans-serif;
-  font-size: 0.84rem;
+  font-size: 0.82rem;
   font-weight: 500;
   color: var(--text-muted);
   text-decoration: none;
-  padding: 0.45rem 0.9rem;
+  padding: 0.4rem 0.8rem;
   border-radius: var(--radius-sm);
   position: relative;
   transition: color var(--duration-fast), background var(--duration-fast);
@@ -89,28 +89,27 @@
 
 .nav__link:hover {
   color: var(--text);
-  background: var(--tag-bg);
+  background: var(--bg-elevated);
 }
 
 .nav__link--active {
-  color: var(--accent);
-  background: var(--accent-soft);
+  color: var(--text);
+  background: var(--bg-elevated);
 }
 
 .nav__link--active::after {
   content: '';
   position: absolute;
-  bottom: -2px;
+  bottom: -1px;
   left: 50%;
   transform: translateX(-50%);
-  width: 18px;
+  width: 16px;
   height: 2px;
   border-radius: 1px;
   background: var(--accent);
-  opacity: 0.8;
 }
 
-/* ── Actions (toggle + hamburger) ── */
+/* ── Actions ── */
 .nav__actions {
   display: flex;
   align-items: center;
@@ -118,10 +117,9 @@
   flex-shrink: 0;
 }
 
-/* ── Theme toggle (in nav) ── */
 .nav__theme-toggle {
-  background: var(--tag-bg);
-  border: 1px solid var(--tag-border);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
   border-radius: var(--radius-md);
   color: var(--text-muted);
   width: 36px;
@@ -135,10 +133,9 @@
 }
 
 .nav__theme-toggle:hover {
-  background: var(--accent-soft);
-  border-color: var(--accent);
-  color: var(--accent);
-  transform: rotate(15deg);
+  border-color: var(--border-hover);
+  color: var(--text);
+  transform: scale(1.05);
 }
 
 /* ── Hamburger (mobile only) ── */
@@ -158,8 +155,8 @@
 .nav__hamburger-line::before,
 .nav__hamburger-line::after {
   display: block;
-  width: 20px;
-  height: 2px;
+  width: 18px;
+  height: 1.5px;
   background: var(--text);
   border-radius: 2px;
   transition: transform 0.3s var(--ease-out), opacity 0.3s;
@@ -174,11 +171,11 @@
   content: '';
   position: absolute;
   left: 0;
-  width: 20px;
+  width: 18px;
 }
 
-.nav__hamburger-line::before { top: -6px; }
-.nav__hamburger-line::after  { top: 6px; }
+.nav__hamburger-line::before { top: -5px; }
+.nav__hamburger-line::after  { top: 5px; }
 
 .nav__hamburger-line--open {
   background: transparent;
@@ -196,7 +193,7 @@
   background: var(--accent);
 }
 
-/* ── Responsive — Mobile ── */
+/* ── Responsive ── */
 @media (max-width: 768px) {
   .nav__hamburger {
     display: flex;
@@ -213,8 +210,8 @@
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--border);
-    padding: 1rem 2rem;
-    gap: 0.25rem;
+    padding: 0.75rem 1.5rem;
+    gap: 0.15rem;
     transform: translateY(-120%);
     opacity: 0;
     pointer-events: none;
@@ -228,7 +225,7 @@
   }
 
   .nav__link {
-    padding: 0.75rem 1rem;
-    font-size: 0.95rem;
+    padding: 0.7rem 1rem;
+    font-size: 0.92rem;
   }
 }
