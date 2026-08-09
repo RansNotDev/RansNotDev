@@ -193,6 +193,22 @@
   line-height: 1.7;
 }
 
+/* Impact metric */
+.projects__impact {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  color: var(--success);
+  opacity: 0.85;
+  padding: 0.4rem 0.65rem;
+  background: rgba(52,211,153,0.06);
+  border: 1px solid rgba(52,211,153,0.12);
+  border-radius: var(--radius-sm);
+  width: fit-content;
+}
+
 /* Stack */
 .projects__stack {
   display: flex;

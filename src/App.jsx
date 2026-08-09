@@ -4,6 +4,7 @@ import Nav from './components/Nav'
 import Hero from './components/Hero'
 import AboutSection from './components/AboutSection'
 import Projects from './components/Projects'
+import Testimonials from './components/Testimonials'
 import Articles from './components/Articles'
 import Certifications from './components/Certifications'
 import Footer from './components/Footer'
@@ -32,6 +33,7 @@ function App() {
           <Hero theme={theme} toggleTheme={toggleTheme} />
           <AboutSection />
           <Projects />
+          <Testimonials />
           <Articles />
           <Certifications />
         </main>

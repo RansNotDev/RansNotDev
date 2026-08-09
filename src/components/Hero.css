@@ -204,6 +204,28 @@
   transform: translateY(-2px);
 }
 
+/* Credibility markers */
+.hero__credibility {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.hero__credibility-item {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  color: var(--text-dim);
+}
+
+.hero__credibility-item svg {
+  color: var(--success);
+  flex-shrink: 0;
+}
+
 /* ══ CONTENT — two columns ══ */
 .hero__content {
   display: grid;

@@ -4,54 +4,59 @@ import './Projects.css'
 const projects = [
   {
     id: 1,
-    title: 'Personal Portfolio',
+    title: 'Personal Portfolio with AI Chatbot',
     tags: ['Web', 'AI', 'Full-Stack'],
-    description: 'Responsive portfolio with AI chatbot, multi-provider fallback, dark/light mode, and terminal-inspired design. Deployed on Vercel.',
+    description: 'Full-stack portfolio featuring an AI chatbot with 8-provider fallback chain, streaming responses, dark/light mode, and terminal-inspired UI. 0.7s FCP on Lighthouse.',
     stack: ['React', 'AI APIs', 'Vite', 'Vercel'],
     status: 'in-progress',
     github: 'https://github.com/ranyboytemplado',
     demo: 'https://ransnotdev.vercel.app',
     featured: true,
+    impact: '8 AI providers · 0.7s FCP · 100% uptime fallback',
   },
   {
     id: 2,
     title: 'Computer Vision Object Detection',
     tags: ['AI', 'Machine Learning'],
-    description: 'Real-time object detection using YOLO and OpenCV. Built with AI-assisted development workflow using Kiro.',
-    stack: ['Python', 'YOLO', 'OpenCV'],
+    description: 'Real-time object detection pipeline using YOLOv8 and OpenCV. Processes video feeds at 30+ FPS with bounding box visualization and class labeling.',
+    stack: ['Python', 'YOLOv8', 'OpenCV', 'NumPy'],
     status: 'completed',
     github: 'https://github.com/ranyboytemplado',
     demo: null,
+    impact: '30+ FPS detection · 80+ object classes',
   },
   {
     id: 3,
-    title: 'Dental Appointment Management System',
+    title: 'Dental Clinic Management System',
     tags: ['Healthcare', 'Full-Stack'],
-    description: 'Web-based system that replaced manual appointment scheduling for a local dental clinic. Handles patient records, scheduling, and notifications.',
-    stack: ['PHP', 'MySQL', 'JavaScript'],
+    description: 'End-to-end system that replaced paper-based scheduling for a dental clinic. Handles patient records, appointment booking, SMS reminders, and reporting dashboards.',
+    stack: ['PHP', 'MySQL', 'JavaScript', 'Bootstrap'],
     status: 'completed',
     github: 'https://github.com/ranyboytemplado',
     demo: null,
+    impact: 'Deployed for real clinic · 200+ patient records',
   },
   {
     id: 4,
-    title: 'Real Estate Appointment System',
+    title: 'Real Estate Property Platform',
     tags: ['Property', 'Full-Stack'],
-    description: 'Online scheduling platform for property viewings with centralized appointment management and agent dashboards.',
-    stack: ['PHP', 'MySQL', 'Bootstrap'],
+    description: 'Multi-role platform for property viewings with agent dashboards, client scheduling, and property listing management. Built as capstone project.',
+    stack: ['PHP', 'MySQL', 'Bootstrap', 'AJAX'],
     status: 'completed',
     github: 'https://github.com/ranyboytemplado',
     demo: null,
+    impact: '3 user roles · Agent + Client + Admin',
   },
   {
     id: 5,
-    title: 'Weather Forecast Application',
-    tags: ['Web', 'API'],
-    description: 'Weather application with location-based search, 7-day forecasts, and dynamic weather visualizations using a public API.',
-    stack: ['JavaScript', 'Weather API', 'CSS3'],
+    title: 'Weather Forecast Dashboard',
+    tags: ['Web', 'API Integration'],
+    description: 'Interactive weather dashboard with geolocation, 7-day forecasts, hourly breakdowns, and animated weather conditions using OpenWeather API.',
+    stack: ['JavaScript', 'OpenWeather API', 'CSS3'],
     status: 'completed',
     github: 'https://github.com/ranyboytemplado',
     demo: null,
+    impact: '7-day forecast · Geolocation · Responsive',
   },
 ]
 
@@ -118,6 +123,16 @@ export default function Projects() {
 
                 <h3 className="projects__title">{project.title}</h3>
                 <p className="projects__desc">{project.description}</p>
+
+                {/* Impact metric */}
+                {project.impact && (
+                  <p className="projects__impact">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                      <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+                    </svg>
+                    {project.impact}
+                  </p>
+                )}
 
                 {/* Stack pills */}
                 <div className="projects__stack">

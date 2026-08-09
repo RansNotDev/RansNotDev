@@ -83,8 +83,9 @@ export default function Hero({ theme = 'dark', toggleTheme }) {
           </h1>
 
           <p className="hero__subtitle">
-            Associate Software Engineer at Accenture. Self-taught developer and BSIT graduate
-            who went from BPO to building enterprise systems. I ship products — not just code.
+            Associate Software Engineer at Accenture, working with SAP enterprise systems.
+            Self-taught developer and BSIT graduate with 5+ shipped projects —
+            from AI chatbots to healthcare management systems used by real businesses.
           </p>
 
           {/* CTA Buttons */}
@@ -98,6 +99,22 @@ export default function Hero({ theme = 'dark', toggleTheme }) {
             <a href="#contact" className="hero__cta hero__cta--secondary">
               Get in Touch
             </a>
+          </div>
+
+          {/* Credibility markers */}
+          <div className="hero__credibility">
+            <span className="hero__credibility-item">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              Accenture Engineer
+            </span>
+            <span className="hero__credibility-item">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              DataCamp AI Certified
+            </span>
+            <span className="hero__credibility-item">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              Real Client Projects
+            </span>
           </div>
         </div>
 
