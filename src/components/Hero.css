@@ -335,6 +335,33 @@
   margin-top: 0.5rem;
 }
 
+/* Hero inline nav links */
+.hero__nav-links {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.hero__nav-link {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  text-decoration: none;
+  padding: 0.4rem 0.9rem;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  transition: color 0.2s, background 0.2s, border-color 0.2s, transform 0.15s;
+}
+
+.hero__nav-link:hover {
+  color: var(--accent);
+  background: rgba(99,102,241,0.1);
+  border-color: var(--accent);
+  transform: translateY(-1px);
+}
+
 .hero__scroll-text {
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.68rem;

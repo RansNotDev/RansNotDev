@@ -43,20 +43,20 @@ html { scroll-behavior: smooth; }
 }
 
 [data-theme="light"] {
-  /* ── Light mode — neutral warm-gray, black text ── */
-  --bg:           #d8d8e0;
-  --bg-2:         #ceceda;
-  --bg-card:      rgba(255,255,255,0.55);
-  --border:       rgba(80,80,160,0.18);
-  --text:         #0a0a14;
-  --text-muted:   rgba(10,10,40,0.62);
-  --text-dim:     rgba(10,10,40,0.38);
-  --accent:       #4f52d8;
-  --accent-2:     #3b3ec4;
-  --accent-glow:  rgba(80,80,220,0.14);
-  --nav-bg:       rgba(200,200,215,0.92);
-  --tag-bg:       rgba(80,80,220,0.1);
-  --tag-border:   rgba(80,80,220,0.22);
+  /* ── Light mode — clean white, refined contrast ── */
+  --bg:           #f4f4f8;
+  --bg-2:         #eaeaf0;
+  --bg-card:      rgba(255,255,255,0.75);
+  --border:       rgba(80,80,160,0.12);
+  --text:         #1a1a2e;
+  --text-muted:   rgba(26,26,46,0.6);
+  --text-dim:     rgba(26,26,46,0.35);
+  --accent:       #5b5eeb;
+  --accent-2:     #4548d4;
+  --accent-glow:  rgba(91,94,235,0.12);
+  --nav-bg:       rgba(244,244,248,0.92);
+  --tag-bg:       rgba(91,94,235,0.08);
+  --tag-border:   rgba(91,94,235,0.2);
   --scrollbar:    #7c7ff5;
 
   /* Terminal stays dark — intentional, CLI is always dark */

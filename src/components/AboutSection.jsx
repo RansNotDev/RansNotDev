@@ -68,7 +68,7 @@ const experiences = [
     id: 0,
     title: 'Associate Software Engineer — Accenture',
     period: 'May 2026',
-    desc: '// Enterprise SAP training: data migration, validation, system integration & team collaboration.',
+    desc: 'Working on enterprise SAP systems — data migration, validation, and system integrations across teams.',
     tag: 'dev',
     current: true,
   },
@@ -76,35 +76,35 @@ const experiences = [
     id: 1,
     title: 'Data Entry Associate — Global Strategic',
     period: 'Mar–May 2026',
-    desc: '// Processed high-volume billing records, resolved data inconsistencies, maintained quality.',
+    desc: 'Processed 500+ billing records daily, flagged data inconsistencies, maintained quality benchmarks.',
     tag: 'operations',
   },
   {
     id: 2,
     title: 'Customer Service Rep — Foundever',
     period: 'Feb–Mar 2026',
-    desc: '// Completed technical onboarding, strengthened communication & documentation skills.',
+    desc: 'Completed full technical onboarding in record time. Sharpened communication and documentation skills.',
     tag: 'bpo',
   },
   {
     id: 3,
     title: 'Customer Service Rep — Teleperformance',
     period: 'Oct 2025–Jan 2026',
-    desc: '// Resolved inquiries, documented interactions, met quality & performance targets.',
+    desc: 'Resolved 40+ daily inquiries, consistently hit quality targets. Learned to stay calm under pressure.',
     tag: 'bpo',
   },
   {
     id: 4,
     title: 'BS Information Technology — Perpetual Help College',
     period: 'Aug 2021–Jun 2025',
-    desc: '// Graduated with focus on systems analysis, databases, and web technologies.',
+    desc: 'Graduated with focus on systems analysis, databases, and web tech. Built multiple capstone projects.',
     tag: 'education',
   },
   {
     id: 5,
     title: 'Freelance Web Developer',
     period: '2022–Present',
-    desc: '// Built and deployed web projects for clients — self-taught, shipped real products.',
+    desc: 'Shipped 5+ client projects — from dental clinics to real estate platforms. Self-taught, self-motivated.',
     tag: 'dev',
   },
   {
@@ -128,9 +128,9 @@ const tagColors = {
 
 // ── Bio text for typewriter ───────────────────────────────────────────────────
 const bioText = [
-  "A self-taught developer and a BSIT graduate with a drive to build systems that actually solve problems. My foundation spans systems analysis, databases, web technologies, and structured problem-solving — built through both formal education and years of real-world tinkering.",
-  "I've supported web-based systems, streamlined documentation workflows using Google Workspace and Microsoft Office, and troubleshot technical issues in live environments. I take ownership of what I build and collaborate well across teams.",
-  "My BPO background isn't a detour — it sharpened my communication, adaptability, and ability to stay sharp under pressure. I'm detail-oriented, process-driven, and committed to shipping practical solutions that improve performance and efficiency.",
+  "I'm a self-taught developer who turned a curiosity for code into a career. After graduating with a BSIT degree, I jumped between roles — answering calls, entering data, building freelance projects on the side — until I landed where I always wanted: writing software full-time.",
+  "Now at Accenture, I work with SAP systems, data migration, and enterprise integrations. But outside of work hours, I'm still the same person who builds random side projects at 2 AM because I had an idea I couldn't let go.",
+  "What sets me apart? I actually ship things. Not just tutorials or half-finished repos — real products that real people use. I'm detail-oriented, I communicate clearly, and I thrive under pressure (thanks, BPO career).",
 ]
 
 // ── Typewriter hook ───────────────────────────────────────────────────────────

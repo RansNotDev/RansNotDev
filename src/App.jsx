@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import Nav from './components/Nav'
-import Loader from './components/Loader'
+// import Loader from './components/Loader'
 import Hero from './components/Hero'
 import AboutSection from './components/AboutSection'
 import Projects from './components/Projects'
@@ -11,7 +11,7 @@ import './App.css'
 
 function App() {
   const [theme, setTheme] = useState('dark')
-  const [loaded, setLoaded] = useState(false)
+  // const [loaded, setLoaded] = useState(false)
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme)
@@ -21,8 +21,9 @@ function App() {
 
   return (
     <>
-      {!loaded && <Loader onDone={() => setLoaded(true)} />}
-      <div className="app" style={{ opacity: loaded ? 1 : 0, transition: 'opacity 0.5s' }}>
+      {/* Loader intro commented out — show main content directly */}
+      {/* {!loaded && <Loader onDone={() => setLoaded(true)} />} */}
+      <div className="app" style={{ opacity: 1 }}>
         {/* Nav shows on scroll — contains theme toggle */}
         <Nav theme={theme} toggleTheme={toggleTheme} />
 

@@ -118,7 +118,7 @@ export default function Hero({ theme = 'dark', toggleTheme }) {
           {/* Quote */}
           <blockquote className="hero__quote">
             <span className="hero__quote-mark">"</span>
-            From answering calls to writing code — every role taught me something the next one needed.
+            I don't just write code — I ship products. From answering calls to engineering software, every role taught me something the next one needed.
             <span className="hero__quote-mark">"</span>
           </blockquote>
 
@@ -160,6 +160,14 @@ export default function Hero({ theme = 'dark', toggleTheme }) {
               ))}
               <p className="hero__term-line"><span className="ht-op">{'};'}</span></p>
             </div>
+          </div>
+
+          {/* Quick nav links — visible in hero */}
+          <div className="hero__nav-links">
+            <a href="#about" className="hero__nav-link">About</a>
+            <a href="#projects" className="hero__nav-link">Projects</a>
+            <a href="#certifications" className="hero__nav-link">Certs</a>
+            <a href="#contact" className="hero__nav-link">Contact</a>
           </div>
 
           {/* Scroll hint */}
