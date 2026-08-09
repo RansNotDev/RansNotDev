@@ -6,17 +6,18 @@ const projects = [
     id: 1,
     title: 'Personal Portfolio',
     tags: ['Web', 'AI', 'Full-Stack'],
-    description: 'Responsive portfolio with AI chatbot, multi-provider fallback, dark/light mode. Deployed on Vercel.',
-    stack: ['React', 'AI APIs', 'Vercel'],
-    status: 'Under Construction',
+    description: 'Responsive portfolio with AI chatbot, multi-provider fallback, dark/light mode, and terminal-inspired design. Deployed on Vercel.',
+    stack: ['React', 'AI APIs', 'Vite', 'Vercel'],
+    status: 'in-progress',
     github: 'https://github.com/ranyboytemplado',
     demo: 'https://ransnotdev.vercel.app',
+    featured: true,
   },
   {
     id: 2,
     title: 'Computer Vision Object Detection',
     tags: ['AI', 'Machine Learning'],
-    description: 'Object detection experiments using YOLO and OpenCV, leveraging Kiro for AI-assisted development.',
+    description: 'Real-time object detection using YOLO and OpenCV. Built with AI-assisted development workflow using Kiro.',
     stack: ['Python', 'YOLO', 'OpenCV'],
     status: 'completed',
     github: 'https://github.com/ranyboytemplado',
@@ -25,8 +26,8 @@ const projects = [
   {
     id: 3,
     title: 'Dental Appointment Management System',
-    tags: ['Healthcare', 'Scheduling'],
-    description: 'Web-based system that replaced manual appointment scheduling for a local dental clinic.',
+    tags: ['Healthcare', 'Full-Stack'],
+    description: 'Web-based system that replaced manual appointment scheduling for a local dental clinic. Handles patient records, scheduling, and notifications.',
     stack: ['PHP', 'MySQL', 'JavaScript'],
     status: 'completed',
     github: 'https://github.com/ranyboytemplado',
@@ -35,9 +36,9 @@ const projects = [
   {
     id: 4,
     title: 'Real Estate Appointment System',
-    tags: ['Property Management'],
-    description: 'Online scheduling platform for property viewings with centralized appointment management.',
-    stack: ['PHP', 'MySQL'],
+    tags: ['Property', 'Full-Stack'],
+    description: 'Online scheduling platform for property viewings with centralized appointment management and agent dashboards.',
+    stack: ['PHP', 'MySQL', 'Bootstrap'],
     status: 'completed',
     github: 'https://github.com/ranyboytemplado',
     demo: null,
@@ -46,15 +47,16 @@ const projects = [
     id: 5,
     title: 'Weather Forecast Application',
     tags: ['Web', 'API'],
-    description: 'Weather application using a public API with location search and real-time forecasts.',
-    stack: ['JavaScript', 'Weather API'],
+    description: 'Weather application with location-based search, 7-day forecasts, and dynamic weather visualizations using a public API.',
+    stack: ['JavaScript', 'Weather API', 'CSS3'],
     status: 'completed',
     github: 'https://github.com/ranyboytemplado',
     demo: null,
   },
 ]
 
-const statusColor = { completed: '#22c55e', 'in-progress': '#f59e0b', planned: '#6366f1' }
+const statusColor = { completed: '#34d399', 'in-progress': '#fbbf24', planned: '#818cf8' }
+const statusLabel = { completed: 'completed', 'in-progress': 'in progress', planned: 'planned' }
 
 export default function Projects() {
   const [revealed, setRevealed] = useState(false)
@@ -85,7 +87,7 @@ export default function Projects() {
         <div className="projects__grid">
           {projects.map((project, i) => (
             <article
-              className={`projects__card${revealed ? ' projects__card--visible' : ''}`}
+              className={`projects__card${revealed ? ' projects__card--visible' : ''}${project.featured ? ' projects__card--featured' : ''}`}
               key={project.id}
               style={{ transitionDelay: revealed ? `${i * 120}ms` : '0ms' }}
             >
@@ -102,7 +104,7 @@ export default function Projects() {
                   className="projects__card-status"
                   style={{ color: statusColor[project.status] }}
                 >
-                  ● {project.status}
+                  ● {statusLabel[project.status] || project.status}
                 </span>
               </div>
 

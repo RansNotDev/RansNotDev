@@ -9,8 +9,8 @@ const roles = [
 
 const openTo = [
   { key: 'role',   value: 'Associate Software Engineer @ Accenture' },
-  { key: 'type',   value: 'Full-time · Freelance · Remote'    },
-  { key: 'stack',  value: 'JavaScript · PHP · SAP · Python · SQL' },
+  { key: 'focus',  value: 'SAP · Data Migration · System Integration' },
+  { key: 'stack',  value: 'JavaScript · React · PHP · Python · SQL' },
   { key: 'status', value: 'Open to Opportunities ✓'           },
 ]
 
@@ -118,7 +118,7 @@ export default function Hero({ theme = 'dark', toggleTheme }) {
           {/* Quote */}
           <blockquote className="hero__quote">
             <span className="hero__quote-mark">"</span>
-            I don't just write code — I ship products. From answering calls to engineering software, every role taught me something the next one needed.
+            From answering calls to engineering enterprise software — every role sharpened me. I don't just write code, I ship products that solve real problems.
             <span className="hero__quote-mark">"</span>
           </blockquote>
 
@@ -162,10 +162,27 @@ export default function Hero({ theme = 'dark', toggleTheme }) {
             </div>
           </div>
 
+          {/* Quick stats */}
+          <div className="hero__stats">
+            <div className="hero__stat">
+              <span className="hero__stat-value">5+</span>
+              <span className="hero__stat-label">Projects Shipped</span>
+            </div>
+            <div className="hero__stat">
+              <span className="hero__stat-value">8</span>
+              <span className="hero__stat-label">Certifications</span>
+            </div>
+            <div className="hero__stat">
+              <span className="hero__stat-value">4+</span>
+              <span className="hero__stat-label">Years Coding</span>
+            </div>
+          </div>
+
           {/* Quick nav links — visible in hero */}
           <div className="hero__nav-links">
             <a href="#about" className="hero__nav-link">About</a>
             <a href="#projects" className="hero__nav-link">Projects</a>
+            <a href="#articles" className="hero__nav-link">Articles</a>
             <a href="#certifications" className="hero__nav-link">Certs</a>
             <a href="#contact" className="hero__nav-link">Contact</a>
           </div>

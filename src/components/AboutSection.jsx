@@ -194,6 +194,13 @@ export default function AboutSection() {
         {/* ══ LEFT COLUMN ══ */}
         <div className="about__left">
 
+          {/* ── Section intro ── */}
+          <div className="about__section-header">
+            <span className="about__section-prompt">&gt;</span>
+            <h2 className="about__section-title">About Me</h2>
+            <span className="about__section-line" />
+          </div>
+
           {/* ── Terminal About Me ── */}
           <div className="about__terminal">
             <div className="about__terminal-bar">

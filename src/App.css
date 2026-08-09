@@ -3,5 +3,23 @@
   min-height: 100vh;
   overflow-x: hidden;
   position: relative;
-  transition: background-color 0.3s;
+  transition: background-color var(--duration-normal);
+}
+
+/* Smooth section transitions */
+.app main > section + section {
+  position: relative;
+}
+
+/* Subtle separator between major sections */
+.app main > section + section::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(80%, 600px);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border), transparent);
+  pointer-events: none;
 }

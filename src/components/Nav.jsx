@@ -4,6 +4,7 @@ import './Nav.css'
 const navLinks = [
   { label: 'About', href: '#about' },
   { label: 'Projects', href: '#projects' },
+  { label: 'Articles', href: '#articles' },
   { label: 'Certs', href: '#certifications' },
   { label: 'Contact', href: '#contact' },
 ]
@@ -25,7 +26,7 @@ export default function Nav({ theme, toggleTheme }) {
 
   // Track active section for highlighting
   useEffect(() => {
-    const sections = ['about', 'projects', 'certifications', 'contact']
+    const sections = ['about', 'projects', 'articles', 'certifications', 'contact']
     const observers = []
 
     sections.forEach(id => {
