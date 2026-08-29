@@ -7,7 +7,7 @@ const projects = [
     title: 'Personal Portfolio with AI Chatbot',
     tags: ['Web', 'AI', 'Full-Stack'],
     description: 'Portfolio with a focused assistant, theme support, responsive navigation, and server-side AI routing designed for graceful fallback.',
-    stack: ['React', 'RAG', 'Vite', 'Vercel'],
+    stack: ['React', 'Vite', 'Vercel'],
     status: 'in-progress',
     github: 'https://github.com/ranyboytemplado',
     demo: 'https://ransnotdev.vercel.app',

@@ -1,6 +1,3 @@
-import { createGroundedAnswer } from '../data/portfolioKnowledge'
-
-const PORTFOLIO_INTENT = /\b(rany|ransnotdev|portfolio|your (skills?|projects?|experience|education|contact|email|availability)|hire|resume|cv|sap data migration)\b/i
 const MAX_MESSAGE_LENGTH = 500
 const MAX_HISTORY_ITEMS = 8
 
@@ -26,7 +23,7 @@ export async function sendMessage(history, userMessage, onChunk) {
   if (message.length > MAX_MESSAGE_LENGTH) throw new Error(`Please keep questions under ${MAX_MESSAGE_LENGTH} characters.`)
 
   const controller = new AbortController()
-  const timeout = setTimeout(() => controller.abort(), 12000)
+  const timeout = setTimeout(() => controller.abort(), 16000)
 
   try {
     const response = await fetch('/api/chat', {
@@ -40,10 +37,6 @@ export async function sendMessage(history, userMessage, onChunk) {
     if (!response.ok) throw new Error(data.error || 'The assistant is unavailable right now.')
     return streamText(String(data.text || 'No response was returned.'), onChunk)
   } catch (error) {
-    if (PORTFOLIO_INTENT.test(message)) {
-      const grounded = createGroundedAnswer(message)
-      if (grounded) return streamText(grounded, onChunk)
-    }
     if (error.name === 'AbortError') throw new Error('The assistant took too long to respond. Please try again.')
     throw error
   } finally {
