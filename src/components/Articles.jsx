@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import Icon from './Icon'
 import './Articles.css'
 
 const articles = [
@@ -9,7 +10,7 @@ const articles = [
     date: 'Jun 2026',
     readTime: '6 min read',
     tags: ['Career', 'Personal'],
-    icon: '🚀',
+    icon: 'briefcase',
   },
   {
     id: 2,
@@ -18,7 +19,7 @@ const articles = [
     date: 'May 2026',
     readTime: '8 min read',
     tags: ['AI', 'Web Dev'],
-    icon: '🤖',
+    icon: 'spark',
   },
   {
     id: 3,
@@ -27,16 +28,16 @@ const articles = [
     date: 'Apr 2026',
     readTime: '5 min read',
     tags: ['Web Dev', 'Learning'],
-    icon: '⚛️',
+    icon: 'code',
   },
   {
     id: 4,
     title: 'What SAP Taught Me About Enterprise Software',
-    excerpt: 'Working with SAP at Accenture changed how I think about scale. Data migration, validation pipelines, and why "move fast and break things" doesn\'t work in enterprise.',
+    excerpt: 'Working with SAP systems changed how I think about scale. Data migration, validation pipelines, and why careful change management matters in enterprise software.',
     date: 'Jun 2026',
     readTime: '7 min read',
     tags: ['Enterprise', 'SAP'],
-    icon: '🏢',
+    icon: 'flow',
   },
   {
     id: 5,
@@ -45,7 +46,7 @@ const articles = [
     date: 'Mar 2026',
     readTime: '9 min read',
     tags: ['Career', 'Learning'],
-    icon: '📖',
+    icon: 'article',
   },
   {
     id: 6,
@@ -54,7 +55,7 @@ const articles = [
     date: 'Feb 2026',
     readTime: '4 min read',
     tags: ['CSS', 'Web Dev'],
-    icon: '🎨',
+    icon: 'layers',
   },
 ]
 
@@ -95,7 +96,7 @@ export default function Articles() {
               style={{ transitionDelay: revealed ? `${i * 100}ms` : '0ms' }}
             >
               <div className="articles__card-top">
-                <span className="articles__card-icon">{article.icon}</span>
+                <span className="articles__card-icon"><Icon name={article.icon} size={23} /></span>
                 <div className="articles__card-meta">
                   <span className="articles__card-date">{article.date}</span>
                   <span className="articles__card-dot">·</span>

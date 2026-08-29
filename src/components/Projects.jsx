@@ -6,35 +6,35 @@ const projects = [
     id: 1,
     title: 'Personal Portfolio with AI Chatbot',
     tags: ['Web', 'AI', 'Full-Stack'],
-    description: 'Full-stack portfolio featuring an AI chatbot with 8-provider fallback chain, streaming responses, dark/light mode, and terminal-inspired UI. 0.7s FCP on Lighthouse.',
-    stack: ['React', 'AI APIs', 'Vite', 'Vercel'],
+    description: 'Portfolio with a focused assistant, theme support, responsive navigation, and server-side AI routing designed for graceful fallback.',
+    stack: ['React', 'RAG', 'Vite', 'Vercel'],
     status: 'in-progress',
     github: 'https://github.com/ranyboytemplado',
     demo: 'https://ransnotdev.vercel.app',
     featured: true,
-    impact: '8 AI providers · 0.7s FCP · 100% uptime fallback',
+    impact: 'Fast rendering · Accessible themes · Secure AI proxy',
   },
   {
     id: 2,
     title: 'Computer Vision Object Detection',
     tags: ['AI', 'Machine Learning'],
-    description: 'Real-time object detection pipeline using YOLOv8 and OpenCV. Processes video feeds at 30+ FPS with bounding box visualization and class labeling.',
-    stack: ['Python', 'YOLOv8', 'OpenCV', 'NumPy'],
+    description: 'Object detection workflow using YOLO and OpenCV with video input, bounding-box visualization, and class labeling.',
+    stack: ['Python', 'YOLO', 'OpenCV', 'NumPy'],
     status: 'completed',
     github: 'https://github.com/ranyboytemplado',
     demo: null,
-    impact: '30+ FPS detection · 80+ object classes',
+    impact: 'Video detection · Visual labels · Reusable pipeline',
   },
   {
     id: 3,
     title: 'Dental Clinic Management System',
     tags: ['Healthcare', 'Full-Stack'],
-    description: 'End-to-end system that replaced paper-based scheduling for a dental clinic. Handles patient records, appointment booking, SMS reminders, and reporting dashboards.',
+    description: 'Appointment workflow for a dental clinic, covering patient records, booking, reminders, and administrative reporting.',
     stack: ['PHP', 'MySQL', 'JavaScript', 'Bootstrap'],
     status: 'completed',
     github: 'https://github.com/ranyboytemplado',
     demo: null,
-    impact: 'Deployed for real clinic · 200+ patient records',
+    impact: 'Patient records · Scheduling · Administration',
   },
   {
     id: 4,
@@ -97,19 +97,11 @@ export default function Projects() {
               style={{ transitionDelay: revealed ? `${i * 120}ms` : '0ms' }}
             >
 
-              {/* Card top bar */}
+              {/* Project heading */}
               <div className="projects__card-bar">
-                <div className="projects__card-dots">
-                  <span /><span /><span />
-                </div>
-                <span className="projects__card-index">
-                  {String(i + 1).padStart(2, '0')}.js
-                </span>
-                <span
-                  className="projects__card-status"
-                  style={{ color: statusColor[project.status] }}
-                >
-                  ● {statusLabel[project.status] || project.status}
+                <span className="projects__card-index">Project {String(i + 1).padStart(2, '0')}</span>
+                <span className="projects__card-status" style={{ color: statusColor[project.status] }}>
+                  <span aria-hidden="true">●</span> {statusLabel[project.status] || project.status}
                 </span>
               </div>
 

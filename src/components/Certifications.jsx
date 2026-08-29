@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import Icon from './Icon'
 import './Certifications.css'
 
 const certifications = [
@@ -6,7 +7,7 @@ const certifications = [
     id: 1,
     title: 'AI Engineer for Developers Associate',
     issuer: 'DataCamp',
-    icon: '🤖',
+    icon: 'spark',
     iframeUrl: null,
     externalUrl: 'https://www.datacamp.com/certificate/AIEDA0017740117938',
   },
@@ -14,7 +15,7 @@ const certifications = [
     id: 2,
     title: 'JavaScript (Basics)',
     issuer: 'HackerRank',
-    icon: '📜',
+    icon: 'article',
     iframeUrl: 'https://www.hackerrank.com/certificates/iframe/2e7b687cd1ed',
     externalUrl: null,
   },
@@ -22,7 +23,7 @@ const certifications = [
     id: 3,
     title: 'SQL (Basics)',
     issuer: 'HackerRank',
-    icon: '📜',
+    icon: 'database',
     iframeUrl: 'https://www.hackerrank.com/certificates/iframe/7e3c14302fd7',
     externalUrl: null,
   },
@@ -30,7 +31,7 @@ const certifications = [
     id: 4,
     title: 'Java (Basics)',
     issuer: 'HackerRank',
-    icon: '📜',
+    icon: 'code',
     iframeUrl: 'https://www.hackerrank.com/certificates/iframe/7725b91e13dc',
     externalUrl: null,
   },
@@ -38,7 +39,7 @@ const certifications = [
     id: 5,
     title: 'Problem Solving (Basics)',
     issuer: 'HackerRank',
-    icon: '📜',
+    icon: 'check',
     iframeUrl: 'https://www.hackerrank.com/certificates/iframe/14230d101784',
     externalUrl: null,
   },
@@ -46,7 +47,7 @@ const certifications = [
     id: 6,
     title: 'CodeChum National Programming Challenge 2024',
     issuer: 'Participant',
-    icon: '🏆',
+    icon: 'award',
     iframeUrl: null,
     externalUrl: null,
   },
@@ -54,7 +55,7 @@ const certifications = [
     id: 7,
     title: 'Responsive Web Design',
     issuer: 'freeCodeCamp',
-    icon: '🎓',
+    icon: 'layers',
     iframeUrl: null,
     externalUrl: null,
   },
@@ -62,7 +63,7 @@ const certifications = [
     id: 8,
     title: 'Front End Development Libraries',
     issuer: 'freeCodeCamp',
-    icon: '🎓',
+    icon: 'code',
     iframeUrl: null,
     externalUrl: null,
   },
@@ -124,7 +125,7 @@ export default function Certifications() {
               aria-label={cert.iframeUrl ? `View ${cert.title} certificate` : cert.externalUrl ? `Open ${cert.title} certificate` : cert.title}
               type="button"
             >
-              <span className="certs__icon">{cert.icon}</span>
+              <span className="certs__icon"><Icon name={cert.icon} size={22} /></span>
               <div className="certs__info">
                 <h3 className="certs__title">{cert.title}</h3>
                 <p className="certs__issuer">{cert.issuer}</p>

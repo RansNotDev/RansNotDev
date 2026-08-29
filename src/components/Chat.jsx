@@ -8,15 +8,26 @@ const SUGGESTIONS = [
   "Is Rany open to work?",
   "How should I use AI as a developer?",
 ]
+function safeHref(value) {
+  try {
+    const url = new URL(value, window.location.origin)
+    return ['http:', 'https:', 'mailto:'].includes(url.protocol) ? url.href : null
+  } catch {
+    return null
+  }
+}
+
 function parseText(text) {
   const parts = text.split(/(\[.+?\]\(.+?\)|\*\*.+?\*\*)/g)
   return parts.map((part, i) => {
     const linkMatch = part.match(/^\[(.+?)\]\((.+?)\)$/)
     if (linkMatch) {
+      const href = safeHref(linkMatch[2])
+      if (!href) return linkMatch[1]
       return (
         <a
           key={i}
-          href={linkMatch[2]}
+          href={href}
           target="_blank"
           rel="noopener noreferrer"
           className="chat-msg__link"
@@ -38,7 +49,7 @@ export default function Chat() {
   const [messages, setMessages] = useState([
     {
       role: 'model',
-      text: "Hey! Ask me anything about Rany — his skills, projects, experience, or availability. 👋",
+      text: "Ask me about Rany’s work, skills, projects, or availability.",
       id: 0,
     },
   ])
@@ -53,9 +64,18 @@ export default function Chat() {
     bottomRef.current?.scrollIntoView({ behavior: 'smooth' })
   }, [messages])
 
-  // Focus input when opened
+  // Focus input when opened and support Escape to close.
   useEffect(() => {
-    if (open) setTimeout(() => inputRef.current?.focus(), 150)
+    if (!open) return undefined
+    const timer = setTimeout(() => inputRef.current?.focus(), 150)
+    const handleEscape = (event) => {
+      if (event.key === 'Escape') setOpen(false)
+    }
+    document.addEventListener('keydown', handleEscape)
+    return () => {
+      clearTimeout(timer)
+      document.removeEventListener('keydown', handleEscape)
+    }
   }, [open])
 
   async function handleSend(text) {
@@ -87,12 +107,12 @@ export default function Chat() {
         ...prev,
         { role: 'user',  text: msg         },
         { role: 'model', text: accumulated },
-      ])
+      ].slice(-8))
     } catch (err) {
       console.error('[Chat error]', err)
       setMessages(prev =>
         prev.map(m => m.id === aiId
-          ? { ...m, text: `⚠️ ${err.message || 'Something went wrong. Please try again.'}`, streaming: false, error: true }
+          ? { ...m, text: err.message || 'Something went wrong. Please try again.', streaming: false, error: true }
           : m
         )
       )
@@ -114,8 +134,10 @@ export default function Chat() {
       <button
         className={`chat-fab${open ? ' chat-fab--open' : ''}`}
         onClick={() => setOpen(o => !o)}
-        aria-label={open ? 'Close chat' : 'Chat with AI assistant'}
-        title="Ask Rany's AI"
+        aria-label={open ? 'Close chat' : 'Chat with portfolio assistant'}
+        aria-expanded={open}
+        aria-controls="portfolio-chat"
+        title="Ask the portfolio assistant"
       >
         {open ? (
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -130,17 +152,17 @@ export default function Chat() {
       </button>
 
       {/* Chat window */}
-      <div className={`chat-window${open ? ' chat-window--open' : ''}`} role="dialog" aria-label="AI Chat">
+      <div id="portfolio-chat" className={`chat-window${open ? ' chat-window--open' : ''}`} role="dialog" aria-modal="true" aria-label="Portfolio assistant" hidden={!open}>
 
         {/* Header */}
         <div className="chat-header">
           <div className="chat-header__info">
             <div className="chat-header__avatar">R</div>
             <div>
-              <p className="chat-header__name">Tech Mentor & AI Strategist</p>
+              <p className="chat-header__name">Portfolio Assistant</p>
               <p className="chat-header__status">
                 <span className="chat-header__dot" />
-                Powered by Ai
+                Grounded in portfolio data
               </p>
             </div>
           </div>
@@ -152,7 +174,7 @@ export default function Chat() {
         </div>
 
         {/* Messages */}
-        <div className="chat-messages">
+        <div className="chat-messages" aria-live="polite">
           {messages.map(msg => (
             <div key={msg.id} className={`chat-msg chat-msg--${msg.role}${msg.error ? ' chat-msg--error' : ''}`}>
               {msg.role === 'model' && (
@@ -198,7 +220,7 @@ export default function Chat() {
             onChange={e => setInput(e.target.value)}
             onKeyDown={handleKey}
             disabled={loading}
-            maxLength={300}
+            maxLength={500}
           />
           <button
             className="chat-send"

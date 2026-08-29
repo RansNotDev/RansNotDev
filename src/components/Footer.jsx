@@ -68,7 +68,7 @@ export default function Footer() {
                 </svg>
                 ranyboytemplado@gmail.com
               </span>
-              <span className="footer__email-hover">Hire Me 🚀</span>
+              <span className="footer__email-hover">Start a conversation</span>
             </a>
           </div>
 

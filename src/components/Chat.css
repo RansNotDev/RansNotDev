@@ -3,8 +3,8 @@
 ══════════════════════════════════════ */
 .chat-fab {
   position: fixed;
-  bottom: 1.5rem;
-  right: 1.5rem;
+  bottom: max(1.25rem, env(safe-area-inset-bottom));
+  right: max(1.25rem, env(safe-area-inset-right));
   z-index: 200;
   width: 52px;
   height: 52px;
@@ -56,12 +56,12 @@
 ══════════════════════════════════════ */
 .chat-window {
   position: fixed;
-  bottom: 5.5rem;
-  right: 1.5rem;
+  bottom: calc(max(1.25rem, env(safe-area-inset-bottom)) + 4rem);
+  right: max(1.25rem, env(safe-area-inset-right));
   left: auto;
   z-index: 199;
-  width: 380px;
-  max-height: 540px;
+  width: min(380px, calc(100vw - 2rem));
+  max-height: min(540px, calc(100dvh - 7rem));
   background: var(--bg);
   border: 1px solid var(--border);
   border-radius: var(--radius-xl);
