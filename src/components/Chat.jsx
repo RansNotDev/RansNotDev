@@ -4,9 +4,9 @@ import './Chat.css'
 
 const SUGGESTIONS = [
   "What's Rany's tech stack?",
-  "How do I start learning web dev?",
+  "How do I start a software career?",
   "Is Rany open to work?",
-  "How should I use AI as a developer?",
+  "How should I prepare for a developer interview?",
 ]
 function safeHref(value) {
   try {
@@ -49,7 +49,7 @@ export default function Chat() {
   const [messages, setMessages] = useState([
     {
       role: 'model',
-      text: "Ask me about Rany’s work, skills, projects, or availability.",
+      text: "Ask me about Rany’s portfolio, programming, SAP data migration, or software career advice.",
       id: 0,
     },
   ])
@@ -162,7 +162,7 @@ export default function Chat() {
               <p className="chat-header__name">Portfolio Assistant</p>
               <p className="chat-header__status">
                 <span className="chat-header__dot" />
-                Grounded in portfolio data
+                Portfolio, programming, and career advice
               </p>
             </div>
           </div>
@@ -215,7 +215,7 @@ export default function Chat() {
             id="chat-input"
             className="chat-input"
             type="text"
-            placeholder="Ask about code, career, or Rany's work..."
+            placeholder="Ask about Rany, programming, or software careers..."
             value={input}
             onChange={e => setInput(e.target.value)}
             onKeyDown={handleKey}
