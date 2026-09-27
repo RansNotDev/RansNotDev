@@ -1,35 +1,40 @@
+// The single fixed reply for anything outside the allowed scope.
 export const SCOPE_REFUSAL =
-  'I only answer questions about Rany’s portfolio, programming, SAP data migration, and software career advice. Please ask something in those areas.'
+  'API Cost is expensive you can use chatgpt gemini grok and claude for free in thier respective websites'
 
 export const GREETING_REPLY =
-  'Hello. I can help with Rany’s portfolio, programming, SAP data migration, and software career advice. What would you like to know?'
+  'Hello. I can help with Rany’s portfolio and software / tech career advice. What would you like to know?'
 
 const GREETING = /^(hi|hello|hey|yo|sup|good (morning|afternoon|evening)|thanks|thank you|ok|okay)[\s!.]*$/i
 
+// Attempts to change or extract the operating rules are always refused.
 const INJECTION = /\b(ignore (all|any|the|previous)|developer message|reveal (your|the) (prompt|secret)|jailbreak|bypass (the )?(rules|guardrails)|act as unrestricted|dan mode|(show|give|print|expose).*(api key|environment variable|system prompt)|you are now)\b/i
 
-const BLOCKED = /\b(recipe|recipes|cook|cooking|politics|election|gambling|casino|dating|girlfriend|boyfriend|crush|hookup|medical diagnosis|symptom|disease|prescription|legal advice|lawsuit|attorney|celebrity|sports score|football|basketball|weather forecast|horoscope|astrology|joke|jokes|funny|meme|poem|poetry|rap verse|song lyrics|bedtime story|roleplay|role play|nsfw|porn|nude|weapon|bomb|drug deal|crypto trading|stock pick|lottery)\b/i
+// (1) Anything about Rany / the portfolio itself.
+const PORTFOLIO = /\b(rany|templado|ransnotdev|portfolio|project|projects|skills?|tech stack|experience|education|background|certifications?|credentials?|availability|resume|cv|about (you|rany|him)|who (are|is) (you|rany|he)|hire|hiring|open to work|available for|reach (you|him)|contact|sap|data migration|abap|migration cockpit|chatbot|object detection|yolo|opencv|dental|real estate|weather (forecast|dashboard))\b/i
 
-const PORTFOLIO = /\b(rany|templado|ransnotdev|portfolio|your (skills?|projects?|experience|education|contact|email|availability|work|background)|about you|who (are|is) (you|rany)|hire|hiring|open to work|resume|cv|certifications?|sap|abap|data migration|etl)\b/i
+// (2) Software / tech career advice.
+const CAREER = /\b(career|interview|job(s)?|intern(?:ship)?|resume|cv|cover letter|portfolio tips?|junior|entry[- ]level|mid[- ]level|senior|roadmap|learn(?:ing)? (path|to code)|study plan|bootcamp|self[- ]taught|upskill|switch(?:ing)? (careers?|to tech)|break into tech|get(?:ting)? (a|my first) (job|role|internship)|land(?:ing)? (a|my first)|how (do|can|should) i (start|become|get|prepare|learn|apply|transition|switch)|tech (career|industry)|software (career|engineer(?:ing)? career)|salary|promotion|which (language|framework|skill) should i learn|what should i learn)\b/i
 
-const PROGRAMMING = /\b(code|coding|program(?:ming)?|software|developer|engineer(?:ing)?|frontend|backend|full[- ]?stack|javascript|typescript|react|html|css|python|php|java\b|c\+\+|sql|mysql|git|github|api|apis|database|debug|testing|security|vite|vercel|node|web ?dev|algorithm|framework|library|devops|cloud|aws|docker|linux|oop|dsa|leetcode|hackerrank|yolo|opencv|rest(?:ful)?|graphql|bootstrap|abap|fiori|hana)\b/i
-
-const CAREER = /\b(career|interview|job(s)?|intern(?:ship)?|junior|mid[- ]level|roadmap|learn(?:ing)?|study|studying|bootcamp|cover letter|linkedin|salary|compensation|promotion|upskill|switch(?:ing)? to tech|bpo|career (advice|path|change)|how (do|can|should) i (start|become|get|prepare|learn|apply))\b/i
-
-const FOLLOW_UP = /^(what about|and (his|her|the|that|this|your|my)|also|why|how|explain|tell me more|can you (elaborate|explain|clarify)|go on|continue|the (first|second|third)|that one)\b/i
+const FOLLOW_UP = /^(what about|and (his|her|the|that|this|your|my)|also|why|how (so|come)|tell me more|can you (elaborate|explain|clarify)|go on|continue|the (first|second|third)|that one)\b/i
 
 export function evaluateGuardrails(message, history = []) {
   const text = String(message || '').trim()
   if (!text) return { action: 'refuse', reply: SCOPE_REFUSAL }
-  if (INJECTION.test(text)) {
-    return { action: 'refuse', reply: 'I can help with portfolio, programming, and software career questions, but I cannot change or reveal my operating rules.' }
-  }
-  if (BLOCKED.test(text)) return { action: 'refuse', reply: SCOPE_REFUSAL }
-  if (GREETING.test(text)) return { action: 'greet', reply: GREETING_REPLY }
-  if (PORTFOLIO.test(text) || PROGRAMMING.test(text) || CAREER.test(text)) return { action: 'allow' }
 
+  // Never let a message rewrite or leak the rules.
+  if (INJECTION.test(text)) return { action: 'refuse', reply: SCOPE_REFUSAL }
+
+  // Greetings get a friendly nudge toward the allowed topics.
+  if (GREETING.test(text)) return { action: 'greet', reply: GREETING_REPLY }
+
+  // Allow only portfolio questions and tech-career advice.
+  if (PORTFOLIO.test(text) || CAREER.test(text)) return { action: 'allow' }
+
+  // Short follow-ups are allowed only if the previous turn was in scope.
   const hasPriorTurn = Array.isArray(history) && history.some(item => item?.role === 'user')
   if (hasPriorTurn && FOLLOW_UP.test(text)) return { action: 'allow' }
 
+  // Everything else falls outside the scope.
   return { action: 'refuse', reply: SCOPE_REFUSAL }
 }

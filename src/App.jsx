@@ -1,14 +1,15 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, lazy, Suspense } from 'react'
 import Nav from './components/Nav'
-// import Loader from './components/Loader'
 import Hero from './components/Hero'
 import AboutSection from './components/AboutSection'
 import Projects from './components/Projects'
-import Articles from './components/Articles'
 import Certifications from './components/Certifications'
 import Footer from './components/Footer'
-import Chat from './components/Chat'
+import Cursor from './components/Cursor'
 import './App.css'
+
+// Chat widget is not needed for first paint; load it separately
+const Chat = lazy(() => import('./components/Chat'))
 
 function getInitialTheme() {
   const saved = localStorage.getItem('portfolio-theme')
@@ -25,29 +26,35 @@ function App() {
     localStorage.setItem('portfolio-theme', theme)
   }, [theme])
 
-  const toggleTheme = () => setTheme(t => t === 'dark' ? 'light' : 'dark')
+  // Smooth cross-fade via the View Transitions API where supported
+  const toggleTheme = () => {
+    const next = () => setTheme(t => (t === 'dark' ? 'light' : 'dark'))
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (document.startViewTransition && !reduceMotion) document.startViewTransition(next)
+    else next()
+  }
 
   return (
-    <>
-      {/* Loader intro commented out — show main content directly */}
-      {/* {!loaded && <Loader onDone={() => setLoaded(true)} />} */}
-      <div className="app" style={{ opacity: 1 }}>
-        {/* Nav shows on scroll — contains theme toggle */}
-        <Nav theme={theme} toggleTheme={toggleTheme} />
+    <div className="app">
+      {/* Custom cursor overlay — mouse users only; no-ops on touch */}
+      <Cursor />
 
-        <main>
-          <Hero theme={theme} toggleTheme={toggleTheme} />
-          <AboutSection />
-          <Projects />
-          <Articles />
-          <Certifications />
-        </main>
-        <Footer />
+      {/* Nav shows on scroll; theme is toggled by clicking the hero photo */}
+      <Nav />
 
-        {/* AI Chat — bottom right */}
+      <main>
+        <Hero theme={theme} toggleTheme={toggleTheme} />
+        <AboutSection />
+        <Projects />
+        <Certifications />
+      </main>
+      <Footer />
+
+      {/* AI Chat — bottom right */}
+      <Suspense fallback={null}>
         <Chat />
-      </div>
-    </>
+      </Suspense>
+    </div>
   )
 }
 

@@ -1,0 +1,74 @@
+/* Custom cursor overlay. Only active when body.has-custom-cursor is set
+   (fine pointer + motion allowed), so touch users keep the native cursor. */
+
+.cursor-dot,
+.cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0;
+  /* translate(-50%,-50%) centers the element on the pointer;
+     the JS sets the translate() and we combine via a nested transform */
+  margin-left: 0;
+  will-change: transform, opacity;
+}
+
+/* Center each element on its transform origin */
+.cursor-dot { margin: -3px 0 0 -3px; }
+.cursor-ring { margin: -18px 0 0 -18px; }
+
+.cursor-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  transition: opacity 0.25s ease;
+}
+
+.cursor-ring {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1.5px solid color-mix(in srgb, var(--accent) 60%, transparent);
+  transition: opacity 0.25s ease,
+              width 0.22s var(--ease-out),
+              height 0.22s var(--ease-out),
+              margin 0.22s var(--ease-out),
+              background 0.22s var(--ease-out),
+              border-color 0.22s var(--ease-out);
+}
+
+/* Grow + soft fill over interactive elements */
+.cursor-ring--hover {
+  width: 56px;
+  height: 56px;
+  margin: -28px 0 0 -28px;
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+  border-color: var(--accent);
+}
+
+/* Quick squeeze on press */
+.cursor-ring--down {
+  width: 28px;
+  height: 28px;
+  margin: -14px 0 0 -14px;
+}
+
+/* Hide the native cursor only when our custom one is running */
+body.has-custom-cursor,
+body.has-custom-cursor * {
+  cursor: none !important;
+}
+
+/* Extra safety: never show on coarse pointers even if class lingers */
+@media (pointer: coarse) {
+  .cursor-dot,
+  .cursor-ring { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cursor-dot,
+  .cursor-ring { display: none; }
+}

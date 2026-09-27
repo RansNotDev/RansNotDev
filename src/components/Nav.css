@@ -113,29 +113,15 @@
 .nav__actions {
   display: flex;
   align-items: center;
+  justify-content: flex-end;
   gap: 0.5rem;
   flex-shrink: 0;
 }
 
-.nav__theme-toggle {
-  background: var(--bg-elevated);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-md);
-  color: var(--text-muted);
-  width: 36px;
-  height: 36px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  flex-shrink: 0;
-  transition: all var(--duration-normal) var(--ease-out);
-}
-
-.nav__theme-toggle:hover {
-  border-color: var(--border-hover);
-  color: var(--text);
-  transform: scale(1.05);
+/* Equal-width side columns keep the links centered now that the right side is empty on desktop */
+.nav__brand,
+.nav__actions {
+  flex: 1 1 0;
 }
 
 /* ── Hamburger (mobile only) ── */

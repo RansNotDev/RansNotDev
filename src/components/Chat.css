@@ -360,10 +360,19 @@
 /* ── Responsive ── */
 @media (max-width: 480px) {
   .chat-window {
-    right: 0.75rem;
-    left: 0.75rem;
+    right: 0.6rem;
+    left: 0.6rem;
     width: auto;
-    bottom: 5rem;
-    max-height: 70vh;
+    bottom: calc(max(0.75rem, env(safe-area-inset-bottom)) + 3.75rem);
+    max-height: min(560px, calc(100dvh - 6rem));
   }
+}
+
+/* Short / landscape phones: keep the window from clipping */
+@media (max-height: 520px) {
+  .chat-window {
+    max-height: calc(100dvh - 5rem);
+    bottom: calc(max(0.5rem, env(safe-area-inset-bottom)) + 3.5rem);
+  }
+  .chat-suggestions { display: none; }
 }
