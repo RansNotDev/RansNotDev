@@ -39,8 +39,8 @@ function App() {
       {/* Custom cursor overlay — mouse users only; no-ops on touch */}
       <Cursor />
 
-      {/* Nav shows on scroll; theme is toggled by clicking the hero photo */}
-      <Nav />
+      {/* Top Nav with active tracking and explicit theme toggle */}
+      <Nav theme={theme} toggleTheme={toggleTheme} />
 
       <main>
         <Hero theme={theme} toggleTheme={toggleTheme} />

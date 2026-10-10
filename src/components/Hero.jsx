@@ -4,9 +4,9 @@ import { socialLinks } from '../data/socials'
 import './Hero.css'
 
 const focusAreas = [
-  { label: 'Consultant Migration Architect', detail: 'Investigation, Mapping, validation, cleansing', icon: 'flow' },
-  { label: 'Web Applications', detail: 'Accessible, responsive interfaces', icon: 'code' },
-  { label: 'Data Quality', detail: 'Reliable workflows and checks', icon: 'check' },
+  { label: 'SAP Data Migration', detail: 'Source-to-target mapping, validation, & cleansing', icon: 'flow' },
+  { label: 'Full-Stack Web Apps', detail: 'Resilient interfaces, APIs, & relational databases', icon: 'code' },
+  { label: 'Enterprise Data Quality', detail: 'Auditing, reconciliation, & ETL pipelines', icon: 'check' },
 ]
 
 const MAX_TILT = 12 // degrees
@@ -48,20 +48,24 @@ export default function Hero({ theme = 'dark', toggleTheme }) {
       <div className="hero__layout">
         <div className="hero__intro">
           <p className="hero__tagline">
-            Investigate <span aria-hidden="true">•</span> BUILD <span aria-hidden="true">•</span> Migrate  <span aria-hidden="true">•</span>
+            Enterprise Data Migration <span aria-hidden="true">•</span> Web Applications <span aria-hidden="true">•</span> Data Quality
           </p>
           <h1 className="hero__title">Hi, I'm<br/><em>Rany Templado</em></h1>
-          <p className="hero__role">I'm passionate about researching, building systems, and learning new technology.</p>
-          <p className="hero__summary">As an Associate Software Engineer, Im a Consultant Migration Architect and also i build practical web apps turning real-world problems into software business can rely on.</p>
+          <p className="hero__role">Associate Software Engineer specializing in SAP Data Migration & full-stack web applications.</p>
+          <p className="hero__summary">
+            Transforming messy enterprise data into verified, production-grade systems. With roots in customer support and high-volume data operations, I engineer automated migration pipelines and resilient web apps designed for auditability, precision, and zero operational surprises.
+          </p>
           <div className="hero__actions">
-            <a href="#projects" className="hero__action hero__action--primary">View my work <span aria-hidden="true">↘</span></a>
+            <a href="#projects" className="hero__action hero__action--primary">Explore Selected Work <span aria-hidden="true">↘</span></a>
+            <a href="#about" className="hero__action">Engineering Approach <span aria-hidden="true">→</span></a>
+            <a href="/Rany_Boy_Templado_Resume.pdf" target="_blank" rel="noopener noreferrer" className="hero__action hero__action--resume">Résumé (PDF) <span aria-hidden="true">↗</span></a>
           </div>
         </div>
 
         <aside className="hero__visual" aria-label="Profile">
           <div className="hero__practice-card">
-            <span className="hero__practice-label">Primary practice</span>
-            <span className="hero__practice-role">Associate Software Engineer</span>
+            <span className="hero__practice-label">Engineering Focus</span>
+            <span className="hero__practice-role">SAP Data Migration & Full-Stack</span>
           </div>
 
           <div

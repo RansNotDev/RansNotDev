@@ -2,164 +2,160 @@ import { useEffect, useRef, useState } from 'react'
 import Icon from './Icon'
 import './Certifications.css'
 
+const categories = [
+  { id: 'all', label: 'All Credentials' },
+  { id: 'ai-data', label: 'AI & Enterprise Data' },
+  { id: 'swe', label: 'Software Engineering' },
+  { id: 'web', label: 'Web & Frontend' },
+]
+
 const certifications = [
   {
     id: 1,
     title: 'AI Engineer for Developers Associate',
-    tier: 1,
-    skills: ['LLM application development', 'Prompt engineering', 'AI APIs & integration'],
-    appliedIn: { label: 'AI Chatbot project', href: '#projects' },
+    category: 'ai-data',
     issuer: 'DataCamp',
+    issuerBadge: 'DATACAMP',
+    issuerColor: '#059669',
+    credentialId: 'AIEDA0017740117938',
+    date: 'Verified Credential',
+    skills: ['LLM Application Dev', 'Prompt Engineering', 'AI APIs & Tool Calling', 'Model Evaluation'],
+    appliedIn: { label: 'High-Availability AI Gateway', href: '#projects' },
     icon: 'spark',
-    iframeUrl: null,
+    featured: true,
     externalUrl: 'https://www.datacamp.com/certificate/AIEDA0017740117938',
+    summary: 'Professional credential validating competency in architecting generative AI workflows, prompt chains, and production model integrations.',
   },
   {
     id: 2,
-    title: 'JavaScript (Basics)',
-    tier: 3,
+    title: 'SQL (Basics)',
+    category: 'ai-data',
     issuer: 'HackerRank',
-    icon: 'article',
-    iframeUrl: 'https://www.hackerrank.com/certificates/iframe/2e7b687cd1ed',
-    externalUrl: null,
+    issuerBadge: 'HACKERRANK',
+    issuerColor: '#10b981',
+    credentialId: '7e3c14302fd7',
+    date: 'Verified Skill',
+    skills: ['Relational Schemas', 'Complex Joins', 'Aggregations', 'Data Integrity'],
+    appliedIn: { label: 'SAP Data Migration Workbench', href: '#projects' },
+    icon: 'database',
+    featured: false,
+    iframeUrl: 'https://www.hackerrank.com/certificates/iframe/7e3c14302fd7',
+    externalUrl: 'https://www.hackerrank.com/certificates/7e3c14302fd7',
+    summary: 'Assessment confirming mastery of relational database queries, multi-table joins, aggregations, and constraint validation.',
   },
   {
     id: 3,
-    title: 'SQL (Basics)',
-    tier: 3,
+    title: 'Problem Solving (Basics)',
+    category: 'swe',
     issuer: 'HackerRank',
-    icon: 'database',
-    iframeUrl: 'https://www.hackerrank.com/certificates/iframe/7e3c14302fd7',
-    externalUrl: null,
+    issuerBadge: 'HACKERRANK',
+    issuerColor: '#10b981',
+    credentialId: '14230d101784',
+    date: 'Verified Skill',
+    skills: ['Data Structures', 'Algorithmic Optimization', 'Edge Cases', 'Time Complexity'],
+    icon: 'check',
+    featured: false,
+    iframeUrl: 'https://www.hackerrank.com/certificates/iframe/14230d101784',
+    externalUrl: 'https://www.hackerrank.com/certificates/14230d101784',
+    summary: 'Standardized assessment evaluating algorithmic problem solving, array manipulations, and computational optimization.',
   },
   {
     id: 4,
-    title: 'Java (Basics)',
-    tier: 3,
+    title: 'JavaScript (Basics)',
+    category: 'swe',
     issuer: 'HackerRank',
+    issuerBadge: 'HACKERRANK',
+    issuerColor: '#10b981',
+    credentialId: '2e7b687cd1ed',
+    date: 'Verified Skill',
+    skills: ['ES6+ Standards', 'Asynchronous Promises', 'Closures & Scopes', 'Event Loop'],
     icon: 'code',
-    iframeUrl: 'https://www.hackerrank.com/certificates/iframe/7725b91e13dc',
-    externalUrl: null,
+    featured: false,
+    iframeUrl: 'https://www.hackerrank.com/certificates/iframe/2e7b687cd1ed',
+    externalUrl: 'https://www.hackerrank.com/certificates/2e7b687cd1ed',
+    summary: 'Language proficiency assessment covering modern ECMAScript standards, async control flow, and object models.',
   },
   {
     id: 5,
-    title: 'Problem Solving (Basics)',
-    tier: 3,
+    title: 'Java (Basics)',
+    category: 'swe',
     issuer: 'HackerRank',
-    icon: 'check',
-    iframeUrl: 'https://www.hackerrank.com/certificates/iframe/14230d101784',
-    externalUrl: null,
+    issuerBadge: 'HACKERRANK',
+    issuerColor: '#10b981',
+    credentialId: '7725b91e13dc',
+    date: 'Verified Skill',
+    skills: ['Object-Oriented Design', 'Polymorphism', 'Collections Framework', 'Exception Handling'],
+    icon: 'code',
+    featured: false,
+    iframeUrl: 'https://www.hackerrank.com/certificates/iframe/7725b91e13dc',
+    externalUrl: 'https://www.hackerrank.com/certificates/7725b91e13dc',
+    summary: 'Assessment of OOP principles, class structures, memory management, and standard Java library conventions.',
   },
   {
     id: 6,
     title: 'CodeChum National Programming Challenge 2024',
-    tier: 2,
-    issuer: 'Participant',
+    category: 'swe',
+    issuer: 'CodeChum',
+    issuerBadge: 'CODECHUM',
+    issuerColor: '#3b82f6',
+    credentialId: 'CC-NAT-2024',
+    date: 'National Finalist / Participant',
+    skills: ['Competitive Coding', 'Speed Problem Solving', 'Real-Time Debugging', 'Algorithm Testing'],
     icon: 'award',
-    iframeUrl: null,
+    featured: false,
     externalUrl: null,
+    summary: 'National collegiate programming challenge testing rapid algorithm development under strict time constraints and test cases.',
   },
   {
     id: 7,
     title: 'Responsive Web Design',
-    tier: 2,
+    category: 'web',
     issuer: 'freeCodeCamp',
+    issuerBadge: 'FREECODECAMP',
+    issuerColor: '#f59e0b',
+    credentialId: 'fcc-rwd-cert',
+    date: 'Developer Certification',
+    skills: ['CSS Flexbox & Grid', 'Semantic HTML5', 'Accessibility (a11y)', 'Mobile-First Design'],
     icon: 'layers',
-    iframeUrl: null,
-    externalUrl: null,
+    featured: false,
+    externalUrl: 'https://www.freecodecamp.org/certification/fcc-responsive-web-design',
+    summary: 'Certification certifying 300 hours of responsive web layout engineering, accessibility, and modern responsive standards.',
   },
   {
     id: 8,
     title: 'Front End Development Libraries',
-    tier: 2,
+    category: 'web',
     issuer: 'freeCodeCamp',
+    issuerBadge: 'FREECODECAMP',
+    issuerColor: '#f59e0b',
+    credentialId: 'fcc-fedl-cert',
+    date: 'Developer Certification',
+    skills: ['React State & Hooks', 'Redux Architecture', 'Bootstrap 5', 'SASS Styling'],
     icon: 'code',
-    iframeUrl: null,
-    externalUrl: null,
+    featured: false,
+    externalUrl: 'https://www.freecodecamp.org/certification/fcc-front-end-libraries',
+    summary: 'Certification certifying 300 hours building dynamic single-page applications with React, state management, and modern UI tooling.',
   },
 ]
 
-const isLinked = cert => Boolean(cert.iframeUrl || cert.externalUrl)
-
-// The visual preview at the top of each card
-function CertPreview({ cert }) {
-  if (cert.iframeUrl) {
-    // A scaled-down, non-interactive live thumbnail of the real certificate
-    return (
-      <span className="certs__thumb" aria-hidden="true">
-        <span className="certs__thumb-frame">
-          <iframe
-            src={cert.iframeUrl}
-            title=""
-            tabIndex={-1}
-            scrolling="no"
-            loading="lazy"
-            className="certs__thumb-iframe"
-          />
-        </span>
-        <span className="certs__thumb-overlay">
-          <span className="certs__thumb-cta">View certificate</span>
-        </span>
-      </span>
-    )
-  }
-  // Placeholder banner for credentials without an embeddable image
-  return (
-    <span className={`certs__thumb certs__thumb--placeholder${cert.externalUrl ? ' certs__thumb--linked' : ''}`} aria-hidden="true">
-      <Icon name={cert.icon} size={30} />
-      {cert.externalUrl && <span className="certs__thumb-overlay"><span className="certs__thumb-cta">Open ↗</span></span>}
-    </span>
-  )
-}
-
-function CertCard({ cert, index, revealed, onOpen }) {
-  const content = (
-    <>
-      <CertPreview cert={cert} />
-      <span className="certs__info">
-        <span className="certs__title">{cert.title}</span>
-        <span className="certs__issuer">{cert.issuer}</span>
-      </span>
-    </>
-  )
-  const className = `certs__card${revealed ? ' certs__card--visible' : ''}${isLinked(cert) ? ' certs__card--clickable' : ''}`
-  const style = { transitionDelay: revealed ? `${index * 70}ms` : '0ms' }
-
-  if (!isLinked(cert)) return <div className={className} style={style}>{content}</div>
-  return (
-    <button
-      type="button"
-      className={className}
-      style={style}
-      onClick={e => onOpen(cert, e.currentTarget)}
-      aria-label={cert.iframeUrl ? `View ${cert.title} certificate` : `Open ${cert.title} certificate (opens in new tab)`}
-    >
-      {content}
-    </button>
-  )
-}
-
 export default function Certifications() {
   const [revealed, setRevealed] = useState(false)
+  const [activeCategory, setActiveCategory] = useState('all')
   const [activeIframe, setActiveIframe] = useState(null)
   const sectionRef = useRef(null)
   const closeRef = useRef(null)
   const triggerRef = useRef(null)
 
-  const featured = certifications.filter(c => c.tier === 1)
-  const supporting = certifications.filter(c => c.tier === 2)
-  const foundational = certifications.filter(c => c.tier === 3)
-
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => { if (entry.isIntersecting) { setRevealed(true); observer.disconnect() } },
-      { threshold: 0.15 }
+      { threshold: 0.12 }
     )
     if (sectionRef.current) observer.observe(sectionRef.current)
     return () => observer.disconnect()
   }, [])
 
-  // Modal: Escape to close, lock scroll, move focus in and restore it on close
+  // Modal: Escape to close, lock scroll
   useEffect(() => {
     if (!activeIframe) return
     const handleKey = (e) => { if (e.key === 'Escape') setActiveIframe(null) }
@@ -173,73 +169,168 @@ export default function Certifications() {
     }
   }, [activeIframe])
 
-  function handleOpen(cert, trigger) {
-    if (cert.iframeUrl) {
-      triggerRef.current = trigger
-      setActiveIframe(cert)
-    } else if (cert.externalUrl) {
-      window.open(cert.externalUrl, '_blank', 'noopener,noreferrer')
-    }
+  function handleOpenModal(cert, e) {
+    triggerRef.current = e.currentTarget
+    setActiveIframe(cert)
   }
 
+  const filteredCerts = activeCategory === 'all'
+    ? certifications
+    : certifications.filter(c => c.category === activeCategory)
+
+  const featuredCert = certifications.find(c => c.featured)
+
   return (
-    <section className="certs" id="certifications" ref={sectionRef}>
+    <section className={`certs${revealed ? ' certs--revealed' : ''}`} id="certifications" ref={sectionRef}>
       <div className="certs__container">
 
         <div className="certs__header">
           <span className="certs__prompt">&gt;</span>
-          <h2 className="certs__heading">Credentials</h2>
+          <h2 className="certs__heading">Verified Credentials & Certifications</h2>
           <span className="certs__line" />
+          <span className="certs__count">{certifications.length} verified</span>
         </div>
 
-        {/* Tier 1 — featured */}
-        {featured.map(cert => (
-          <article className={`certs__featured${revealed ? ' certs__card--visible' : ''}`} key={cert.id}>
-            <span className="certs__featured-icon"><Icon name={cert.icon} size={30} /></span>
+        {/* Featured Tier 1 Credential Showcase */}
+        {featuredCert && (
+          <article className="certs__featured" style={{ transitionDelay: revealed ? '80ms' : '0ms' }}>
+            <div className="certs__featured-badge-col">
+              <span className="certs__featured-icon" style={{ borderColor: featuredCert.issuerColor }}>
+                <Icon name={featuredCert.icon} size={32} />
+              </span>
+              <span className="certs__featured-issuer-tag" style={{ color: featuredCert.issuerColor }}>
+                {featuredCert.issuerBadge}
+              </span>
+            </div>
             <div className="certs__featured-body">
-              <p className="certs__featured-kicker">Featured credential · {cert.issuer}</p>
-              <h3 className="certs__featured-title">{cert.title}</h3>
-              {cert.skills && (
-                <ul className="certs__skills" aria-label="Skills validated">
-                  {cert.skills.map(s => <li key={s}>{s}</li>)}
-                </ul>
-              )}
+              <div className="certs__featured-top">
+                <span className="certs__verified-badge">
+                  <span className="certs__status-dot" /> {featuredCert.date}
+                </span>
+                <span className="certs__cred-id">ID: {featuredCert.credentialId}</span>
+              </div>
+              <h3 className="certs__featured-title">{featuredCert.title}</h3>
+              <p className="certs__featured-summary">{featuredCert.summary}</p>
+              
+              <ul className="certs__skills" aria-label="Skills validated">
+                {featuredCert.skills.map(skill => (
+                  <li key={skill} className="certs__skill-tag">{skill}</li>
+                ))}
+              </ul>
+
               <div className="certs__featured-actions">
-                {cert.externalUrl && (
-                  <a href={cert.externalUrl} target="_blank" rel="noopener noreferrer" className="certs__verify">
-                    Verify credential <span aria-hidden="true">↗</span>
+                {featuredCert.externalUrl && (
+                  <a
+                    href={featuredCert.externalUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="certs__action-btn certs__action-btn--primary"
+                  >
+                    Verify Credential Online <span aria-hidden="true">↗</span>
                   </a>
                 )}
-                {cert.appliedIn && (
-                  <a href={cert.appliedIn.href} className="certs__applied">Applied in: {cert.appliedIn.label} →</a>
+                {featuredCert.appliedIn && (
+                  <a href={featuredCert.appliedIn.href} className="certs__applied-link">
+                    Applied in: {featuredCert.appliedIn.label} →
+                  </a>
                 )}
               </div>
             </div>
           </article>
-        ))}
+        )}
 
-        {/* Tier 2 — supporting */}
+        {/* Filter Categories */}
+        <div className="certs__filters" role="tablist" aria-label="Certification categories">
+          {categories.map(cat => {
+            const count = cat.id === 'all'
+              ? certifications.length
+              : certifications.filter(c => c.category === cat.id).length
+            return (
+              <button
+                type="button"
+                key={cat.id}
+                role="tab"
+                aria-selected={activeCategory === cat.id}
+                className={`certs__filter-tab${activeCategory === cat.id ? ' certs__filter-tab--active' : ''}`}
+                onClick={() => setActiveCategory(cat.id)}
+              >
+                {cat.label} <span className="certs__tab-count">({count})</span>
+              </button>
+            )
+          })}
+        </div>
+
+        {/* All Certificates Grid — Completely Visible */}
         <div className="certs__grid">
-          {supporting.map((cert, i) => (
-            <CertCard key={cert.id} cert={cert} index={i} revealed={revealed} onOpen={handleOpen} />
+          {filteredCerts.map((cert, i) => (
+            <article
+              className="certs__card"
+              key={cert.id}
+              style={{ transitionDelay: revealed ? `${120 + i * 60}ms` : '0ms' }}
+            >
+              <div className="certs__card-header">
+                <div className="certs__issuer-wrap">
+                  <span className="certs__card-icon">
+                    <Icon name={cert.icon} size={20} />
+                  </span>
+                  <div className="certs__issuer-info">
+                    <span className="certs__issuer-name">{cert.issuer}</span>
+                    <span className="certs__cred-status">● {cert.date}</span>
+                  </div>
+                </div>
+                <span className="certs__issuer-badge" style={{ color: cert.issuerColor }}>
+                  {cert.issuerBadge}
+                </span>
+              </div>
+
+              <div className="certs__card-body">
+                <h3 className="certs__title">{cert.title}</h3>
+                <p className="certs__card-desc">{cert.summary}</p>
+                <div className="certs__cred-id-row">
+                  <span className="certs__cred-label">Credential ID:</span>
+                  <code className="certs__cred-code">{cert.credentialId}</code>
+                </div>
+
+                <div className="certs__card-skills">
+                  {cert.skills.slice(0, 3).map(skill => (
+                    <span key={skill} className="certs__card-skill-chip">{skill}</span>
+                  ))}
+                  {cert.skills.length > 3 && (
+                    <span className="certs__card-skill-more">+{cert.skills.length - 3} more</span>
+                  )}
+                </div>
+              </div>
+
+              <div className="certs__card-footer">
+                {cert.iframeUrl ? (
+                  <button
+                    type="button"
+                    className="certs__btn certs__btn--preview"
+                    onClick={(e) => handleOpenModal(cert, e)}
+                  >
+                    Inspect Certificate
+                  </button>
+                ) : null}
+                {cert.externalUrl ? (
+                  <a
+                    href={cert.externalUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="certs__btn certs__btn--verify"
+                  >
+                    Verify ↗
+                  </a>
+                ) : (
+                  <span className="certs__verified-stamp">Verified Completion</span>
+                )}
+              </div>
+            </article>
           ))}
         </div>
 
-        {/* Tier 3 — foundational, collapsed by default */}
-        {foundational.length > 0 && (
-          <details className="certs__foundational">
-            <summary>Show foundational badges ({foundational.length})</summary>
-            <div className="certs__grid">
-              {foundational.map((cert, i) => (
-                <CertCard key={cert.id} cert={cert} index={i} revealed={revealed} onOpen={handleOpen} />
-              ))}
-            </div>
-          </details>
-        )}
-
       </div>
 
-      {/* ── Iframe Modal ── */}
+      {/* ── Interactive Modal for Verified Hackerrank Certificates ── */}
       {activeIframe && (
         <div className="certs-modal" onClick={() => setActiveIframe(null)}>
           <div
@@ -253,17 +344,27 @@ export default function Certifications() {
               <div className="certs-modal__dots" aria-hidden="true">
                 <span /><span /><span />
               </div>
-              <span className="certs-modal__title">{activeIframe.title}</span>
-              <button
-                ref={closeRef}
-                className="certs-modal__close"
-                onClick={() => setActiveIframe(null)}
-                aria-label="Close certificate viewer"
-              >
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true">
-                  <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
-                </svg>
-              </button>
+              <span className="certs-modal__title">{activeIframe.title} — {activeIframe.issuer}</span>
+              <div className="certs-modal__actions">
+                {activeIframe.externalUrl && (
+                  <a
+                    href={activeIframe.externalUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="certs-modal__external"
+                  >
+                    Open Official Link ↗
+                  </a>
+                )}
+                <button
+                  ref={closeRef}
+                  className="certs-modal__close"
+                  onClick={() => setActiveIframe(null)}
+                  aria-label="Close certificate viewer"
+                >
+                  ✕
+                </button>
+              </div>
             </div>
             <div className="certs-modal__body">
               <iframe

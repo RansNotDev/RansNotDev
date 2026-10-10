@@ -6,23 +6,24 @@
   bottom: max(1.25rem, env(safe-area-inset-bottom));
   right: max(1.25rem, env(safe-area-inset-right));
   z-index: 200;
-  width: 52px;
-  height: 52px;
+  width: 56px;
+  height: 56px;
   border-radius: 50%;
-  background: var(--accent-2);
-  border: none;
+  background: var(--bg-elevated, #161828);
+  border: 1.5px solid rgba(124, 127, 245, 0.4);
   color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  box-shadow: 0 4px 20px rgba(99,102,241,0.3);
+  box-shadow: 0 4px 20px rgba(99,102,241,0.35), 0 0 14px rgba(99,102,241,0.2);
   transition: all var(--duration-normal) var(--ease-out);
 }
 
 .chat-fab:hover {
   transform: scale(1.08);
-  box-shadow: 0 6px 28px rgba(99,102,241,0.45);
+  border-color: #34d399;
+  box-shadow: 0 6px 28px rgba(99,102,241,0.5), 0 0 16px rgba(52,211,153,0.3);
 }
 
 .chat-fab--open {
@@ -39,16 +40,20 @@
 
 .chat-fab__badge {
   position: absolute;
-  top: -3px;
-  right: -3px;
-  background: var(--success);
-  color: #000;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.46rem;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #090c15;
+  color: #34d399;
+  border: 1px solid rgba(52, 211, 153, 0.4);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
   font-weight: 700;
-  padding: 0.1rem 0.28rem;
-  border-radius: 4px;
-  letter-spacing: 0.04em;
+  padding: 0.08rem 0.4rem;
+  border-radius: 999px;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
 }
 
 /* ══════════════════════════════════════
@@ -60,8 +65,8 @@
   right: max(1.25rem, env(safe-area-inset-right));
   left: auto;
   z-index: 199;
-  width: min(380px, calc(100vw - 2rem));
-  max-height: min(540px, calc(100dvh - 7rem));
+  width: min(390px, calc(100vw - 2rem));
+  max-height: min(560px, calc(100dvh - 7rem));
   background: var(--bg);
   border: 1px solid var(--border);
   border-radius: var(--radius-xl);
@@ -104,7 +109,7 @@
   border-radius: 50%;
   background: linear-gradient(135deg, var(--accent-2), var(--gradient-end));
   color: #fff;
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: var(--font-display);
   font-weight: 700;
   font-size: 0.85rem;
   display: flex;
@@ -113,21 +118,38 @@
   flex-shrink: 0;
 }
 
+.chat-header__title-row {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
 .chat-header__name {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.85rem;
   font-weight: 600;
   color: var(--text);
   line-height: 1.2;
 }
 
+.chat-header__gateway-tag {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  color: var(--accent);
+  background: var(--accent-soft);
+  padding: 0.1rem 0.35rem;
+  border-radius: 3px;
+  border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+}
+
 .chat-header__status {
-  font-family: 'Inter', sans-serif;
-  font-size: 0.66rem;
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
   color: var(--text-dim);
   display: flex;
   align-items: center;
   gap: 0.3rem;
+  margin-top: 0.15rem;
 }
 
 .chat-header__dot {
@@ -180,13 +202,21 @@
   flex-direction: row-reverse;
 }
 
+.chat-msg__avatar-wrap {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2px;
+}
+
 .chat-msg__avatar {
   width: 24px;
   height: 24px;
   border-radius: 50%;
   background: linear-gradient(135deg, var(--accent-2), var(--gradient-end));
   color: #fff;
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: var(--font-display);
   font-weight: 700;
   font-size: 0.58rem;
   display: flex;
@@ -214,7 +244,7 @@
 }
 
 .chat-msg__text {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.8rem;
   line-height: 1.65;
   color: var(--text);
@@ -267,7 +297,7 @@
 }
 
 .chat-suggestion {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.7rem;
   font-weight: 500;
   color: var(--accent);
@@ -303,7 +333,7 @@
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
   padding: 0.5rem 0.75rem;
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.8rem;
   color: var(--text);
   outline: none;

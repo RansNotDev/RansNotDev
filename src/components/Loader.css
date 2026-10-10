@@ -27,7 +27,7 @@
   display: flex;
   align-items: baseline;
   gap: 0.1rem;
-  font-family: 'Space Grotesk', 'Inter', sans-serif;
+  font-family: var(--font-display);
   font-size: clamp(1.8rem, 5vw, 2.6rem);
   font-weight: 700;
   letter-spacing: -0.02em;
@@ -38,7 +38,7 @@
 }
 
 .loader__brand-cursor {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: var(--font-mono);
   color: #7c7ff5;
   font-size: 0.85em;
   animation: cursor-blink 1s step-end infinite;
@@ -50,7 +50,7 @@
 }
 
 .loader__brand-dots {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: var(--font-mono);
   color: rgba(255,255,255,0.25);
   font-size: 0.7em;
   letter-spacing: 0.1em;
@@ -71,7 +71,7 @@
 
 /* ── Subtitle ── */
 .loader__subtitle {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 0.75rem;
   color: rgba(124,127,245,0.6);
   letter-spacing: 0.04em;
@@ -80,7 +80,7 @@
 
 /* ── Terminal log ── */
 .loader__log {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 0.78rem;
   display: flex;
   flex-direction: column;
@@ -149,13 +149,13 @@
 }
 
 .loader__pct {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 0.7rem;
   color: rgba(200,200,230,0.35);
 }
 
 .loader__status {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 0.7rem;
   color: rgba(124,127,245,0.5);
 }

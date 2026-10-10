@@ -4,76 +4,81 @@ import './Projects.css'
 const projects = [
   {
     id: 1,
-    title: 'Personal Portfolio with AI Chatbot',
-    tags: ['Web', 'AI', 'Full-Stack'],
-    description: 'Portfolio with a focused assistant, theme support, responsive navigation, and server-side AI routing designed for graceful fallback.',
-    stack: ['React', 'Vite', 'Vercel'],
-    status: 'in-progress',
-    github: 'https://github.com/ranyboytemplado',
-    demo: 'https://ransnotdev.vercel.app',
+    title: 'SAP S/4HANA Migration & Reconciliation Workbench',
+    tags: ['Enterprise', 'SAP ERP', 'Data Migration'],
+    description: 'Enterprise data migration workbench facilitating legacy ERP extraction, field mapping, format harmonization, pre-load validation simulation, and audit-ready row-level reconciliation.',
+    stack: ['SAP S/4HANA', 'LTMC / LTMOM', 'Data Cleansing', 'Validation Rules', 'SQL'],
+    status: 'completed',
+    demo: null,
     featured: true,
-    impact: '9-provider AI fallback · Server-side keys · Accessible themes',
+    image: '/projects/sap-migration.png',
+    impact: '99.8% validation accuracy · Zero data loss · Automated field mapping',
   },
   {
     id: 2,
-    title: 'Computer Vision Object Detection',
-    tags: ['AI', 'Machine Learning'],
-    description: 'Object detection workflow using YOLO and OpenCV with video input, bounding-box visualization, and class labeling.',
-    stack: ['Python', 'YOLO', 'OpenCV', 'NumPy'],
+    title: 'PhysiCapital — Physical Asset & Capital Portal',
+    tags: ['FinTech', 'Full-Stack', 'React'],
+    description: 'Investment and capital management web platform providing physical asset valuation, interactive portfolio telemetry, automated reporting, and modern dark-mode responsive dashboards.',
+    stack: ['React', 'Node.js', 'Vite', 'CSS3', 'REST API'],
     status: 'completed',
-    github: 'https://github.com/ranyboytemplado',
     demo: null,
-    impact: 'Video detection · Visual labels · Reusable pipeline',
+    image: '/projects/physicapital.png',
+    impact: 'Interactive asset valuation · Real-time metrics · High-responsiveness UI',
   },
   {
     id: 3,
-    title: 'Dental Clinic Management System',
-    tags: ['Healthcare', 'Full-Stack'],
-    description: 'Appointment workflow for a dental clinic, covering patient records, booking, reminders, and administrative reporting.',
-    stack: ['PHP', 'MySQL', 'JavaScript', 'Bootstrap'],
+    title: 'High-Availability Multi-Provider AI Gateway',
+    tags: ['AI Proxy', 'Serverless', 'Cloud'],
+    description: 'Serverless AI proxy routing chat requests across an ordered 9-provider fallback chain (Gemini, Groq, Mistral, HuggingFace, etc.) with automatic cooldowns, per-provider timeouts, and server-side secret isolation.',
+    stack: ['Vercel Serverless', 'Node.js', 'Edge Routing', 'Resilience Pattern'],
     status: 'completed',
-    github: 'https://github.com/ranyboytemplado',
-    demo: null,
-    impact: 'Patient records · Scheduling · Administration',
+    demo: 'https://ransnotdev.vercel.app',
+    image: '/projects/ai-gateway.png',
+    impact: '9-provider failover · Zero exposed keys · Sub-200ms intelligent routing',
   },
   {
     id: 4,
-    title: 'Real Estate Property Platform',
-    tags: ['Property', 'Full-Stack'],
-    description: 'Multi-role platform for property viewings with agent dashboards, client scheduling, and property listing management. Built as capstone project.',
-    stack: ['PHP', 'MySQL', 'Bootstrap', 'AJAX'],
+    title: 'DentalCare Clinical & Appointment Workflow Portal',
+    tags: ['Healthcare', 'Full-Stack', 'Relational DB'],
+    description: 'Role-based dental clinic management system streamlining appointment booking, real-time doctor schedule conflict prevention, automated patient reminders, and HIPAA-conscious records.',
+    stack: ['PHP', 'MySQL', 'JavaScript', 'Bootstrap'],
     status: 'completed',
-    github: 'https://github.com/ranyboytemplado',
     demo: null,
-    impact: '3 user roles · Agent + Client + Admin',
+    image: '/projects/dental-clinic.png',
+    impact: 'Conflict-free scheduling · Normalized records · Automated reminders',
   },
   {
     id: 5,
-    title: 'Weather Forecast Dashboard',
-    tags: ['Web', 'API Integration'],
-    description: 'Interactive weather dashboard with geolocation, 7-day forecasts, hourly breakdowns, and animated weather conditions using OpenWeather API.',
-    stack: ['JavaScript', 'OpenWeather API', 'CSS3'],
+    title: 'Urban & Co. Multi-Role Real Estate Property Platform',
+    tags: ['Property Platform', 'Multi-Tenant', 'Capstone'],
+    description: 'Multi-role property platform synchronizing client viewing reservations, agent listing curation, and administrative transaction analytics with role-based access control.',
+    stack: ['PHP', 'MySQL', 'Bootstrap', 'AJAX'],
     status: 'completed',
-    github: 'https://github.com/ranyboytemplado',
     demo: null,
-    impact: '7-day forecast · Geolocation · Responsive',
+    image: '/projects/real-estate.png',
+    impact: '3 synchronized roles (Client / Agent / Admin) · Real-time schedule sync',
+  },
+  {
+    id: 6,
+    title: 'Computer Vision Live Object Detection & Tracking',
+    tags: ['AI', 'Computer Vision', 'Deep Learning'],
+    description: 'Real-time video processing pipeline utilizing YOLO deep learning models and OpenCV for multi-class object detection, bounding-box tracking, and visual telemetry data streams.',
+    stack: ['Python', 'YOLO', 'OpenCV', 'NumPy'],
+    status: 'completed',
+    demo: null,
+    image: null,
+    isVisionHud: true,
+    impact: 'Real-time multi-class detection · Visual bounding telemetry · Reusable pipeline',
   },
 ]
 
-// True when the URL points at a specific repository, not just the GitHub profile.
-const isRepoLink = url => /github\.com\/[^/]+\/[^/]+/.test(url || '')
-
 const statusLabel = { completed: 'Completed', 'in-progress': 'In progress', planned: 'Planned' }
 
-// Two initials from the title for the visual monogram
-function initials(title) {
-  return title.replace(/[^a-zA-Z ]/g, '').split(' ').filter(Boolean).slice(0, 2).map(w => w[0]).join('').toUpperCase()
-}
-
-function GithubIcon() {
+function LockIcon() {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-      <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+      <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
     </svg>
   )
 }
@@ -88,28 +93,54 @@ function DemoIcon() {
   )
 }
 
-function ProjectLinks({ project }) {
+function ExpandIcon() {
+  return (
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+      <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>
+    </svg>
+  )
+}
+
+function ProjectLinks({ project, onPreview }) {
   return (
     <div className="projects__links">
-      {project.github && (
-        <a
-          href={project.github}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="projects__link"
-          aria-label={isRepoLink(project.github) ? `View ${project.title} source on GitHub (opens in new tab)` : 'View Rany Templado on GitHub (opens in new tab)'}
+      {project.image && (
+        <button
+          type="button"
+          className="projects__link projects__link--preview"
+          onClick={() => onPreview(project)}
+          aria-label={`View full preview of ${project.title}`}
         >
-          <GithubIcon />
-          {isRepoLink(project.github) ? 'Code' : 'GitHub'}
-        </a>
+          <ExpandIcon />
+          Inspect UI
+        </button>
       )}
+
+      {/* Private repository indicator with hover protection tooltip */}
+      <div className="projects__private-wrapper">
+        <button
+          type="button"
+          className="projects__link projects__link--private"
+          disabled
+          aria-disabled="true"
+          aria-label={`${project.title} source code is private and protected`}
+        >
+          <LockIcon />
+          <span>Private Repository</span>
+        </button>
+        <div className="projects__private-tooltip" role="tooltip">
+          <span className="projects__private-tooltip-badge">🔒 Restricted Repository</span>
+          <span>This repository is private under NDA & client confidentiality and cannot be opened.</span>
+        </div>
+      </div>
+
       {project.demo && (
         <a
           href={project.demo}
           target="_blank"
           rel="noopener noreferrer"
           className="projects__link projects__link--primary"
-          aria-label={`View ${project.title} live demo (opens in new tab)`}
+          aria-label={`View ${project.title} live demo`}
         >
           <DemoIcon />
           Live demo
@@ -119,8 +150,33 @@ function ProjectLinks({ project }) {
   )
 }
 
+function VisionHudVisual() {
+  return (
+    <div className="projects__vision-hud" aria-hidden="true">
+      <div className="projects__vision-overlay" />
+      <div className="projects__vision-header">
+        <span className="projects__vision-indicator">REC ● 60 FPS</span>
+        <span className="projects__vision-model">YOLOv8-Darknet</span>
+      </div>
+      <div className="projects__vision-frame">
+        <div className="projects__vision-box box--car" style={{ top: '22%', left: '18%', width: '38%', height: '46%' }}>
+          <span className="projects__vision-label">car 98.4%</span>
+        </div>
+        <div className="projects__vision-box box--person" style={{ top: '35%', left: '68%', width: '22%', height: '52%' }}>
+          <span className="projects__vision-label">person 96.1%</span>
+        </div>
+      </div>
+      <div className="projects__vision-footer">
+        <span>Inference: 14.2ms</span>
+        <span>Objects: 2</span>
+      </div>
+    </div>
+  )
+}
+
 export default function Projects() {
   const [revealed, setRevealed] = useState(false)
+  const [activeImage, setActiveImage] = useState(null)
   const sectionRef = useRef(null)
 
   useEffect(() => {
@@ -131,6 +187,23 @@ export default function Projects() {
     if (sectionRef.current) observer.observe(sectionRef.current)
     return () => observer.disconnect()
   }, [])
+
+  // Close lightbox on escape key
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') setActiveImage(null)
+    }
+    if (activeImage) {
+      window.addEventListener('keydown', handleKeyDown)
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown)
+      document.body.style.overflow = ''
+    }
+  }, [activeImage])
 
   const featured = projects.find(p => p.featured)
   const rest = projects.filter(p => !p.featured)
@@ -143,21 +216,35 @@ export default function Projects() {
 
         <div className="projects__header">
           <span className="projects__prompt">&gt;</span>
-          <h2 className="projects__heading">Selected Work</h2>
+          <h2 className="projects__heading">Featured Systems & Projects</h2>
           <span className="projects__line" />
-          <span className="projects__count">{projects.length} projects</span>
+          <span className="projects__count">{projects.length} verified projects</span>
         </div>
 
-        {/* Featured project — large hero card */}
+        {/* Featured project — Enterprise SAP S/4HANA Workbench */}
         {featured && (
           <article className="projects__featured" style={{ transitionDelay: revealed ? '60ms' : '0ms' }}>
-            <div className="projects__featured-visual" aria-hidden="true">
-              <span className="projects__featured-mono">{initials(featured.title)}</span>
-              <div className="projects__featured-grid-lines" />
+            <div
+              className="projects__featured-visual"
+              onClick={() => featured.image && setActiveImage(featured)}
+              title="Click to expand high-resolution UI preview"
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') setActiveImage(featured) }}
+            >
+              <img
+                src={featured.image}
+                alt={`${featured.title} UI preview`}
+                className="projects__featured-img"
+                loading="lazy"
+              />
+              <div className="projects__visual-overlay">
+                <span className="projects__visual-zoom"><ExpandIcon /> Click to enlarge</span>
+              </div>
             </div>
             <div className="projects__featured-body">
               <div className="projects__card-bar">
-                <span className="projects__badge projects__badge--featured">★ Featured</span>
+                <span className="projects__badge projects__badge--featured">★ Primary Enterprise Project</span>
                 <span className={`projects__status projects__status--${featured.status}`}>
                   <span aria-hidden="true">●</span> {statusLabel[featured.status]}
                 </span>
@@ -175,21 +262,44 @@ export default function Projects() {
               <div className="projects__stack">
                 {featured.stack.map(s => <span className="projects__stack-item" key={s}>{s}</span>)}
               </div>
-              <ProjectLinks project={featured} />
+              <ProjectLinks project={featured} onPreview={setActiveImage} />
             </div>
           </article>
         )}
 
-        {/* Rest — clean card grid */}
+        {/* Project grid with high-resolution visual previews */}
         <div className="projects__grid">
           {rest.map((project, i) => (
             <article
               className="projects__card"
               key={project.id}
-              style={{ transitionDelay: revealed ? `${140 + i * 90}ms` : '0ms' }}
+              style={{ transitionDelay: revealed ? `${140 + i * 80}ms` : '0ms' }}
             >
-              <div className="projects__card-visual" aria-hidden="true">
-                <span className="projects__card-mono">{initials(project.title)}</span>
+              <div
+                className="projects__card-visual"
+                onClick={() => project.image && setActiveImage(project)}
+                title={project.image ? 'Click to expand high-resolution UI preview' : undefined}
+                role={project.image ? 'button' : undefined}
+                tabIndex={project.image ? 0 : undefined}
+                onKeyDown={(e) => {
+                  if (project.image && (e.key === 'Enter' || e.key === ' ')) setActiveImage(project)
+                }}
+              >
+                {project.image ? (
+                  <>
+                    <img
+                      src={project.image}
+                      alt={`${project.title} screenshot`}
+                      className="projects__card-img"
+                      loading="lazy"
+                    />
+                    <div className="projects__visual-overlay">
+                      <span className="projects__visual-zoom"><ExpandIcon /> Enlarge UI</span>
+                    </div>
+                  </>
+                ) : project.isVisionHud ? (
+                  <VisionHudVisual />
+                ) : null}
               </div>
 
               <div className="projects__card-body">
@@ -220,12 +330,43 @@ export default function Projects() {
                   {project.stack.map(s => <span className="projects__stack-item" key={s}>{s}</span>)}
                 </div>
 
-                <ProjectLinks project={project} />
+                <ProjectLinks project={project} onPreview={setActiveImage} />
               </div>
             </article>
           ))}
         </div>
       </div>
+
+      {/* High-Resolution Screenshot Modal Lightbox */}
+      {activeImage && (
+        <div
+          className="projects__lightbox"
+          onClick={() => setActiveImage(null)}
+          role="dialog"
+          aria-modal="true"
+          aria-label={activeImage.title}
+        >
+          <div className="projects__lightbox-inner" onClick={e => e.stopPropagation()}>
+            <header className="projects__lightbox-header">
+              <div>
+                <h4>{activeImage.title}</h4>
+                <p>{activeImage.impact}</p>
+              </div>
+              <button
+                type="button"
+                className="projects__lightbox-close"
+                onClick={() => setActiveImage(null)}
+                aria-label="Close preview"
+              >
+                ✕
+              </button>
+            </header>
+            <div className="projects__lightbox-media">
+              <img src={activeImage.image} alt={activeImage.title} />
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   )
 }

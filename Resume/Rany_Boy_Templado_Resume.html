@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Rany Boy Templado - Resume</title>
+<style>
+  @page {
+    size: letter;
+    margin: 0.32in 0.44in;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    color: #111827;
+    background: #ffffff;
+    font-size: 8.4pt;
+    line-height: 1.26;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a {
+    color: #111827;
+    text-decoration: none;
+  }
+
+  /* Header */
+  .header {
+    text-align: center;
+    border-bottom: 2px solid #0f172a;
+    padding-bottom: 5px;
+    margin-bottom: 7px;
+  }
+
+  .header h1 {
+    font-size: 18pt;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: #0f172a;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+  }
+
+  .header .headline {
+    font-size: 9.4pt;
+    font-weight: 600;
+    color: #1e40af;
+    margin-bottom: 3px;
+    letter-spacing: 0.01em;
+  }
+
+  .header .contact-line {
+    font-size: 8.2pt;
+    color: #334155;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+
+  .header .contact-line span {
+    display: inline-block;
+  }
+
+  .header .contact-line .sep {
+    color: #64748b;
+    font-weight: 700;
+  }
+
+  /* Section Titles */
+  .section {
+    margin-bottom: 6px;
+  }
+
+  .section-title {
+    font-size: 9pt;
+    font-weight: 700;
+    color: #0f172a;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    border-bottom: 1.2px solid #94a3b8;
+    padding-bottom: 1.5px;
+    margin-bottom: 4px;
+  }
+
+  /* Professional Summary */
+  .summary-text {
+    font-size: 8.2pt;
+    color: #334155;
+    text-align: justify;
+    line-height: 1.28;
+  }
+
+  /* Technical Skills */
+  .skills-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .skill-group {
+    font-size: 8.2pt;
+    line-height: 1.25;
+    color: #334155;
+  }
+
+  .skill-group strong {
+    color: #0f172a;
+    font-weight: 700;
+  }
+
+  /* Items (Jobs / Projects) */
+  .item {
+    margin-bottom: 5px;
+    page-break-inside: avoid;
+  }
+
+  .item-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 1px;
+  }
+
+  .item-company {
+    font-size: 8.9pt;
+    font-weight: 700;
+    color: #0f172a;
+  }
+
+  .item-title {
+    font-size: 8.9pt;
+    font-weight: 700;
+    color: #0f172a;
+  }
+
+  .item-role {
+    font-size: 8.4pt;
+    font-weight: 600;
+    font-style: italic;
+    color: #1e40af;
+  }
+
+  .item-date {
+    font-size: 8pt;
+    font-weight: 600;
+    color: #475569;
+    white-space: nowrap;
+    text-align: right;
+  }
+
+  .item-location {
+    font-size: 8pt;
+    font-style: italic;
+    color: #64748b;
+  }
+
+  .item-tech {
+    font-size: 8pt;
+    font-weight: 600;
+    color: #1e40af;
+    margin-bottom: 1.5px;
+  }
+
+  /* Bullet Points */
+  ul.bullets {
+    list-style-type: disc;
+    margin-left: 14px;
+    margin-top: 1px;
+  }
+
+  ul.bullets li {
+    font-size: 8.1pt;
+    line-height: 1.26;
+    color: #334155;
+    margin-bottom: 1.5px;
+    text-align: justify;
+  }
+
+  ul.bullets li strong {
+    color: #0f172a;
+    font-weight: 600;
+  }
+
+  /* Page Break Controller */
+  .page-break {
+    page-break-before: always;
+    break-before: page;
+  }
+
+  /* Certifications Grid */
+  .cert-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px 14px;
+  }
+
+  .cert-item {
+    font-size: 8.1pt;
+    color: #334155;
+    line-height: 1.25;
+    page-break-inside: avoid;
+  }
+
+  .cert-item strong {
+    color: #0f172a;
+    font-weight: 700;
+  }
+
+  .cert-item .cert-meta {
+    font-size: 7.6pt;
+    color: #64748b;
+  }
+</style>
+</head>
+<body>
+
+  <!-- =============================================================
+       PAGE 1: Profile, Core Skills, & Full Experience History
+       ============================================================= -->
+
+  <!-- Header -->
+  <header class="header">
+    <h1>Rany Boy Templado</h1>
+    <div class="headline">Associate Software Engineer | SAP Data Migration & Full-Stack Automation</div>
+    <div class="contact-line">
+      <span>Trece Martires City, Cavite, Philippines</span>
+      <span class="sep">|</span>
+      <span>+63 993 469 8243</span>
+      <span class="sep">|</span>
+      <span><a href="mailto:ranyboytemplado@gmail.com">ranyboytemplado@gmail.com</a></span>
+      <span class="sep">|</span>
+      <span><a href="https://linkedin.com/in/rany-boy-templado-b3a532306">linkedin.com/in/rany-boy-templado-b3a532306</a></span>
+      <span class="sep">|</span>
+      <span><a href="https://github.com/ranyboytemplado">github.com/ranyboytemplado</a></span>
+      <span class="sep">|</span>
+      <span><a href="https://ransnotdev.vercel.app">ransnotdev.vercel.app</a></span>
+    </div>
+  </header>
+
+  <!-- Summary -->
+  <section class="section">
+    <h2 class="section-title">Professional Summary</h2>
+    <p class="summary-text">
+      Detail-oriented Associate Software Engineer with proven hands-on capability in SAP S/4HANA data migration, automated workflow engineering, and resilient full-stack web applications. Experienced in configuring migration objects (LTMC/LTMOM), building pre-load validation pipelines, harmonizing legacy relational schemas, and developing headless automation using Python, n8n, and SQL. Combines a disciplined background in high-volume enterprise data operations with modern software engineering practices, delivering 99.8%+ data accuracy, zero critical production loss, and audit-ready architectures.
+    </p>
+  </section>
+
+  <!-- Technical Skills -->
+  <section class="section">
+    <h2 class="section-title">Technical Skills</h2>
+    <div class="skills-list">
+      <div class="skill-group">
+        <strong>SAP & Enterprise Data:</strong> SAP S/4HANA, SAP ECC, LTMC (Migration Cockpit), LTMOM (Migration Object Modeler), SAP GUI, Data Cleansing, Schema Harmonization, Source-to-Target Mapping, Pre-Load Validation, Post-Load Reconciliation, Audit Trail Compliance, Data Quality.
+      </div>
+      <div class="skill-group">
+        <strong>Workflow & Automation:</strong> Excel Automation (Advanced Formulas, VBA, Power Query), n8n, Zapier, Python ETL Workers, REST Webhooks, Task Orchestration, Automated Data Extraction.
+      </div>
+      <div class="skill-group">
+        <strong>Languages & Web Stack:</strong> JavaScript (ES6+), React 18, PHP, Node.js, Express, Python, Java, SQL, C++, HTML5, CSS3, Relational Database Design, MySQL, Schema Normalization (3NF), RESTful APIs.
+      </div>
+      <div class="skill-group">
+        <strong>AI Engineering & Tools:</strong> Multi-Provider AI Fallback Architecture, Prompt Engineering, Edge Routing, Windsurf, Kiro, Codex CLI, Antigravity IDE, Claude, Copilot, Cursor, Gemini.
+      </div>
+      <div class="skill-group">
+        <strong>Tools & Methodologies:</strong> Git, GitHub, Version Control, Agile/Scrum, CI/CD Concepts, SDLC, Postman, Vercel, Linux/Unix Shell, Root Cause Analysis (RCA), Standard Operating Procedures (SOPs).
+      </div>
+    </div>
+  </section>
+
+  <!-- Professional Experience (All Roles: Present to Foundation) -->
+  <section class="section">
+    <h2 class="section-title">Professional Experience</h2>
+
+    <!-- 1. Accenture -->
+    <div class="item">
+      <div class="item-title-row">
+        <span class="item-company">ACCENTURE</span>
+        <span class="item-date">May 2026 - Present</span>
+      </div>
+      <div class="item-title-row">
+        <span class="item-role">Associate Software Engineer</span>
+        <span class="item-location">Philippines</span>
+      </div>
+      <ul class="bullets">
+        <li>Specialize in enterprise <strong>SAP S/4HANA data migration pipelines</strong>, legacy ERP data extraction, and automated validation frameworks.</li>
+        <li>Configure, test, and execute migration objects using <strong>SAP LTMC</strong> and <strong>LTMOM</strong> to map complex enterprise business entities (customer master, vendor records, transactional data) with zero data loss.</li>
+        <li>Implement data cleansing, format harmonization, and automated audit checks using <strong>Python and SQL</strong> to validate relational integrity prior to production loading, maintaining <strong>99.8%+ accuracy</strong>.</li>
+        <li>Collaborate with functional analysts and technical architects across the full software development lifecycle (SDLC) within agile sprint environments.</li>
+        <li>Document technical mapping specifications, transformation rules, and migration runbooks to ensure strict auditability and enterprise governance.</li>
+      </ul>
+    </div>
+
+    <!-- 2. Global Strategic -->
+    <div class="item">
+      <div class="item-title-row">
+        <span class="item-company">GLOBAL STRATEGIC</span>
+        <span class="item-date">Mar 2026 - May 2026</span>
+      </div>
+      <div class="item-title-row">
+        <span class="item-role">Data Entry Associate</span>
+        <span class="item-location">Cavite, Philippines</span>
+      </div>
+      <ul class="bullets">
+        <li>Processed, validated, and reconciled high-volume enterprise billing and operations records with a <strong>99.9% accuracy rate</strong> across high-throughput production queues.</li>
+        <li>Identified data anomalies, duplicate entries, and relational inconsistencies across legacy source systems and executed systematic corrections.</li>
+        <li>Maintained strict adherence to compliance guidelines, confidentiality protocols, and data governance standards for enterprise client documentation.</li>
+      </ul>
+    </div>
+
+    <!-- 3. Teleperformance & Foundever -->
+    <div class="item">
+      <div class="item-title-row">
+        <span class="item-company">TELEPERFORMANCE & FOUNDEVER</span>
+        <span class="item-date">Oct 2025 - Mar 2026</span>
+      </div>
+      <div class="item-title-row">
+        <span class="item-role">Customer Service Representative</span>
+        <span class="item-location">Philippines</span>
+      </div>
+      <ul class="bullets">
+        <li>Resolved complex technical and operational customer inquiries across omnichannel platforms (chat, voice, ticketing systems), consistently achieving <strong>95%+ CSAT ratings</strong>.</li>
+        <li>Accurately logged, categorized, and tracked incident records and customer interactions within internal CRM systems according to standard operating procedures (SOPs).</li>
+        <li>Partnered with operations leads and quality assurance specialists to identify common failure modes, document troubleshooting guides, and streamline ticket resolution time.</li>
+      </ul>
+    </div>
+
+    <!-- 4. Freelance Web Developer -->
+    <div class="item">
+      <div class="item-title-row">
+        <span class="item-company">FREELANCE</span>
+        <span class="item-date">Aug 2024 - Oct 2025</span>
+      </div>
+      <div class="item-title-row">
+        <span class="item-role">Full-Stack Web Developer & Automation Specialist</span>
+        <span class="item-location">Remote</span>
+      </div>
+      <ul class="bullets">
+        <li>Engineered and deployed customized full-stack web applications and automation pipelines for clients using <strong>React, PHP, MySQL, and Python</strong>.</li>
+        <li>Developed a full-stack <strong>Dental Clinic Management Portal</strong> featuring role-based access, conflict-free appointment scheduling, and automated reminders, reducing scheduling overhead by <strong>40%</strong>.</li>
+        <li>Designed normalized MySQL relational schemas and REST APIs for asset valuation and real estate scheduling platforms, improving query response times.</li>
+        <li>Built automated webhook integration workflows using <strong>n8n and Zapier</strong> to sync form leads, notifications, and client database records in real time.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- =============================================================
+       PAGE 2: Technical Projects, Education, & Credentials
+       ============================================================= -->
+  <div class="page-break"></div>
+
+  <!-- Technical Projects -->
+  <section class="section">
+    <h2 class="section-title">Technical Projects & Implementations</h2>
+
+    <div class="item">
+      <div class="item-title-row">
+        <span class="item-title">SAP S/4HANA Migration & Reconciliation Workbench</span>
+        <span class="item-date">Enterprise Solution</span>
+      </div>
+      <div class="item-tech">SAP S/4HANA | LTMC / LTMOM | SQL | Python | Excel Automation</div>
+      <ul class="bullets">
+        <li>Engineered an end-to-end data migration simulation pipeline facilitating legacy schema harmonization, transformation mapping, pre-load validation, and discrepancy audit logging.</li>
+        <li>Automated field-to-field validation rules and reconciliation reports, ensuring zero data loss across legacy ERP records.</li>
+      </ul>
+    </div>
+
+    <div class="item">
+      <div class="item-title-row">
+        <span class="item-title">High-Availability Multi-Provider AI Gateway</span>
+        <span class="item-date">Vercel Serverless</span>
+      </div>
+      <div class="item-tech">Node.js | Edge Routing | REST APIs | Resilience Patterns</div>
+      <ul class="bullets">
+        <li>Designed and deployed a serverless AI proxy routing chat requests across an ordered <strong>9-provider fallback chain</strong> with automatic cooldowns and sub-200ms latency.</li>
+        <li>Enforced zero exposed client API keys through server-side secret isolation and environment encapsulation.</li>
+      </ul>
+    </div>
+
+    <div class="item">
+      <div class="item-title-row">
+        <span class="item-title">PhysiCapital - Asset Valuation & Capital Management Portal</span>
+        <span class="item-date">Full-Stack Web Application</span>
+      </div>
+      <div class="item-tech">React 18 | Vite | Node.js | REST APIs | CSS3</div>
+      <ul class="bullets">
+        <li>Built a responsive capital management platform providing physical asset valuation metrics, interactive portfolio telemetry, and high-performance dark-mode interfaces.</li>
+        <li>Integrated normalized data endpoints for tracking diversified physical holdings with real-time valuation updates.</li>
+      </ul>
+    </div>
+
+    <div class="item">
+      <div class="item-title-row">
+        <span class="item-title">DentalCare Clinical & Appointment Workflow Portal</span>
+        <span class="item-date">Healthcare System</span>
+      </div>
+      <div class="item-tech">PHP | MySQL | JavaScript | Bootstrap</div>
+      <ul class="bullets">
+        <li>Architected a complete clinical records and appointment booking system featuring multi-role authentication, schedule conflict resolution, and automated appointment reminders.</li>
+        <li>Optimized MySQL relational schema with indexing on patient IDs and appointment dates to support concurrent clinic bookings without double-booking errors.</li>
+      </ul>
+    </div>
+
+    <div class="item">
+      <div class="item-title-row">
+        <span class="item-title">Real Estate Valuation & Property Viewing Platform</span>
+        <span class="item-date">Web Application</span>
+      </div>
+      <div class="item-tech">PHP | MySQL | JavaScript | HTML5 / CSS3</div>
+      <ul class="bullets">
+        <li>Developed a centralized real estate platform enabling prospective buyers to schedule guided property viewings and calculate estimated asset values.</li>
+        <li>Implemented administrative management dashboard for brokers to track leads, property inventories, and client follow-ups.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Education -->
+  <section class="section">
+    <h2 class="section-title">Education</h2>
+    <div class="item">
+      <div class="item-title-row">
+        <span class="item-company">Perpetual Help College of Pangasinan</span>
+        <span class="item-date">Aug 2021 - Jun 2025</span>
+      </div>
+      <div class="item-title-row">
+        <span class="item-role">Bachelor of Science in Information Technology (BSIT)</span>
+        <span class="item-location">Malasiqui, Pangasinan, Philippines</span>
+      </div>
+      <ul class="bullets">
+        <li><strong>Academic & Technical Focus:</strong> Database Management Systems (RDBMS), Object-Oriented Programming (Java, C++), Web Technologies (PHP, JavaScript), Software Engineering, Data Structures & Algorithms, Network Infrastructure.</li>
+        <li><strong>Competitions:</strong> Participant, CodeChum National Programming Challenge 2024.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Certifications & Credentials -->
+  <section class="section">
+    <h2 class="section-title">Certifications & Verified Credentials</h2>
+    <div class="cert-grid">
+      <div class="cert-item">
+        <strong>AI Engineer for Developers Associate</strong> - DataCamp<br>
+        <span class="cert-meta">Credential ID: AIEDA0017740117938 | Verified AI Engineering</span>
+      </div>
+      <div class="cert-item">
+        <strong>SQL (Basics)</strong> - HackerRank<br>
+        <span class="cert-meta">Credential ID: 7e3c14302fd7 | Relational Queries & Joins</span>
+      </div>
+      <div class="cert-item">
+        <strong>Problem Solving (Basics)</strong> - HackerRank<br>
+        <span class="cert-meta">Credential ID: 14230d101784 | Data Structures & Algorithms</span>
+      </div>
+      <div class="cert-item">
+        <strong>JavaScript (Basics) & Java (Basics)</strong> - HackerRank<br>
+        <span class="cert-meta">Verified Language Proficiency Assessments</span>
+      </div>
+      <div class="cert-item">
+        <strong>Responsive Web Design</strong> - freeCodeCamp<br>
+        <span class="cert-meta">Semantic HTML5, Responsive Design, CSS Architecture</span>
+      </div>
+      <div class="cert-item">
+        <strong>Front End Development Libraries</strong> - freeCodeCamp<br>
+        <span class="cert-meta">React, Redux, State Management, Modern UI Architecture</span>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>

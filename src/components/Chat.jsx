@@ -1,12 +1,13 @@
 import { useState, useRef, useEffect } from 'react'
 import { sendMessage } from '../services/ai'
+import NotDevSprite from './NotDevSprite'
 import './Chat.css'
 
 const SUGGESTIONS = [
-  "What's Rany's tech stack?",
-  "How do I start a software career?",
-  "Is Rany open to work?",
-  "How should I prepare for a developer interview?",
+  "How does Rany handle SAP data migration?",
+  "Explain the 9-provider AI gateway architecture",
+  "What automation tools does Rany work with?",
+  "What projects has Rany built with React & PHP?",
 ]
 function safeHref(value) {
   try {
@@ -49,7 +50,7 @@ export default function Chat() {
   const [messages, setMessages] = useState([
     {
       role: 'model',
-      text: "Ask me about Rany’s portfolio, programming, SAP data migration, or software career advice.",
+      text: "Hello! I'm notDev.ai, Rany's portfolio intelligence assistant. Ask me about Rany's SAP data migration workflows, software projects, automation tools, or technical capabilities.",
       id: 0,
     },
   ])
@@ -77,6 +78,18 @@ export default function Chat() {
       document.removeEventListener('keydown', handleEscape)
     }
   }, [open])
+
+  // Support opening chat from other components via custom event
+  useEffect(() => {
+    const handleOpenAi = (e) => {
+      setOpen(true)
+      if (e.detail?.query) {
+        handleSend(e.detail.query)
+      }
+    }
+    window.addEventListener('open-notdev-ai', handleOpenAi)
+    return () => window.removeEventListener('open-notdev-ai', handleOpenAi)
+  }, [loading])
 
   async function handleSend(text) {
     const msg = (text ?? input).trim()
@@ -134,35 +147,36 @@ export default function Chat() {
       <button
         className={`chat-fab${open ? ' chat-fab--open' : ''}`}
         onClick={() => setOpen(o => !o)}
-        aria-label={open ? 'Close chat' : 'Chat with portfolio assistant'}
+        aria-label={open ? 'Close notDev.ai chat' : 'Chat with notDev.ai'}
         aria-expanded={open}
         aria-controls="portfolio-chat"
-        title="Ask the portfolio assistant"
+        title="Ask notDev.ai"
       >
         {open ? (
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
             <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
           </svg>
         ) : (
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-          </svg>
+          <NotDevSprite size={32} />
         )}
-        {!open && <span className="chat-fab__badge">AI</span>}
+        {!open && <span className="chat-fab__badge">notDev.ai</span>}
       </button>
 
       {/* Chat window */}
-      <div id="portfolio-chat" className={`chat-window${open ? ' chat-window--open' : ''}`} role="dialog" aria-modal="true" aria-label="Portfolio assistant" hidden={!open}>
+      <div id="portfolio-chat" className={`chat-window${open ? ' chat-window--open' : ''}`} role="dialog" aria-modal="true" aria-label="notDev.ai assistant" hidden={!open}>
 
         {/* Header */}
         <div className="chat-header">
           <div className="chat-header__info">
-            <div className="chat-header__avatar">R</div>
+            <NotDevSprite size={34} />
             <div>
-              <p className="chat-header__name">Portfolio Assistant</p>
+              <div className="chat-header__title-row">
+                <p className="chat-header__name">notDev.ai</p>
+                <span className="chat-header__gateway-tag">9-Provider Failover</span>
+              </div>
               <p className="chat-header__status">
                 <span className="chat-header__dot" />
-                Portfolio, programming, and career advice
+                SAP Migration · Automation · Software
               </p>
             </div>
           </div>
@@ -178,7 +192,9 @@ export default function Chat() {
           {messages.map(msg => (
             <div key={msg.id} className={`chat-msg chat-msg--${msg.role}${msg.error ? ' chat-msg--error' : ''}`}>
               {msg.role === 'model' && (
-                <div className="chat-msg__avatar">R</div>
+                <div className="chat-msg__avatar-wrap">
+                  <NotDevSprite size={24} animated={false} />
+                </div>
               )}
               <div className="chat-msg__bubble">
                 <div className="chat-msg__text">
@@ -209,13 +225,13 @@ export default function Chat() {
 
         {/* Input */}
         <div className="chat-input-wrap">
-          <label htmlFor="chat-input" className="sr-only">Ask about code, career, or Rany's work</label>
+          <label htmlFor="chat-input" className="sr-only">Ask notDev.ai about code, data pipelines, or Rany's work</label>
           <input
             ref={inputRef}
             id="chat-input"
             className="chat-input"
             type="text"
-            placeholder="Ask about Rany, programming, or software careers..."
+            placeholder="Ask notDev.ai about Rany, data pipelines, or software..."
             value={input}
             onChange={e => setInput(e.target.value)}
             onKeyDown={handleKey}

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import Icon from './Icon'
 import './Nav.css'
 
 const navLinks = [
@@ -8,10 +9,11 @@ const navLinks = [
   { label: 'Contact', href: '#contact' },
 ]
 
-export default function Nav() {
+export default function Nav({ theme = 'dark', toggleTheme }) {
   const [visible, setVisible] = useState(false)
   const [activeSection, setActiveSection] = useState('')
   const [mobileOpen, setMobileOpen] = useState(false)
+  const isDark = theme === 'dark'
 
   useEffect(() => {
     const heroEl = document.getElementById('hero')
@@ -66,6 +68,18 @@ export default function Nav() {
         </ul>
 
         <div className="nav__actions">
+          {toggleTheme && (
+            <button
+              type="button"
+              className="nav__theme-btn"
+              onClick={toggleTheme}
+              aria-label={`Switch to ${isDark ? 'light' : 'dark'} mode`}
+              title={`Switch to ${isDark ? 'light' : 'dark'} mode`}
+            >
+              <Icon name={isDark ? 'sun' : 'moon'} size={18} />
+            </button>
+          )}
+
           {/* Mobile hamburger */}
           <button
             className="nav__hamburger"
