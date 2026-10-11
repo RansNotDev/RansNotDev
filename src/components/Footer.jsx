@@ -5,49 +5,15 @@ import './Footer.css'
 const EMAIL = 'ranyboytemplado@gmail.com'
 const RESUME = '/Rany_Boy_Templado_Resume.pdf'
 
-const OBJECTIVES = [
-  {
-    id: 'sap',
-    label: 'SAP Data Migration',
-    icon: 'database',
-    subject: '[Inquiry] SAP S/4HANA Migration & Data Integrity',
-    note: "Hi Rany, I'd like to discuss an SAP S/4HANA data migration project involving LTMC/LTMOM mapping, legacy cleansing, or reconciliation.",
-  },
-  {
-    id: 'automation',
-    label: 'Workflow Automation',
-    icon: 'flow',
-    subject: '[Inquiry] Headless Workflow Automation & Webhooks',
-    note: "Hi Rany, I'm looking to build automated ETL or webhook workflows using n8n, Zapier, and Python scripts.",
-  },
-  {
-    id: 'fullstack',
-    label: 'Full-Stack Web App',
-    icon: 'code',
-    subject: '[Inquiry] Full-Stack Web Application Engineering',
-    note: "Hi Rany, we're planning a web application and need full-stack engineering across React, PHP/Node, and relational databases.",
-  },
-  {
-    id: 'role',
-    label: 'Full-Time / Contract Role',
-    icon: 'briefcase',
-    subject: '[Opportunity] Software Engineering Position',
-    note: "Hi Rany, we have an open engineering position or contract opportunity that aligns well with your background.",
-  },
-  {
-    id: 'chat',
-    label: 'Technical Chat',
-    icon: 'message',
-    subject: '[Connect] Technical Chat & Engineering Insights',
-    note: "Hi Rany, reaching out to connect about software engineering, agentic AI development, or technology collaboration.",
-  },
+const INTENTS = [
+  { id: 'opportunity', label: '💼 Opportunity / Hiring', subject: 'Opportunity for Rany Boy Templado' },
+  { id: 'collaboration', label: '🤝 Project Collaboration', subject: 'Project Collaboration Inquiry' },
+  { id: 'hello', label: '👋 Just Saying Hello', subject: 'Hello Rany!' },
 ]
 
 export default function Footer() {
   const [copiedEmail, setCopiedEmail] = useState(false)
-  const [copiedNote, setCopiedNote] = useState(false)
-  const [selectedObjective, setSelectedObjective] = useState(OBJECTIVES[0])
-  const [customNote, setCustomNote] = useState(OBJECTIVES[0].note)
+  const [selectedIntent, setSelectedIntent] = useState(INTENTS[0])
   const [currentTime, setCurrentTime] = useState('')
   const [waveCount, setWaveCount] = useState(0)
   const [waved, setWaved] = useState(false)
@@ -76,19 +42,6 @@ export default function Footer() {
     return () => clearTimeout(t)
   }, [copiedEmail])
 
-  // Auto reset copied note
-  useEffect(() => {
-    if (!copiedNote) return undefined
-    const t = setTimeout(() => setCopiedNote(false), 2000)
-    return () => clearTimeout(t)
-  }, [copiedNote])
-
-  // Select objective
-  function handleSelectObjective(obj) {
-    setSelectedObjective(obj)
-    setCustomNote(obj.note)
-  }
-
   // Copy email
   async function handleCopyEmail() {
     try {
@@ -99,21 +52,10 @@ export default function Footer() {
     }
   }
 
-  // Copy formatted note
-  async function handleCopyNote() {
-    try {
-      await navigator.clipboard.writeText(customNote)
-      setCopiedNote(true)
-    } catch {
-      handleSendEmail()
-    }
-  }
-
-  // Open mailto
+  // Open email client
   function handleSendEmail() {
-    const subject = encodeURIComponent(selectedObjective.subject)
-    const body = encodeURIComponent(customNote)
-    window.location.href = `mailto:${EMAIL}?subject=${subject}&body=${body}`
+    const subject = encodeURIComponent(selectedIntent.subject)
+    window.location.href = `mailto:${EMAIL}?subject=${subject}`
   }
 
   // Playful wave interaction
@@ -128,7 +70,7 @@ export default function Footer() {
     window.dispatchEvent(
       new CustomEvent('open-notdev-ai', {
         detail: {
-          query: `I'm interested in discussing ${selectedObjective.label}. What is Rany's availability and typical process?`,
+          query: "Hi! Can you give me a summary of Rany's background, skills, and current focus?",
         },
       })
     )
@@ -141,20 +83,21 @@ export default function Footer() {
         {/* ── Section Header ── */}
         <div className="footer__header">
           <p className="footer__eyebrow">04 / Get In Touch</p>
-          <h2 className="footer__title">Let's build something deliberate.</h2>
+          <h2 className="footer__title">Let's connect.</h2>
           <p className="footer__lead">
-            Whether you are planning an SAP migration, building automated workflows, or exploring a software engineering role — I'm always open to discussing new challenges.
+            Open for software engineering opportunities, meaningful collaborations, or just a friendly conversation.
           </p>
         </div>
 
-        {/* ── Interactive Minimalist Dispatcher ── */}
+        {/* ── Minimalist Interactive Hub ── */}
         <div className="footer__card">
 
-          {/* Top telemetry bar */}
+          {/* Top Status & Wave Bar */}
           <div className="footer__card-topbar">
             <div className="footer__status-badge">
               <span className="footer__status-dot" />
               <span>Cavite, Philippines · {currentTime || 'GMT+8'}</span>
+              <span className="footer__status-pill">Available for opportunities</span>
             </div>
 
             <button
@@ -164,85 +107,80 @@ export default function Footer() {
               title="Send a friendly wave to Rany"
             >
               <span className="footer__wave-emoji" aria-hidden="true">👋</span>
-              <span>{waved ? 'Wave received! Ready to connect.' : 'Say hello with a wave'}</span>
+              <span>{waved ? 'Wave received! Thanks for stopping by!' : 'Say hello with a wave'}</span>
               {waveCount > 0 && <span className="footer__wave-counter">({waveCount})</span>}
             </button>
           </div>
 
-          {/* Objective selection */}
-          <div className="footer__objectives-section">
-            <span className="footer__section-label">SELECT YOUR TOPIC:</span>
-            <div className="footer__objectives" role="radiogroup" aria-label="Inquiry topics">
-              {OBJECTIVES.map(obj => {
-                const isSelected = selectedObjective.id === obj.id
-                return (
-                  <button
-                    key={obj.id}
-                    type="button"
-                    role="radio"
-                    aria-checked={isSelected}
-                    className={`footer__objective-pill${isSelected ? ' footer__objective-pill--active' : ''}`}
-                    onClick={() => handleSelectObjective(obj)}
-                  >
-                    <Icon name={obj.icon} size={14} />
-                    <span>{obj.label}</span>
-                  </button>
-                )
-              })}
+          {/* Direct Comms Box (Simple & Human) */}
+          <div className="footer__main-action-box">
+            <div className="footer__intent-picker">
+              <span className="footer__intent-label">I'M REACHING OUT ABOUT:</span>
+              <div className="footer__intents" role="radiogroup" aria-label="Reason for reaching out">
+                {INTENTS.map(item => {
+                  const isSelected = selectedIntent.id === item.id
+                  return (
+                    <button
+                      key={item.id}
+                      type="button"
+                      role="radio"
+                      aria-checked={isSelected}
+                      className={`footer__intent-pill${isSelected ? ' footer__intent-pill--active' : ''}`}
+                      onClick={() => setSelectedIntent(item)}
+                    >
+                      {item.label}
+                    </button>
+                  )
+                })}
+              </div>
+            </div>
+
+            <div className="footer__action-buttons">
+              <button
+                type="button"
+                className="footer__action-email"
+                onClick={handleSendEmail}
+              >
+                <Icon name="message" size={16} />
+                <span>Email Rany</span>
+                <span className="footer__arrow" aria-hidden="true">↗</span>
+              </button>
+
+              <button
+                type="button"
+                className="footer__action-copy"
+                onClick={handleCopyEmail}
+                title="Copy email address"
+              >
+                {copiedEmail ? <Icon name="check" size={15} /> : <Icon name="article" size={15} />}
+                <span>{copiedEmail ? 'Copied to Clipboard ✓' : 'Copy Email Address'}</span>
+              </button>
             </div>
           </div>
 
-          {/* Pre-composed Note box */}
-          <div className="footer__note-box">
-            <div className="footer__note-header">
-              <span className="footer__note-subject">Subject: {selectedObjective.subject}</span>
-              <span className="footer__note-editable-hint">editable draft</span>
+          {/* AI Companion Callout (Clear Division of Purpose) */}
+          <div className="footer__ai-callout">
+            <div className="footer__ai-callout-text">
+              <span className="footer__ai-callout-title">
+                <span className="footer__ai-spark" aria-hidden="true">✦</span> Have questions about my skills, projects, or background?
+              </span>
+              <p className="footer__ai-callout-desc">
+                Ask <strong>notDev.ai</strong> my portfolio assistant is available 24/7 to answer anything immediately.
+              </p>
             </div>
-            <textarea
-              className="footer__note-textarea"
-              rows={3}
-              value={customNote}
-              onChange={e => setCustomNote(e.target.value)}
-              placeholder="Type your message here..."
-              aria-label="Message brief draft"
-            />
-          </div>
-
-          {/* Dispatch actions */}
-          <div className="footer__card-actions">
             <button
               type="button"
-              className="footer__action-primary"
-              onClick={handleSendEmail}
-            >
-              <Icon name="message" size={15} />
-              <span>Send via Email Client</span>
-              <span className="footer__arrow" aria-hidden="true">↗</span>
-            </button>
-
-            <button
-              type="button"
-              className="footer__action-secondary"
-              onClick={handleCopyNote}
-            >
-              {copiedNote ? <Icon name="check" size={14} /> : <Icon name="article" size={14} />}
-              <span>{copiedNote ? 'Copied to Clipboard' : 'Copy Draft'}</span>
-            </button>
-
-            <button
-              type="button"
-              className="footer__action-ai"
+              className="footer__ai-callout-btn"
               onClick={handleAskAi}
-              title="Open notDev.ai chatbot to ask questions about Rany"
             >
-              <span className="footer__ai-spark" aria-hidden="true">✦</span>
-              <span>Ask notDev.ai</span>
+              <span>Chat with notDev.ai</span>
+              <span aria-hidden="true">→</span>
             </button>
           </div>
 
         </div>
 
-        {/* ── Direct Comms & Channels Dock ── */}
+        {/* ── Direct Channels Dock ── */}
         <div className="footer__dock">
 
           <div className="footer__dock-item">
@@ -289,7 +227,7 @@ export default function Footer() {
                 <span>GitHub</span>
               </a>
               <a
-                href="https://www.linkedin.com/in/rany-boy-templado-b3a532306/"
+                href="https://www.linkedin.com/in/ranyboy-templado/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="footer__dock-social-link"

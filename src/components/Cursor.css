@@ -1,74 +1,161 @@
-/* Custom cursor overlay. Only active when body.has-custom-cursor is set
-   (fine pointer + motion allowed), so touch users keep the native cursor. */
+/* ── Modern Velocity & Context-Aware Cursor ── */
 
 .cursor-dot,
-.cursor-ring {
+.cursor-follower,
+.cursor-ripple {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 9999;
   pointer-events: none;
   opacity: 0;
-  /* translate(-50%,-50%) centers the element on the pointer;
-     the JS sets the translate() and we combine via a nested transform */
-  margin-left: 0;
   will-change: transform, opacity;
 }
 
-/* Center each element on its transform origin */
-.cursor-dot { margin: -3px 0 0 -3px; }
-.cursor-ring { margin: -18px 0 0 -18px; }
-
+/* ── 1. Pinpoint Center Dot ── */
 .cursor-dot {
+  z-index: 99999;
   width: 6px;
   height: 6px;
+  margin: -3px 0 0 -3px;
   border-radius: 50%;
   background: var(--accent);
-  transition: opacity 0.25s ease;
+  box-shadow: 0 0 10px var(--accent);
+  transition: opacity 0.2s ease, background-color 0.2s ease;
 }
 
-.cursor-ring {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  border: 1.5px solid color-mix(in srgb, var(--accent) 60%, transparent);
-  transition: opacity 0.25s ease,
-              width 0.22s var(--ease-out),
-              height 0.22s var(--ease-out),
-              margin 0.22s var(--ease-out),
-              background 0.22s var(--ease-out),
-              border-color 0.22s var(--ease-out);
+/* ── 2. Fluid Follower (Circle / Capsule / Badge) ── */
+.cursor-follower {
+  z-index: 99998;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  margin: -16px 0 0 -16px;
+  border-radius: 999px;
+  border: 1.5px solid color-mix(in srgb, var(--accent) 55%, transparent);
+  background: color-mix(in srgb, var(--accent) 6%, transparent);
+  backdrop-filter: blur(2px);
+  transition: opacity 0.22s ease,
+              width 0.24s cubic-bezier(0.16, 1, 0.3, 1),
+              height 0.24s cubic-bezier(0.16, 1, 0.3, 1),
+              margin 0.24s cubic-bezier(0.16, 1, 0.3, 1),
+              background 0.2s ease,
+              border-color 0.2s ease,
+              box-shadow 0.2s ease;
 }
 
-/* Grow + soft fill over interactive elements */
-.cursor-ring--hover {
-  width: 56px;
-  height: 56px;
-  margin: -28px 0 0 -28px;
-  background: color-mix(in srgb, var(--accent) 12%, transparent);
+/* Hover over standard links / buttons */
+.cursor-follower--hover {
+  width: 50px;
+  height: 50px;
+  margin: -25px 0 0 -25px;
+  background: color-mix(in srgb, var(--accent) 15%, transparent);
   border-color: var(--accent);
+  box-shadow: 0 0 20px color-mix(in srgb, var(--accent) 30%, transparent);
 }
 
-/* Quick squeeze on press */
-.cursor-ring--down {
-  width: 28px;
-  height: 28px;
-  margin: -14px 0 0 -14px;
+/* Interactive Contextual Pill Badge */
+.cursor-follower--badge {
+  width: auto;
+  min-width: 82px;
+  height: 32px;
+  padding: 0 14px;
+  margin: -16px 0 0 -41px;
+  background: var(--accent);
+  border-color: var(--accent-strong);
+  color: #fff;
+  box-shadow: 0 6px 22px rgba(234, 88, 12, 0.45);
 }
 
-/* Hide the native cursor only when our custom one is running */
+/* Text inside badge */
+.cursor-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #ffffff;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transform: scale(0.85);
+  transition: opacity 0.16s ease, transform 0.16s ease;
+}
+
+.cursor-follower--badge .cursor-label {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* In badge mode, hide center dot so text is crystal clear */
+.cursor-follower--badge ~ .cursor-dot {
+  opacity: 0 !important;
+}
+
+/* Squeeze on click / mousedown */
+.cursor-follower--down {
+  transform: scale(0.82) !important;
+}
+
+.cursor-follower--hidden {
+  opacity: 0 !important;
+}
+
+/* ── 3. Energetic Click Ripple Shockwave ── */
+.cursor-ripple {
+  z-index: 99997;
+  width: 14px;
+  height: 14px;
+  margin: -7px 0 0 -7px;
+  border-radius: 50%;
+  border: 1.5px solid var(--accent);
+  opacity: 0;
+}
+
+.cursor-ripple--active {
+  animation: cursor-ripple-anim 0.45s cubic-bezier(0.12, 0.8, 0.32, 1) forwards;
+}
+
+@keyframes cursor-ripple-anim {
+  0% {
+    opacity: 0.85;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(4.8);
+  }
+}
+
+/* ── 4. Cursor Visibility & Input Protection ── */
+/* Hide native pointer on interactive targets when custom cursor is active */
 body.has-custom-cursor,
-body.has-custom-cursor * {
+body.has-custom-cursor a,
+body.has-custom-cursor button,
+body.has-custom-cursor [role="button"],
+body.has-custom-cursor .hero__photo-toggle,
+body.has-custom-cursor .projects__featured-visual {
   cursor: none !important;
 }
 
-/* Extra safety: never show on coarse pointers even if class lingers */
-@media (pointer: coarse) {
-  .cursor-dot,
-  .cursor-ring { display: none; }
+/* CRITICAL UX: Never hide native cursor on text fields, allowing natural text selection */
+body.has-custom-cursor input,
+body.has-custom-cursor textarea,
+body.has-custom-cursor select,
+body.has-custom-cursor [contenteditable="true"] {
+  cursor: text !important;
 }
 
-@media (prefers-reduced-motion: reduce) {
+/* Touch devices & accessibility safety */
+@media (pointer: coarse), (prefers-reduced-motion: reduce) {
   .cursor-dot,
-  .cursor-ring { display: none; }
+  .cursor-follower,
+  .cursor-ripple {
+    display: none !important;
+  }
+  body.has-custom-cursor,
+  body.has-custom-cursor * {
+    cursor: auto !important;
+  }
 }
