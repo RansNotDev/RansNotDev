@@ -57,7 +57,7 @@ function safeHistory(value) {
   }))
 }
 
-const OUT_OF_SCOPE_REPLY = 'API Cost is expensive you can use chatgpt gemini grok and claude for free in thier respective websites'
+const OUT_OF_SCOPE_REPLY = 'API Cost is expensive you can use chatgpt gemini grok and claude for free in their respective websites'
 
 const SYSTEM_PROMPT = `You are notDev.ai, a strictly scoped assistant for Rany Boy Templado's portfolio.
 
@@ -196,6 +196,35 @@ async function callGemini(messages, timeout) {
   }
 }
 
+async function callGroq(messages, timeout) {
+  const apiKey = configuredKey(process.env.GROQ_API_KEY)
+  if (!apiKey || stillCooling('groq')) return null
+
+  // Groq deprecated llama-3.3-70b-versatile. llama-3.1-8b-instant is active, ultra-fast (~560 tps), and free-tier accessible.
+  const preferred = (process.env.GROQ_MODEL || '').trim()
+  const primaryModel = (!preferred || preferred === 'llama-3.3-70b-versatile')
+    ? 'llama-3.1-8b-instant'
+    : preferred
+
+  const modelsToTry = [primaryModel]
+  if (primaryModel !== 'llama-3.1-8b-instant') {
+    modelsToTry.push('llama-3.1-8b-instant')
+  }
+
+  for (const model of modelsToTry) {
+    const text = await callOpenAI(
+      'groq',
+      'https://api.groq.com/openai/v1/chat/completions',
+      apiKey,
+      model,
+      messages,
+      timeout
+    )
+    if (text) return text
+  }
+  return null
+}
+
 function getProviderList(messages) {
   // Ordered by active availability, speed, and zero cost
   return [
@@ -226,15 +255,8 @@ function getProviderList(messages) {
       }
     ),
 
-    // 4. Groq (if configured)
-    timeout => callOpenAI(
-      'groq',
-      'https://api.groq.com/openai/v1/chat/completions',
-      process.env.GROQ_API_KEY,
-      process.env.GROQ_MODEL || 'llama-3.3-70b-versatile',
-      messages,
-      timeout
-    ),
+    // 4. Groq (Active model: llama-3.1-8b-instant)
+    timeout => callGroq(messages, timeout),
 
     // 5. Cerebras (if configured)
     timeout => callOpenAI(
@@ -306,8 +328,9 @@ async function generate(messages) {
     exhaustedUntil.delete('gemini')
     exhaustedUntil.delete('mistral')
     exhaustedUntil.delete('openrouter')
+    exhaustedUntil.delete('groq')
 
-    const emergencyProviders = providers.slice(0, 3)
+    const emergencyProviders = providers.slice(0, 4)
     for (const provider of emergencyProviders) {
       const remaining = deadline - Date.now()
       if (remaining < 500) break

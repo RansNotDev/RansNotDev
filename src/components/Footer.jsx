@@ -1,22 +1,25 @@
 import { useState, useEffect } from 'react'
 import Icon from './Icon'
+import { socialLinks } from '../data/socials'
 import './Footer.css'
 
-const EMAIL = 'ranyboytemplado@gmail.com'
+const EMAIL = 'ranyboytemplado001@gmail.com'
+const RECIPIENT = 'Rany Templado'
 const RESUME = '/Rany_Boy_Templado_Resume.pdf'
 
-const INTENTS = [
-  { id: 'opportunity', label: '💼 Opportunity / Hiring', subject: 'Opportunity for Rany Boy Templado' },
-  { id: 'collaboration', label: '🤝 Project Collaboration', subject: 'Project Collaboration Inquiry' },
-  { id: 'hello', label: '👋 Just Saying Hello', subject: 'Hello Rany!' },
-]
+// Accepts any standard email format (user@domain.tld)
+const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
 export default function Footer() {
   const [copiedEmail, setCopiedEmail] = useState(false)
-  const [selectedIntent, setSelectedIntent] = useState(INTENTS[0])
   const [currentTime, setCurrentTime] = useState('')
-  const [waveCount, setWaveCount] = useState(0)
-  const [waved, setWaved] = useState(false)
+
+  // Compose form state
+  const [name, setName] = useState('')
+  const [from, setFrom] = useState('')
+  const [subject, setSubject] = useState('')
+  const [body, setBody] = useState('')
+  const [error, setError] = useState('')
 
   // Live GMT+8 Clock
   useEffect(() => {
@@ -52,20 +55,46 @@ export default function Footer() {
     }
   }
 
-  // Open email client
-  function handleSendEmail() {
-    const subject = encodeURIComponent(selectedIntent.subject)
-    window.location.href = `mailto:${EMAIL}?subject=${subject}`
+  // Compose & send via the visitor's mail client.
+  // Email (From) is required; everything else is optional.
+  function handleSend(e) {
+    e.preventDefault()
+
+    const fromValue = from.trim()
+    if (!fromValue) {
+      setError('Please enter your email so Rany can reply.')
+      return
+    }
+    if (!EMAIL_PATTERN.test(fromValue)) {
+      setError('That email doesn’t look right. Try name@example.com.')
+      return
+    }
+    setError('')
+
+    const subjectLine = subject.trim() || `New message from ${name.trim() || 'your portfolio'}`
+    const lines = [
+      body.trim() || `Hi Rany,`,
+      '',
+      '—',
+      `From: ${name.trim() || 'A visitor'} <${fromValue}>`,
+    ]
+
+    const url =
+      `mailto:${EMAIL}` +
+      `?subject=${encodeURIComponent(subjectLine)}` +
+      `&body=${encodeURIComponent(lines.join('\n'))}`
+
+    window.location.href = url
   }
 
-  // Playful wave interaction
-  function handleWave() {
-    setWaveCount(c => c + 1)
-    setWaved(true)
-    setTimeout(() => setWaved(false), 3000)
+  // Keyboard shortcut: Ctrl/Cmd + Enter sends
+  function handleBodyKeyDown(e) {
+    if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
+      handleSend(e)
+    }
   }
 
-  // Ask notDev.ai Assistant
+  // Ask the personal AI assistant about Rany
   function handleAskAi() {
     window.dispatchEvent(
       new CustomEvent('open-notdev-ai', {
@@ -76,6 +105,8 @@ export default function Footer() {
     )
   }
 
+  const socialIconFor = { github: 'github', linkedin: 'linkedin', instagram: 'instagram' }
+
   return (
     <footer className="footer" id="contact">
       <div className="footer__container">
@@ -84,161 +115,173 @@ export default function Footer() {
         <div className="footer__header">
           <p className="footer__eyebrow">04 / Get In Touch</p>
           <h2 className="footer__title">Let's connect.</h2>
-          <p className="footer__lead">
-            Open for software engineering opportunities, meaningful collaborations, or just a friendly conversation.
-          </p>
         </div>
 
-        {/* ── Minimalist Interactive Hub ── */}
-        <div className="footer__card">
+        {/* ── Two-Column Contact Console ── */}
+        <div className="footer__console">
 
-          {/* Top Status & Wave Bar */}
-          <div className="footer__card-topbar">
+          {/* ── Left: Pitch + Direct Channels ── */}
+          <div className="footer__pitch">
+            <h3 className="footer__pitch-title">
+              If you want to hire me,
+              <br />
+              <span className="footer__pitch-accent">send the details or contact me here.</span>
+            </h3>
+            <p className="footer__pitch-lead">
+              Open for software engineering roles, freelance work, and project
+              collaborations. Fill out the message and it lands straight in my inbox.
+            </p>
+
             <div className="footer__status-badge">
               <span className="footer__status-dot" />
               <span>Cavite, Philippines · {currentTime || 'GMT+8'}</span>
               <span className="footer__status-pill">Available for opportunities</span>
             </div>
 
+            {/* Copyable email chip */}
             <button
               type="button"
-              className={`footer__wave-btn${waved ? ' footer__wave-btn--active' : ''}`}
-              onClick={handleWave}
-              title="Send a friendly wave to Rany"
+              className="footer__email-chip"
+              onClick={handleCopyEmail}
+              title="Copy email address"
             >
-              <span className="footer__wave-emoji" aria-hidden="true">👋</span>
-              <span>{waved ? 'Wave received! Thanks for stopping by!' : 'Say hello with a wave'}</span>
-              {waveCount > 0 && <span className="footer__wave-counter">({waveCount})</span>}
-            </button>
-          </div>
-
-          {/* Direct Comms Box (Simple & Human) */}
-          <div className="footer__main-action-box">
-            <div className="footer__intent-picker">
-              <span className="footer__intent-label">I'M REACHING OUT ABOUT:</span>
-              <div className="footer__intents" role="radiogroup" aria-label="Reason for reaching out">
-                {INTENTS.map(item => {
-                  const isSelected = selectedIntent.id === item.id
-                  return (
-                    <button
-                      key={item.id}
-                      type="button"
-                      role="radio"
-                      aria-checked={isSelected}
-                      className={`footer__intent-pill${isSelected ? ' footer__intent-pill--active' : ''}`}
-                      onClick={() => setSelectedIntent(item)}
-                    >
-                      {item.label}
-                    </button>
-                  )
-                })}
-              </div>
-            </div>
-
-            <div className="footer__action-buttons">
-              <button
-                type="button"
-                className="footer__action-email"
-                onClick={handleSendEmail}
-              >
-                <Icon name="message" size={16} />
-                <span>Email Rany</span>
-                <span className="footer__arrow" aria-hidden="true">↗</span>
-              </button>
-
-              <button
-                type="button"
-                className="footer__action-copy"
-                onClick={handleCopyEmail}
-                title="Copy email address"
-              >
-                {copiedEmail ? <Icon name="check" size={15} /> : <Icon name="article" size={15} />}
-                <span>{copiedEmail ? 'Copied to Clipboard ✓' : 'Copy Email Address'}</span>
-              </button>
-            </div>
-          </div>
-
-          {/* AI Companion Callout (Clear Division of Purpose) */}
-          <div className="footer__ai-callout">
-            <div className="footer__ai-callout-text">
-              <span className="footer__ai-callout-title">
-                <span className="footer__ai-spark" aria-hidden="true">✦</span> Have questions about my skills, projects, or background?
+              <Icon name="message" size={15} />
+              <span className="footer__email-chip-addr">{EMAIL}</span>
+              <span className="footer__email-chip-copy">
+                {copiedEmail ? 'Copied ✓' : 'Copy'}
               </span>
-              <p className="footer__ai-callout-desc">
-                Ask <strong>notDev.ai</strong> my portfolio assistant is available 24/7 to answer anything immediately.
-              </p>
-            </div>
-            <button
-              type="button"
-              className="footer__ai-callout-btn"
-              onClick={handleAskAi}
-            >
-              <span>Chat with notDev.ai</span>
-              <span aria-hidden="true">→</span>
             </button>
+
+            {/* Social circles */}
+            <div className="footer__socials">
+              {socialLinks.map(s => (
+                <a
+                  key={s.name}
+                  href={s.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="footer__social-circle"
+                  aria-label={s.name}
+                  title={s.name}
+                >
+                  <Icon name={socialIconFor[s.icon] || 'message'} size={16} />
+                </a>
+              ))}
+              <a
+                href={RESUME}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="footer__social-circle"
+                aria-label="View Résumé (PDF)"
+                title="View Résumé (PDF)"
+              >
+                <Icon name="article" size={16} />
+              </a>
+            </div>
           </div>
 
+          {/* ── Right: Mail-client Compose Card ── */}
+          <form className="footer__compose" onSubmit={handleSend} noValidate>
+            <div className="footer__compose-bar">
+              <div className="footer__compose-dots" aria-hidden="true">
+                <span /><span /><span />
+              </div>
+              <span className="footer__compose-heading">New Message</span>
+              <button type="submit" className="footer__compose-send-top">
+                <span aria-hidden="true">➤</span> Send
+              </button>
+            </div>
+
+            <div className="footer__field footer__field--to">
+              <label className="footer__field-label">To:</label>
+              <span className="footer__to-pill">{RECIPIENT}</span>
+            </div>
+
+            <div className="footer__field">
+              <label htmlFor="cf-name" className="footer__field-label">Name:</label>
+              <input
+                id="cf-name"
+                type="text"
+                className="footer__field-input"
+                placeholder="Your name"
+                value={name}
+                onChange={e => setName(e.target.value)}
+                autoComplete="name"
+              />
+            </div>
+
+            <div className="footer__field">
+              <label htmlFor="cf-from" className="footer__field-label">
+                From: <span className="footer__required" aria-hidden="true">*</span>
+              </label>
+              <input
+                id="cf-from"
+                type="email"
+                required
+                className="footer__field-input"
+                placeholder="your@email.com"
+                value={from}
+                onChange={e => { setFrom(e.target.value); if (error) setError('') }}
+                autoComplete="email"
+                aria-invalid={Boolean(error)}
+                aria-describedby={error ? 'cf-error' : undefined}
+              />
+            </div>
+
+            <div className="footer__field">
+              <label htmlFor="cf-subject" className="footer__field-label">Subject:</label>
+              <input
+                id="cf-subject"
+                type="text"
+                className="footer__field-input"
+                placeholder="What it's about"
+                value={subject}
+                onChange={e => setSubject(e.target.value)}
+              />
+            </div>
+
+            <textarea
+              className="footer__compose-body"
+              placeholder="Hi Rany,"
+              value={body}
+              onChange={e => setBody(e.target.value)}
+              onKeyDown={handleBodyKeyDown}
+              rows={5}
+            />
+
+            {error && (
+              <p id="cf-error" className="footer__compose-error" role="alert">
+                {error}
+              </p>
+            )}
+
+            <div className="footer__compose-foot">
+              <span className="footer__compose-hint">
+                <kbd>Ctrl</kbd> <kbd>Return</kbd> to send
+              </span>
+            </div>
+          </form>
         </div>
 
-        {/* ── Direct Channels Dock ── */}
-        <div className="footer__dock">
-
-          <div className="footer__dock-item">
-            <span className="footer__dock-label">Direct Email</span>
-            <div className="footer__dock-email-row">
-              <a href={`mailto:${EMAIL}`} className="footer__dock-link">
-                {EMAIL}
-              </a>
-              <button
-                type="button"
-                className="footer__dock-copy-btn"
-                onClick={handleCopyEmail}
-                title="Copy email address"
-              >
-                {copiedEmail ? 'Copied ✓' : 'Copy'}
-              </button>
-            </div>
+        {/* ── Personal AI Assistant Callout ── */}
+        <div className="footer__ai-callout">
+          <div className="footer__ai-callout-text">
+            <span className="footer__ai-callout-title">
+              <span className="footer__ai-spark" aria-hidden="true">✦</span> Want to know about Rany? Ask here.
+            </span>
+            <p className="footer__ai-callout-desc">
+              <strong>notDev.ai</strong> my personal AI assistant can answer anything about my
+              skills, projects, and background, 24/7.
+            </p>
           </div>
-
-          <div className="footer__dock-item">
-            <span className="footer__dock-label">Documentation</span>
-            <a
-              href={RESUME}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="footer__dock-pill"
-            >
-              <Icon name="article" size={14} />
-              <span>View Résumé (PDF)</span>
-            </a>
-          </div>
-
-          <div className="footer__dock-item">
-            <span className="footer__dock-label">Social & Code</span>
-            <div className="footer__dock-socials">
-              <a
-                href="https://github.com/ranyboytemplado"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="footer__dock-social-link"
-                aria-label="GitHub Profile"
-              >
-                <Icon name="github" size={15} />
-                <span>GitHub</span>
-              </a>
-              <a
-                href="https://www.linkedin.com/in/ranyboy-templado/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="footer__dock-social-link"
-                aria-label="LinkedIn Profile"
-              >
-                <Icon name="linkedin" size={15} />
-                <span>LinkedIn</span>
-              </a>
-            </div>
-          </div>
-
+          <button
+            type="button"
+            className="footer__ai-callout-btn"
+            onClick={handleAskAi}
+          >
+            <span>Ask notDev.ai</span>
+            <span aria-hidden="true">→</span>
+          </button>
         </div>
 
         {/* ── Minimalist Bottom Navigation ── */}

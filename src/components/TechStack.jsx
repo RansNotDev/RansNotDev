@@ -17,7 +17,8 @@ const techCatalog = {
   kiro: { role: 'Specialized agentic workflow and task acceleration tool', pairs: ['antigravity', 'windsurf'], cat: 'AI Agent' },
 
   // SAP & Enterprise Data Migration
-  sap: { role: 'Enterprise ERP core for business operations, transactional ledgers & master data', pairs: ['sapgui', 'ltmc', 'ltmom'], cat: 'Enterprise' },
+  sap: { role: 'Enterprise ERP core for business operations, transactional ledgers & master data', pairs: ['s4hana', 'sapgui', 'ltmc'], cat: 'Enterprise' },
+  s4hana: { role: 'Next-gen in-memory ERP suite — the migration target for S/4HANA data loads & master data reconciliation', pairs: ['sap', 'ltmc', 'ltmom'], cat: 'Enterprise' },
   sapgui: { role: 'Native transactional UI for SAP systems navigation, table inspection & BAPIs', pairs: ['sap', 'ltmc'], cat: 'Enterprise' },
   ltmc: { role: 'Migration Cockpit for structured legacy file uploads and target mapping runs', pairs: ['ltmom', 'sap', 'excel'], cat: 'Enterprise' },
   ltmom: { role: 'Migration Object Modeler for custom rules, structures, and field transforms', pairs: ['ltmc', 'sap'], cat: 'Enterprise' },
@@ -50,6 +51,8 @@ const techCatalog = {
   awsconsole: { role: 'Management console for provisioning and monitoring AWS cloud resources', pairs: ['s3', 'linux'], cat: 'Cloud' },
   s3: { role: 'Scalable object storage for static assets, backups, and media files', pairs: ['awsconsole', 'react'], cat: 'Cloud' },
   vercel: { role: 'Zero-config edge deployment, serverless functions, and CI previews', pairs: ['react', 'vite', 'github'], cat: 'Cloud' },
+  githubactions: { role: 'CI/CD pipelines — automated build, test, lint & deploy workflows triggered on every push and pull request', pairs: ['github', 'git', 'vercel'], cat: 'Cloud' },
+  kubernetes: { role: 'Container orchestration for automated deployment, scaling, and self-healing of containerized workloads', pairs: ['linux', 'githubactions', 'node'], cat: 'Cloud' },
   linux: { role: 'POSIX shell scripting, file permissions, and server administration', pairs: ['git', 'python', 'node'], cat: 'Cloud' },
   git: { role: 'Distributed version control, branch management, and commit integrity', pairs: ['github', 'vscode'], cat: 'Tooling' },
   github: { role: 'Repository hosting, collaborative reviews, and CI/CD pipelines', pairs: ['git', 'vercel'], cat: 'Tooling' },
@@ -60,7 +63,7 @@ const techCatalog = {
 
 const categories = [
   { id: 'all', label: 'All Tools' },
-  { id: 'agents', label: 'AI & Autonomous', match: ['AI Agent'] },
+  { id: 'agents', label: 'AI', match: ['AI Agent'] },
   { id: 'enterprise', label: 'SAP & Enterprise', match: ['Enterprise'] },
   { id: 'automation', label: 'Automation', match: ['Automation'] },
   { id: 'frontend', label: 'Frontend', match: ['Frontend'] },
@@ -158,7 +161,7 @@ export default function TechStack() {
         <div className="tech-minimal__header-title-wrap">
           <p className="tech-minimal__eyebrow">&gt; 02 / Tech Stack</p>
           <h2 id="tech-heading" className="tech-minimal__heading">
-            Tools, Autonomous Workflows & Systems.
+            Tools, Workflows & Systems.
           </h2>
         </div>
         <p className="tech-minimal__lead">
