@@ -59,6 +59,7 @@ function localApi() {
     configureServer(server) {
       mountApi(server, '/api/chat', () => import('./api/chat.js'))
       mountApi(server, '/api/visitors', () => import('./api/visitors.js'))
+      mountApi(server, '/api/contact', () => import('./api/contact.js'))
     },
   }
 }

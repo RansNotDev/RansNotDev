@@ -7,7 +7,7 @@ const EMAIL = 'ranyboytemplado001@gmail.com'
 const RECIPIENT = 'Rany Templado'
 const RESUME = '/Rany_Boy_Templado_Resume.pdf'
 
-// Accepts any standard email format (user@domain.tld)
+// Client-side format check (the server re-validates and does an MX lookup too)
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
 export default function Footer() {
@@ -20,6 +20,7 @@ export default function Footer() {
   const [subject, setSubject] = useState('')
   const [body, setBody] = useState('')
   const [error, setError] = useState('')
+  const [status, setStatus] = useState('idle') // idle | sending | sent
 
   // Live GMT+8 Clock
   useEffect(() => {
@@ -55,10 +56,11 @@ export default function Footer() {
     }
   }
 
-  // Compose & send via the visitor's mail client.
-  // Email (From) is required; everything else is optional.
-  function handleSend(e) {
+  // Submit the message to the serverless contact API, which validates the
+  // email (format + live MX-record lookup) and emails it to Rany via Resend.
+  async function handleSend(e) {
     e.preventDefault()
+    if (status === 'sending') return
 
     const fromValue = from.trim()
     if (!fromValue) {
@@ -69,22 +71,42 @@ export default function Footer() {
       setError('That email doesn’t look right. Try name@example.com.')
       return
     }
+    if (!body.trim()) {
+      setError('Please write a short message.')
+      return
+    }
     setError('')
+    setStatus('sending')
 
-    const subjectLine = subject.trim() || `New message from ${name.trim() || 'your portfolio'}`
-    const lines = [
-      body.trim() || `Hi Rany,`,
-      '',
-      '—',
-      `From: ${name.trim() || 'A visitor'} <${fromValue}>`,
-    ]
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'X-Requested-With': 'portfolio-contact' },
+        body: JSON.stringify({
+          name: name.trim(),
+          email: fromValue,
+          subject: subject.trim(),
+          message: body.trim(),
+        }),
+      })
 
-    const url =
-      `mailto:${EMAIL}` +
-      `?subject=${encodeURIComponent(subjectLine)}` +
-      `&body=${encodeURIComponent(lines.join('\n'))}`
+      const data = await res.json().catch(() => ({}))
+      if (!res.ok || !data.ok) {
+        setStatus('idle')
+        setError(data.error || 'Couldn’t send right now. Please try again.')
+        return
+      }
 
-    window.location.href = url
+      // Success — clear the form and show confirmation
+      setStatus('sent')
+      setName('')
+      setFrom('')
+      setSubject('')
+      setBody('')
+    } catch {
+      setStatus('idle')
+      setError('Network error. Please check your connection and try again.')
+    }
   }
 
   // Keyboard shortcut: Ctrl/Cmd + Enter sends
@@ -187,8 +209,13 @@ export default function Footer() {
                 <span /><span /><span />
               </div>
               <span className="footer__compose-heading">New Message</span>
-              <button type="submit" className="footer__compose-send-top">
-                <span aria-hidden="true">➤</span> Send
+              <button
+                type="submit"
+                className="footer__compose-send-top"
+                disabled={status === 'sending'}
+              >
+                <span aria-hidden="true">➤</span>
+                {status === 'sending' ? 'Sending…' : 'Send'}
               </button>
             </div>
 
@@ -252,6 +279,12 @@ export default function Footer() {
             {error && (
               <p id="cf-error" className="footer__compose-error" role="alert">
                 {error}
+              </p>
+            )}
+
+            {status === 'sent' && (
+              <p className="footer__compose-success" role="status">
+                ✓ Message sent — thanks! Rany will reply to your email soon.
               </p>
             )}
 
