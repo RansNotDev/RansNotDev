@@ -1,0 +1,97 @@
+/* ── Visitor Counter Badge ── */
+.visitor-counter {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.45rem 0.95rem;
+  border-radius: 999px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  transition: border-color var(--duration-fast);
+}
+
+.visitor-counter:hover {
+  border-color: var(--border-strong);
+}
+
+.visitor-counter__group {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.visitor-counter__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #34d399;
+  box-shadow: 0 0 8px #34d399;
+  animation: visitor-dot-pulse 2s infinite ease-in-out;
+}
+
+@keyframes visitor-dot-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.8); }
+}
+
+.visitor-counter__num {
+  font-weight: 700;
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+}
+
+.visitor-counter__label {
+  color: var(--text-dim);
+}
+
+.visitor-counter__divider {
+  width: 1px;
+  height: 14px;
+  background: var(--border);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .visitor-counter__dot {
+    animation: none;
+  }
+}
+
+/* ── Compact variant (nav bar) ── */
+.visitor-counter--compact {
+  gap: 0.55rem;
+  padding: 0.3rem 0.65rem;
+  font-size: 0.68rem;
+  background: transparent;
+  border-color: var(--border);
+}
+
+.visitor-counter--compact .visitor-counter__group {
+  gap: 0.3rem;
+}
+
+.visitor-counter--compact .visitor-counter__dot {
+  width: 6px;
+  height: 6px;
+}
+
+.visitor-counter--compact .visitor-counter__num {
+  font-size: 0.72rem;
+}
+
+.visitor-counter--compact .visitor-counter__label {
+  font-size: 0.64rem;
+}
+
+.visitor-counter--compact .visitor-counter__divider {
+  height: 11px;
+}
+
+/* Keep the nav uncluttered on small screens */
+@media (max-width: 768px) {
+  .visitor-counter--compact {
+    display: none;
+  }
+}

@@ -1,5 +1,6 @@
 import { useEffect, useState, useRef } from 'react'
 import Icon from './Icon'
+import VisitorCounter from './VisitorCounter'
 import './Nav.css'
 
 const navLinks = [
@@ -137,6 +138,8 @@ export default function Nav({ theme = 'dark', toggleTheme }) {
           </nav>
 
           <div className="nav__actions">
+            <VisitorCounter compact />
+
             {toggleTheme && (
               <button
                 type="button"
