@@ -175,10 +175,22 @@
   transition: all var(--duration-fast);
 }
 
-.footer__social-circle:hover {
+.footer__social-circle:hover:not(.footer__social-circle--disabled) {
   color: var(--accent);
   border-color: var(--accent);
   transform: translateY(-2px);
+}
+
+/* Résumé temporarily unavailable — non-interactive */
+.footer__social-circle--disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.footer__social-circle--disabled:hover {
+  transform: none;
+  color: var(--text-muted);
+  border-color: var(--border);
 }
 
 /* ── Right: Mail-Client Compose Card ── */

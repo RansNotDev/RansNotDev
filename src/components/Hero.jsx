@@ -32,14 +32,15 @@ export default function Hero({ theme = 'dark', toggleTheme }) {
             <a href="#projects" className="hero__action hero__action--primary">
               View Work <span aria-hidden="true">↘</span>
             </a>
-            <a
-              href="/Rany_Boy_Templado_Resume.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hero__action hero__action--resume"
+            <button
+              type="button"
+              className="hero__action hero__action--resume hero__action--disabled"
+              disabled
+              aria-disabled="true"
+              title="Résumé is temporarily unavailable"
             >
-              Résumé <span aria-hidden="true">↗</span>
-            </a>
+              Résumé · Temporarily Unavailable
+            </button>
           </div>
 
           <div className="hero__socials-wrap">

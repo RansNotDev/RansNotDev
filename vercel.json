@@ -31,6 +31,9 @@
   "functions": {
     "api/chat.js": { "maxDuration": 15 }
   },
+  "redirects": [
+    { "source": "/Rany_Boy_Templado_Resume.pdf", "destination": "/", "permanent": false }
+  ],
   "rewrites": [
     { "source": "/(.*\\.pdf)", "destination": "/$1" },
     { "source": "/((?!api/|assets/|robots\\.txt|sitemap\\.xml|.*\\.(?:xml|txt|png|jpg|jpeg|webp|svg|ico|json|pdf|webmanifest)).*)", "destination": "/index.html" }

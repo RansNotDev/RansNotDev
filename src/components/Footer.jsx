@@ -5,7 +5,6 @@ import './Footer.css'
 
 const EMAIL = 'ranyboytemplado001@gmail.com'
 const RECIPIENT = 'Rany Templado'
-const RESUME = '/Rany_Boy_Templado_Resume.pdf'
 
 // Client-side format check (the server re-validates and does an MX lookup too)
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
@@ -196,16 +195,16 @@ export default function Footer() {
                   <Icon name={socialIconFor[s.icon] || 'message'} size={16} />
                 </a>
               ))}
-              <a
-                href={RESUME}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="footer__social-circle"
-                aria-label="View Résumé (PDF)"
-                title="View Résumé (PDF)"
+              <button
+                type="button"
+                className="footer__social-circle footer__social-circle--disabled"
+                disabled
+                aria-disabled="true"
+                aria-label="Résumé is temporarily unavailable"
+                title="Résumé is temporarily unavailable"
               >
                 <Icon name="article" size={16} />
-              </a>
+              </button>
             </div>
           </div>
 
