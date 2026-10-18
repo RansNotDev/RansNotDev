@@ -17,6 +17,7 @@
 //   CONTACT_TO       (optional) recipient; defaults to RECIPIENT below
 
 import { promises as dns } from 'node:dns'
+import { validateSubmission } from './_contactValidation.js'
 
 const RECIPIENT = process.env.CONTACT_TO || 'ranyboytemplado001@gmail.com'
 const FROM = process.env.CONTACT_FROM || 'Portfolio Contact <onboarding@resend.dev>'
@@ -26,8 +27,6 @@ const WINDOW_MS = 60_000
 const MAX_REQUESTS = 5
 const MAX_BODY_BYTES = 10_000
 let lastPruneAt = 0
-
-const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
 function clientId(req) {
   return String(req.headers['x-forwarded-for'] || req.socket?.remoteAddress || 'unknown')
@@ -67,10 +66,6 @@ function sameOrigin(req) {
   }
 }
 
-function clean(value, max) {
-  return String(value || '').trim().replace(/[\u0000-\u001f]/g, ' ').slice(0, max)
-}
-
 // Confirm the email's domain can receive mail (has MX, or at least an A record
 // as a fallback per RFC 5321). This is the strongest "is this a real email"
 // check possible without sending a confirmation link.
@@ -89,12 +84,6 @@ async function domainCanReceiveMail(email) {
   } catch {
     return false
   }
-}
-
-function escapeHtml(s) {
-  return String(s).replace(/[&<>"']/g, c => (
-    { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]
-  ))
 }
 
 export default async function handler(req, res) {
@@ -122,28 +111,32 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: 'Invalid request.' })
   }
 
-  const email = clean(body?.email, 200)
-  const name = clean(body?.name, 120) || 'A visitor'
-  const subject = clean(body?.subject, 200) || `New portfolio message from ${name}`
-  const message = clean(body?.message, 5000)
-
-  // ── Email validation ──
-  if (!email) {
-    return res.status(400).json({ error: 'Please enter your email so Rany can reply.', field: 'email' })
-  }
-  if (!EMAIL_PATTERN.test(email)) {
-    return res.status(400).json({ error: 'That email doesn’t look right. Try name@example.com.', field: 'email' })
-  }
-  const deliverable = await domainCanReceiveMail(email)
-  if (!deliverable) {
-    return res.status(400).json({
-      error: 'That email’s domain can’t receive mail. Please double-check the address.',
-      field: 'email',
+  // ── Zero-trust rule-based validation (name, email, message quality/spam) ──
+  const verdict = validateSubmission(body)
+  if (!verdict.is_valid) {
+    const field = verdict.status_code === 'REJECTED_INVALID_EMAIL' ? 'email' : 'message'
+    // Technical `reason` stays in the logs; the visitor sees a friendly message.
+    console.info(`[contact] rejected (${verdict.status_code}): ${verdict.reason}`)
+    return res.status(422).json({
+      is_valid: false,
+      status_code: verdict.status_code,
+      error: verdict.userMessage,
+      field,
     })
   }
 
-  if (!message) {
-    return res.status(400).json({ error: 'Please write a short message.', field: 'message' })
+  const { name, email, intent, message } = verdict.sanitized_payload
+
+  // ── Email deliverability: live DNS MX-record lookup ──
+  const deliverable = await domainCanReceiveMail(email)
+  if (!deliverable) {
+    console.info(`[contact] rejected (MX): domain for ${email} can't receive mail`)
+    return res.status(422).json({
+      is_valid: false,
+      status_code: 'REJECTED_INVALID_EMAIL',
+      error: 'Please use a real, working email address so Rany can reply to you directly.',
+      field: 'email',
+    })
   }
 
   // ── Send via Resend ──
@@ -153,20 +146,29 @@ export default async function handler(req, res) {
     return res.status(503).json({ error: 'The contact service isn’t configured yet. Please email Rany directly.' })
   }
 
+  const subject = intent && intent !== 'General'
+    ? `[${intent}] Portfolio message from ${name}`
+    : `New portfolio message from ${name}`
+
+  // message is already HTML-escaped by the validator; keep a plain-text version
+  const plainMessage = message
+    .replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"').replace(/&#39;/g, "'")
+
   const textBody =
     `New message from your portfolio contact form\n\n` +
     `Name:    ${name}\n` +
     `Email:   ${email}\n` +
-    `Subject: ${subject}\n\n` +
-    `${message}\n`
+    `Intent:  ${intent}\n\n` +
+    `${plainMessage}\n`
 
   const htmlBody =
     `<h2 style="margin:0 0 12px">New portfolio message</h2>` +
-    `<p style="margin:4px 0"><strong>Name:</strong> ${escapeHtml(name)}</p>` +
-    `<p style="margin:4px 0"><strong>Email:</strong> ${escapeHtml(email)}</p>` +
-    `<p style="margin:4px 0"><strong>Subject:</strong> ${escapeHtml(subject)}</p>` +
+    `<p style="margin:4px 0"><strong>Name:</strong> ${name}</p>` +
+    `<p style="margin:4px 0"><strong>Email:</strong> ${email}</p>` +
+    `<p style="margin:4px 0"><strong>Intent:</strong> ${intent}</p>` +
     `<hr style="border:none;border-top:1px solid #ddd;margin:14px 0" />` +
-    `<p style="white-space:pre-wrap;margin:0">${escapeHtml(message)}</p>`
+    `<p style="white-space:pre-wrap;margin:0">${message}</p>`
 
   try {
     const response = await fetch('https://api.resend.com/emails', {

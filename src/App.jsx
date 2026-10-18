@@ -4,6 +4,7 @@ import Hero from './components/Hero'
 import AboutSection from './components/AboutSection'
 import Projects from './components/Projects'
 import Certifications from './components/Certifications'
+import Articles from './components/Articles'
 import Footer from './components/Footer'
 import Cursor from './components/Cursor'
 import './App.css'
@@ -47,6 +48,7 @@ function App() {
         <AboutSection />
         <Projects />
         <Certifications />
+        <Articles />
       </main>
       <Footer />
 

@@ -7,6 +7,7 @@ const navLinks = [
   { label: 'About', href: '#about' },
   { label: 'Projects', href: '#projects' },
   { label: 'Credentials', href: '#certifications' },
+  { label: 'Articles', href: '#articles' },
   { label: 'Contact', href: '#contact' },
 ]
 
@@ -35,7 +36,7 @@ export default function Nav({ theme = 'dark', toggleTheme }) {
         return
       }
 
-      const sections = ['contact', 'certifications', 'projects', 'about']
+      const sections = ['contact', 'articles', 'certifications', 'projects', 'about']
       for (const id of sections) {
         const el = document.getElementById(id)
         if (el) {

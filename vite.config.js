@@ -44,9 +44,11 @@ function mountApi(server, route, importer) {
         }
         await handler(vercelReq, vercelRes)
       } catch (error) {
+        // Log the detail server-side; never leak internals to the client.
+        console.error('[local-api]', error)
         res.statusCode = 500
         res.setHeader('Content-Type', 'application/json')
-        res.end(JSON.stringify({ error: error.message || 'Local API failed.' }))
+        res.end(JSON.stringify({ error: 'Something went wrong. Please try again.' }))
       }
     })
     req.on('error', next)

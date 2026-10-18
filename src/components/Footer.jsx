@@ -63,6 +63,13 @@ export default function Footer() {
     if (status === 'sending') return
 
     const fromValue = from.trim()
+    const nameValue = name.trim()
+    const bodyValue = body.trim()
+
+    if (nameValue && (nameValue.length < 2 || nameValue.length > 50)) {
+      setError('Please enter your name (2–50 characters).')
+      return
+    }
     if (!fromValue) {
       setError('Please enter your email so Rany can reply.')
       return
@@ -71,8 +78,8 @@ export default function Footer() {
       setError('That email doesn’t look right. Try name@example.com.')
       return
     }
-    if (!body.trim()) {
-      setError('Please write a short message.')
+    if (bodyValue.length < 15) {
+      setError('Please write a short message (at least 15 characters).')
       return
     }
     setError('')
@@ -156,7 +163,7 @@ export default function Footer() {
 
             <div className="footer__status-badge">
               <span className="footer__status-dot" />
-              <span>Cavite, Philippines · {currentTime || 'GMT+8'}</span>
+              <span>Local time · {currentTime || 'GMT+8'}</span>
               <span className="footer__status-pill">Available for opportunities</span>
             </div>
 

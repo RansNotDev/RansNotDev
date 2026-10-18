@@ -20,6 +20,28 @@ import { MongoClient } from 'mongodb'
 const ONLINE_WINDOW_MS = 45_000
 const DB_NAME = process.env.MONGODB_DB || 'portfolio'
 
+import { timingSafeEqual } from 'node:crypto'
+
+// Private admin phrase that resets the all-time visit counter to zero.
+// The secret lives ONLY in the RESET_SECRET env var — never in this source and
+// never shipped to the browser. If it isn't configured, reset is disabled
+// (fails safe). There is NO hardcoded fallback, so nothing leaks via the repo.
+const RESET_PHRASE = String(process.env.RESET_SECRET || '')
+
+// Constant-time string compare so an attacker can't learn the secret by
+// measuring how long a comparison takes (timing side-channel).
+function secretMatches(input) {
+  if (!RESET_PHRASE) return false // reset disabled until the env var is set
+  const a = Buffer.from(String(input))
+  const b = Buffer.from(RESET_PHRASE)
+  if (a.length !== b.length) return false
+  try {
+    return timingSafeEqual(a, b)
+  } catch {
+    return false
+  }
+}
+
 // Cache the client across warm serverless invocations so we don't exhaust
 // the Atlas connection pool by reconnecting on every request.
 let cached = globalThis.__visitorsMongo
@@ -81,6 +103,38 @@ export default async function handler(req, res) {
   }
   // Not configured yet — tell the UI to stay quiet.
   if (!db) return res.status(204).end()
+
+  // ── Private admin reset ──
+  // A POST carrying the exact reset phrase zeroes the all-time counter.
+  // Verified byte-for-byte (no trim, no lowercasing) so only the exact
+  // string works, exactly as intended.
+  if (req.method === 'POST') {
+    let resetBody
+    try {
+      resetBody = typeof req.body === 'string' ? JSON.parse(req.body) : req.body
+    } catch {
+      resetBody = null
+    }
+    if (resetBody && typeof resetBody.reset === 'string') {
+      if (!secretMatches(resetBody.reset)) {
+        // Wrong phrase — do nothing, report failure without hinting why.
+        return res.status(200).json({ ok: false })
+      }
+      try {
+        await db.collection('visits').updateOne(
+          { _id: 'global' },
+          { $set: { total: 0 } },
+          { upsert: true }
+        )
+        const online = await db.collection('heartbeats').countDocuments()
+        console.info('[visitors] all-time counter reset via admin phrase')
+        return res.status(200).json({ ok: true, online: Math.max(online, 1), total: 0 })
+      } catch (err) {
+        console.warn('[visitors] reset failed —', err.message)
+        return res.status(200).json({ ok: false })
+      }
+    }
+  }
 
   const now = Date.now()
   const id = clientId(req)
